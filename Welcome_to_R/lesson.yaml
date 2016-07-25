@@ -1,0 +1,44 @@
+- Class: meta
+  Course: Sociology 1
+  Lesson: Welcome to R
+  Author: Elin Waring
+  Type: Standard
+  Organization: Department of Sociology, Lehman College
+  Version: 2.4.1
+- Class: text
+  Output: In this lesson we are going to learn some basics about R and RStudio.
+- Class: text
+  Output: R is a computer language we will us for doing statistical analyses and working with data.
+- Class: text
+  Output: RStudio is the environment in which we will be using R. You don't have to use RStudio to use R but it makes things easier.
+- Class: text
+  Output: RStudio is divided into different areas./n The area you are in right now is called the Console and the > you see is called the command prompt or just the prompt.
+- Class: text
+  Output: R can be used to do all kinds of things.
+  # This section initially copied from http://tutorials.iq.harvard.edu/R/Rintro/Rintro.html
+  # https://creativecommons.org/licenses/by-sa/4.0/
+
+- Class: figure
+  Output: You can create a map
+  Figure: ./mapexample.R
+  FigureType: new
+
+- Class: cmd_question
+  Output: It can tell you the current date if you type Sys.Date().  Try it.
+  CorrectAnswer: Sys.Date()
+  AnswerTests: omnitest(correctVal=Sys.Date())
+  Hint: Make sure it is typed exactly the same, including upper case letters.
+
+
+- Class: video
+  Output: Would you like to read about why learning R is a good career move?
+  VideoLink: https://opensource.com/business/14/12/r-open-source-language-data-science
+
+
+- Class: video
+  Output: Would you like read a New York Times article about R?
+  VideoLink: http://www.nytimes.com/2009/01/07/technology/business-computing/07program.html?pagewanted=all
+
+
+- Class: text
+  Output: And now onto our first step in learning R.

@@ -1,0 +1,171 @@
+- Class: meta
+  Course: Sociology_1
+  Lesson: R as Calculator
+  Author: Elin Waring
+  Type: Standard
+  Organization: Sociology Department, Lehman College
+  Version: 2.4.1
+
+
+- Class: text
+  Output: One way we will use R is as a calculator. Let's start by trying the four basic operations.
+
+- Class: cmd_question
+  Output: Addition ..  Type 7+2 at the prompt below.
+  CorrectAnswer: 7 + 2
+  AnswerTests: omnitest(correctExpr='7 + 2')
+  Hint: Type 7 + 2 and then hit enter or return.
+
+
+- Class: cmd_question
+  Output: Subtraction ..  Type 7 - 2
+  CorrectAnswer: 7 - 2
+  AnswerTests: omnitest(correctExpr='7 - 2')
+  Hint:  Just type 7 - 2.
+
+
+
+- Class: cmd_question
+  Output: Now let's multiply 7 * 2
+  CorrectAnswer: 7 * 2
+  AnswerTests: omnitest(correctExpr='7*2')
+  Hint: Use * to indicate multiplication.
+
+
+
+- Class: cmd_question
+  Output: The final basic operation is division represented by / ... 7/2
+  CorrectAnswer: 7/2
+  AnswerTests: omnitest(correctExpr='7/2')
+  Hint: The / is the symbol for division.
+
+
+
+- Class: text
+  Output: Two other common operations on a calculator are raising a number to a power and taking a square root. Let's try them.
+
+
+
+- Class: cmd_question
+  Output: To raise one number to a power use the ^ operator.  Try 2^7   (^ is Shift 6 on you r keyboard)
+  CorrectAnswer: 2^7
+  AnswerTests: omnitest(correctExpr='2^7')
+  Hint: Type 2^7 to raise 2 to the 7th power.
+
+- Class: cmd_question
+  Output: Now raise 7 to the 2nd power
+  CorrectAnswer: '7 ^ 2'
+  AnswerTests: omnitest(correctExpr='7^2')
+  Hint: Use ** to indicate that you are raising a number to a power.
+
+
+
+- Class: cmd_question
+  Output: There isn't a simple equivalent to the radical sign for square root, so we use sqrt(7)
+  CorrectAnswer: sqrt(7)
+  AnswerTests: omnitest(correctExpr='sqrt(7)')
+  Hint: Make sure to check you spelling and parentheses.
+
+
+
+- Class: cmd_question
+  Output: Just like on most calculators using the sqrt() function on a negative number gives a kind of error. Try taking the square root of -7.
+  CorrectAnswer: sqrt(-7)
+  AnswerTests: omnitest(correctExpr='sqrt(-7)')
+  Hint: Type sqrt(-7).
+
+
+
+- Class: text
+  Output: As you can see, just like most calculators sqrt() will not calculate the square root of a negative number, and instead gives NaN (not a number).  (R can also give a complex number as the answer, but that's for another lesson.)
+
+
+
+- Class: text
+  Output: One more useful math operation is absolute value. Just like with square root, there isn't a simple symbol so we use abs().
+
+
+
+- Class: cmd_question
+  Output: Find the absolute value of 14
+  CorrectAnswer: 'abs(14)'
+  AnswerTests: omnitest(correctExpr='abs(14)')
+  Hint: Use abs() by putting the number inside the parentheses.
+
+- Class: cmd_question
+  Output: Find the absolute value of -14
+  CorrectAnswer: 'abs(-14)'
+  AnswerTests: omnitest(correctExpr='abs(-14)')
+  Hint: Use abs() by putting the number inside the parentheses.
+
+
+
+- Class: text
+  Output: Unlike simple calculators, but like scientific calculators, R can combine operations together and uses parentheses to make sure the calculations work correctly.
+
+
+
+- Class: cmd_question
+  Output: Let's add a bunch of numbers together and square the result by typing (3+2+5+4)^2
+  CorrectAnswer: '(3+2+5+4)^2'
+  AnswerTests: omnitest(correctExpr='(3+2+5+4)^2')
+  Hint: Type (3+2+5+4)^2 exactly.
+
+
+
+- Class: cmd_question
+  Output: Now try it without parentheses 3+2+5+4^2
+  CorrectAnswer: '3+2+5+4^2'
+  AnswerTests: omnitest(correctExpr='3+2+5+4^2')
+  Hint: Make sure you copy the formula exactly 3+2+5+4^2.
+
+
+
+- Class: mult_question
+  Output: Why do 3+2+5+4^2 and (3+2+5+4)^2 give different answers?
+  AnswerChoices:  All of these statements are right; Because the 3+2+5+4^2 is the same as 3+2+5+16; Because (3+2+5+4)^2 is the same as 14^2; Because you do the operations inside the parentheses first
+  CorrectAnswer: All of these statements are right
+  AnswerTests: omnitest(correctVal= 'All of these statements are right')
+  Hint: Try
+
+
+
+- Class: mult_question
+  Output: Using order of operations, what is the first step of solving (4-6)^2 ?
+  AnswerChoices: Calculate 4-6; Square both 4 and 6; Multiply both 4 and 6 by 2
+  CorrectAnswer: Calculate 4-6
+  AnswerTests: omnitest(correctVal= 'Calculate 4-6')
+  Hint: Start with doing the calculation inside the parentheses.
+
+
+- Class: video
+  Output: Would you like to watch a short video about order of operations?
+  VideoLink: https://www.khanacademy.org/math/algebra-basics/core-algebra-foundations/algebra-foundations-order-of-operations/v/introduction-to-order-of-operations
+
+
+- Class: text
+  Output: For all the basic operations, R follows the same order of operation rules that you normally use in math problems--  First do calculations inside of parentheses, then calulate any exponents, then multiply and divide, then add and subtract.  When you are inside  parentheses follow the same rules again. If there are many sets of parentheses you need to start at the inside and work your way out, always following the rules.
+
+
+
+
+- Class: mult_question
+  Output: What is the correct way to solve this ((9-10)^2 + (11-10)^2)/2
+  AnswerChoices: Do the subtraction, then the exponents, then the division, then the addition. ;  Do the division, then the exponents. then the subtraction, then the addtion. ; Divide the exponents by 2, then do the subtraction, followed by the addition.;Do the subtractions, then the exponents, then the addition, then the division.
+  CorrectAnswer: 'Do the subtractions, then the exponents, then the addition, then the division.'
+  AnswerTests: omnitest(correctVal= 'Do the subtractions, then the exponents, then the addition, then the division.')
+  Hint: Remember to always complete everything inside the innermost parentheses before working on the next step.  Pay attention to all of the parentheses.
+
+
+
+- Class: cmd_question
+  Output: Let's do one more problem ... calculate (2 + 3 + 4 + 5) + (2 * 3 * 4 * 5) + (2^2 + 3^2 + 4^2 + 5^2)
+  CorrectAnswer: '(2 + 3 + 4 + 5) + (2 * 3 * 4 * 5) + (2^2 + 3^2 + 4^2 + 5^2)'
+  AnswerTests: omnitest(correctExpr='(2 + 3 + 4 + 5) + (2 * 3 * 4 * 5) + (2^2 + 3^2 + 4^2 + 5^2)')
+  Hint: You have to copy carefully!
+
+
+
+- Class: text
+  Output: Wait a minute, did you notice something about that last quesiton?  We typed the numbers 2, 3,4,5  three times!  That seems silly, surely there must be a better way ... as we shall see in the next lesson.
+
