@@ -8,3 +8,5 @@
   )
 }
 states_map<-map_data("state")
+# Note this assumes you have set a system environment value for census key.
+censuskey<-Sys.getenv('CENSUS_KEY')
