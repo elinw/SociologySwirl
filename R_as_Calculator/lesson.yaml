@@ -98,6 +98,21 @@
   AnswerTests: omnitest(correctExpr='abs(-14)')
   Hint: Use abs() by putting the number inside the parentheses.
 
+- Class: cmd_question
+  Output: Like most computer languages, R differs from a calculator in how it uses equal signs.  There is a special operator ==  (a double equal sign) that asks are two entities equal to each other. For example try typing 2 + 2 == 2*2
+  CorrectAnswer: '2 + 2 == 2*2'
+  AnswerTests: omnitest(correctExpr='2 + 2 == 2*2')
+  Hint: Don't forget to use two equal signs right next to each other, ==.
+
+- Class: text
+  Output: The answer is TRUE because 2 + 2 and 2*2 both are equal to 4, and they are equal to each other.
+
+- Class: cmd_question
+  Output: Now let's try two things that are not equal to each other, 2 == 100
+  CorrectAnswer: '2 == 100'
+  AnswerTests: omnitest(correctExpr='2 == 100')
+  Hint: Don't forget to use two equal signs right next to each other, ==.
+
 
 
 - Class: text
@@ -167,5 +182,5 @@
 
 
 - Class: text
-  Output: Wait a minute, did you notice something about that last quesiton?  We typed the numbers 2, 3,4,5  three times!  That seems silly, surely there must be a better way ... as we shall see in the next lesson.
+  Output: Wait a minute, did you notice something about that last question?  We typed the numbers 2, 3, 4, 5  three times!  That seems silly, surely there must be a better way ... as we shall see in the next lesson.
 

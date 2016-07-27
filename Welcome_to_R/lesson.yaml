@@ -29,19 +29,9 @@
   AnswerTests: omnitest(correctVal=map)
   Hint: Make sure it is typed exactly the same.
 
-- Class: figure
-  Output: You can get interesting information about states (be patient, you are pulling this data in from the Census Bureau live!).
-  Figure: getstatedata.R
-  FigureType: new
-
-- Class: cmd_question
-  Output: Type View(data1990)
-  CorrectAnswer: View(data1990)
-  AnswerTests: omnitest(correctVal=View(data1990))
-  Hint: Make sure it is typed exactly the same.
 
 - Class: text
-  Output: Later you will learn how to put the state data into a map.
+  Output: Later you will learn how to put interesting data into maps.
 
 
 - Class: text
