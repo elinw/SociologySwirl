@@ -193,7 +193,7 @@
   Output: Yay! One last thing to know is that you can create your own function. You might not want to do that very often, but if you are clever you might sometimes see ways to use functions to make doing your course work easier. People say good coders are lazy, but what they really mean by that is that they come clever shortcuts for things that also reduce errors.
 
 - Class: script
-  Output: Look at this new function called "myfunction" and notice that it contains the same calculation that we have been doing. Click on save. Then type myfunction(x) at the prompt.
+  Output: Look at this new function called "myfunction" and notice that it contains the same calculation that we have been doing. Click on save. After you save, type submit().
   AnswerTests: test_myfunction()
   Hint: Really, just save it.
   Script: myfunction.R
