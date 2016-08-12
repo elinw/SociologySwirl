@@ -1,0 +1,164 @@
+- Class: meta
+  Course: SociologySwirl
+  Lesson: More About Data Frames
+  Author: your name goes here
+  Type: Standard
+  Organization: your organization's name goes here
+  Version: 2.4.1
+
+- Class: text
+  Output: Hi. Hey. Hello. Good afternoon. Howdy. So nice to see you again.
+
+- Class: text
+  Output: Before we start, we should make one thing clear. Just like any language there are many ways to say the same thing, there are many ways to accomplish the same goal in R. Sometimes we will show different ways, and sometimes we will try to be consistent and stick to one method. But as you learn more, just like in any language, you will get more comfortable with that.
+
+- Class: text
+  Output: So far we have created a data frame with data about the boroughs of New York City.  In this lesson we will explore some more things we can do with them.
+
+- Class: cmd_question
+  Output: Just in case you forgot the names of the variables, you can get them by typing colnames(nycdata). Try it now.
+  CorrectAnswer: colnames(nycdata)
+  AnswerTests: omnitest(correctExpr='colnames(nycdata)')
+  Hint: Just type colnames(nycdata).
+
+- Class: cmd_question
+  Output: You can get even more information by using the str() function on the nycdata.  Str is short for structure.
+  CorrectAnswer: str(nycdata)
+  AnswerTests: omnitest(correctExpr='str(nycdata)')
+  Hint: Put nycdata inside the parentheses.
+
+- Class: text
+  Output: The str() function tells you what kind of variable you have (Factor, Ordered Factor, Numeric or AsIs (which we use for things like names)).   It also shows us the values from the first few observations.
+
+- Class: cmd_question
+  Output: "Another way to get information about a data frame is by using the summary() function. Try that now for your data set."
+  CorrectAnswer: summary(nycdata)
+  AnswerTests: omnitest(correctExpr='summary(nycdata)')
+  Hint: hint
+
+- Class: text
+  Output: Whoa, statistics! That wasn't too hard.
+
+- Class: cmd_question
+  Output: What if we want to find out how many rows of data there are? Try nrow() on your data.
+  CorrectAnswer: nrow(nycdata)
+  AnswerTests: omnitest(correctExpr='nrow(nycdata)')
+  Hint: Your data in nycdata. Put it inside nrow().
+
+- Class: cmd_question
+  Output: What if we want to find out how many columns of data there are? Try ncol() on your data.
+  CorrectAnswer: ncol(nycdata)
+  AnswerTests: omnitest(correctExpr='ncol(nycdata)')
+  Hint: Your data in nycdata. Put it inside ncol().
+
+- Class: cmd_question
+  Output: Suppose we want to see the first few rows of our data frame? In that case we can use the head() function. For example head(nycdata, 2) will show the first two rows.
+  CorrectAnswer: head(nycdata, 2)
+  AnswerTests: omnitest(correctExpr='head(nycdata, 2)')
+  Hint: Make sure the funtion is copied correctly.
+
+- Class: cmd_question
+  Output: Suppose we want to see the last few rows of our data frame? In that case we can use the tail() function. In just the same way as head().  Use tail() to get the last two rowss.
+  CorrectAnswer: tail(nycdata, 2)
+  AnswerTests: omnitest(correctExpr='tail(nycdata, 2)')
+  Hint: Make sure to put the 2 to get the two rows. Put nycdata inside the parentheses of tail().
+
+
+- Class: text
+  Output: Previously we saw that we could get a column of data -- a variable from a data frame -- using data.frame.name[, 'column.name']  notation.  In this lesson we will see a second kind of notation. That notation is data.frame.name$column.name ... so for example nycdata$square.miles.
+
+
+- Class: cmd_question
+  Output:  "Let's see if we get the same results for the two methods of referring to the same data by using the == operator, which will compare each of the elements in the two vectors by typing nycdata$square.miles  == nycdata[, 'square.miles']"
+  CorrectAnswer: "nycdata$square.miles  == nycdata[, 'square.miles']"
+  AnswerTests: omnitest(correctExpr="nycdata$square.miles  == nycdata[, 'square.miles']")
+  Hint: "Make sure you put the quotation marks inside the suqare brakets []s."
+
+- Class: cmd_question
+  Output: "Now use the identical() function to see if the two vectors as a whole are identical: identical(nycdata$square.miles, nycdata[, 'square.miles'])"
+  CorrectAnswer: TRUE
+  AnswerTests: omnitest(correctVal=TRUE)
+  Hint: Make sure you have quotation marks and the comma in the right location.
+
+
+- Class: cmd_question
+  Output:  " Now compare the individual elements for the baseball.team variable."
+  CorrectAnswer: "nycdata$baseball.team  == nycdata[, 'baseball.team']"
+  AnswerTests: omnitest(correctExpr="nycdata$baseball.team  == nycdata[, 'baseball.team']")
+  Hint: "Use the == operator to test if two items are equal"
+
+- Class: cmd_question
+  Output: "Now see if the two vectors as a whole are identical"
+  CorrectAnswer: identical(nycdata$baseball.team, nycdata[, 'baseball.team'])
+  AnswerTests: omnitest(correctVal=TRUE)
+  Hint: Use the identical() function.
+
+- Class: text
+  Output: It might seem that == and Identical() would mean the same thing, but the don't. It's important to make sure you know exactly what a function or operator does. Don't be fooled by the name. You can read the help file, try some examples or search the web to find out more about a function.
+
+
+- Class: text
+  Output: Another thing that the difference between identical() and == shows is that some functions and operations apply to the individual elements in a vector and some apply to the vector as a whole. Using == compares each element while identical() compares the whole column. We have seen this before with sqrt() and sum().
+
+
+- Class: cmd_question
+  Output: "Get the square root of the population variable.  Refer to population using the $ notation."
+  CorrectAnswer: sqrt(nycdata$population)
+  AnswerTests: omnitest(correctExpr='sqrt(nycdata$population)')
+  Hint: "Refer to population with nycdata$population."
+
+- Class: mult_question
+  Output: "Does sqrt() operate on the vector as a whole or on each individual element?"
+  AnswerChoices: Vector as a whole.;Each individual element.;Both.
+  CorrectAnswer: "Each individual element."
+  AnswerTests: omnitest(correctVal= "Each individual element.")
+  Hint: Does sqrt() produce a single value or separate values for each element?
+
+
+
+- Class: cmd_question
+  Output: "Get the sum of the population variable.  Refer to population using the $ notation."
+  CorrectAnswer: sum(nycdata$population)
+  AnswerTests: omnitest(correctExpr='sum(nycdata$population)')
+  Hint: "Refer to population with nycdata$population."
+
+- Class: mult_question
+  Output: Does sum() operate on the vector as a whole or on each individual element?
+  AnswerChoices: Vector as a whole.;Each individual element.;Both.
+  CorrectAnswer: Vector as a whole.
+  AnswerTests: omnitest(correctVal="Vector as a whole.")
+  Hint: Does sum() produce a single value or separate values for each element?
+
+
+
+- Class: cmd_question
+  Output: "Previously we created the variable called size. However this is not a very good name, because size could refer to many things.  Let's change the name size to geographic.size.  We are going to do this using the rename function from the dplyr package.  dplyr::rename(nycdata, geographic.size = size)"
+  CorrectAnswer: dplyr::rename(nycdata, geographic.size = size)
+  AnswerTests: omnitest(correctExpr='dplyr::rename(nycdata, geographic.size = size)')
+  Hint: "Copy the code exactly including the ::"
+
+- Class: cmd_question
+  Output: "Type nycdata to see your updated data frame"
+  CorrectAnswer: nycdata
+  AnswerTests: omnitest(correctExpr='nycdata')
+  Hint: Just type nycdata.
+
+- Class: text
+  Output: "In the previous question the idea of a 'package' called dplyr.  One of the great things about R is that in addition to what is included in the 'base' R, people have written many extra packages that are basically extra, specialized functions to do certain tasks.  For example Swirl is a package designed to help create instructional materials for learning R. In this case dplyr is a package to help with managing data frames. There are different ways to access the functions in a package; using the the :: notation is one. This notation helps you know for sure which package the function is in."
+
+- Class: mult_question
+  Output: If you see some code that says readxl::excel_sheets( "mydata.xlsx" ) what does that mean?
+  AnswerChoices: Use the excel_sheets function from the readxl package.;Use the readxl function from the excel_sheets package.;Use the ::excel_sheets function from the dplyr package.
+  CorrectAnswer: "Use the excel_sheets function from the readxl package."
+  AnswerTests: omnitest(correctVal= 'Use the excel_sheets function from the readxl package.')
+  Hint: "The :: separates package name and function name."
+
+
+
+
+
+- Class: text
+  Output: You can see the list of installed packages in the Packages tab.
+
+- Class: text
+  Output: Next let's take a look at working with data to make plots.
