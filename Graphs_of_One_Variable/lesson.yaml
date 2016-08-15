@@ -1,0 +1,233 @@
+- Class: meta
+  Course: SociologySwirl
+  Lesson: Graphs of One Variable
+  Author: Elin Waring
+  Type: Standard
+  Organization: Lehman College Sociology
+  Version: 2.4.2
+
+
+
+- Class: text
+  Output: Previously we looked at scatter plots, which let us explore two or even three variables at the same time. There are other kinds of graphs that are created around looking at one variable at a time. These are very useful in practical ways, but also are important for understanding statistics.
+
+- Class: cmd_question
+  Output: ggplot2 is probably already loaded, but just in case, load it again using library()
+  CorrectAnswer: 'library(ggplot2)'
+  AnswerTests: omnitest(correctExpr='library(ggplot2)')
+  Hint: Put ggplot2 inside the parentheses.
+
+- Class: text
+  Output: One important issue in creating any graph is the type of variable you have. For example, you may have categorical variables (factors in R), ordinal variables (ordered factors in R), and interval and ratio variables (numeric variables in R).  It is also important to consider whether variables are discrete or continuous. A discrete numeric variable can only take on integer values. An example would be the number of children a woman has had.  A continuous numeric variable can take values that have decimals. Examples might be a person's weekly take-home pay or how many hours a day someone spends on house work.  Even though we usually collect numbers that are rounded off to whole numbers, the underlying values have decimal places.
+
+- Class: cmd_question
+  Output: Let's look again at the variables in the diamonds dataset but using the str() function.
+  CorrectAnswer: str(diamonds)
+  AnswerTests: omnitest(correctExpr='str(diamonds)')
+  Hint: Put diamonds inside str()
+
+
+- Class: mult_question
+  Output: How many ordered factors are in the diamonds data frame?
+  AnswerChoices: 0;3;5
+  CorrectAnswer: 3
+  AnswerTests: omnitest(correctVal= '3')
+  Hint: Look at the results from the previous question and count them.
+
+- Class: text
+  Output: Ordinal variables can be discrete or continuous. The ggplot books treat them as discrete so we will do the same.
+
+- Class: mult_question
+  Output: Which variable is listed as int (meaning it should be discrete)?
+  AnswerChoices: price; depth; z
+  CorrectAnswer: price
+  AnswerTests: omnitest(correctVal= 'price')
+  Hint: Look at the column that lists the type of variable.
+
+- Class: text
+  Output: Even though price is listed as int, it is really not discrete since someone could pay an amount between that is not an integer.  The underlying variable is continuous even though the data was not stored that way. Similarly we can tell by the way depth is calculated that it could take on a decimal value, so even though the data about it is stored in whole numbers it is really continuous.
+
+- Class: text
+  Output: In collecting and analyzing sociological data it is essential that you consider what type of variables you have, not just for statistical reasons but also for theoretical ones. For example some theorists see social class as a continuous variable and others see it as discrete.
+
+- Class: text
+  Output: In this lesson we will graph continuous variables.  There are a number of ways to do this, and we won't even do them all in this lesson.
+
+- Class: cmd_question
+  Output: Since we are only dealing with one variable, our ggplot statement is going to look different. Let's make a base ggplot object for carat by typing ggplot_carat<-ggplot(diamonds, aes(carat)). You could also type x= carat but it is not necesssary.
+  CorrectAnswer: ggplot_carat<-ggplot(diamonds, aes(carat))
+  AnswerTests: omnitest(correctExpr='ggplot_carat<-ggplot(diamonds, aes(carat))')
+  Hint: Copy the code exactly.
+
+- Class: cmd_question
+  Output: "Create a title called carat_title that says 'Distribution of Diamond Weights in Carats' using ggtitle."
+  CorrectAnswer: carat_title<-ggtitle('Distribution of Diamond Weights in Carats')
+  AnswerTests: omnitest(correctExpr="carat_title<-ggtitle('Distribution of Diamond Weights in Carats')")
+  Hint: Make sure to use quotation marks around the title.
+
+
+- Class: cmd_question
+  Output: Now make a histogram by using + to add geom_histogram() and your title to your plot object.
+  CorrectAnswer: ggplot_carat + geom_histogram() +carat_title
+  AnswerTests: omnitest(correctExpr='ggplot_carat + geom_histogram() + carat_title')
+  Hint: Add the histogram geom to ggplot_carat, then add the title
+
+- Class: text
+  Output: Did you get a message saying `stat_bin()` using `bins = 30`. Pick better value with `binwidth`? This does not mean you did anything wrong, but it is true that there might be better binwiths to use and that more or less than 30 bins might make sense. Do you see how the histogram you made looks like it has somewhat wide bars? These group the diamonds together, for example all the diamonds between .1 and .3 might be in one bin.  That bin would have a binwidth of .2 (.3- .1).
+
+
+- Class: cmd_question
+  Output: Since we know that carats are measured to two decimal places, it is reasonable to try a binwidth of .1.  To do this set the binwidth parameter inside the histogram geom like this geom_histogram(bindwith = .1)
+  CorrectAnswer: ggplot_carat + geom_histogram(binwidth = .1)
+  AnswerTests: any_of_exprs('ggplot_carat + geom_histogram(binwidth = .1)+ carat_title', 'ggplot_carat + carat_title + geom_histogram(binwidth = .1)')
+  Hint: Remember to add the geom to the ggplot_carat object. Don't forget the title
+
+
+- Class: cmd_question
+  Output: Now try with a binwidth of .5
+  CorrectAnswer: ggplot_carat + geom_histogram(binwidth = .5) + carat_title
+  AnswerTests: any_of_exprs('ggplot_carat + geom_histogram(binwidth = .5) + carat_title', 'ggplot_carat + carat_title + geom_histogram(binwidth = .5) ')
+  Hint: Remember to add the geom to the ggplot_carat object. Don't forget the title
+
+- Class: cmd_question
+  Output: Now try with a binwidth of .2
+  CorrectAnswer: ggplot_carat + geom_histogram(binwidth = .2) + carat_title
+  AnswerTests: any_of_exprs('ggplot_carat + geom_histogram(binwidth = .2) + carat_title', 'ggplot_carat + carat_title + geom_histogram(binwidth = .2)')
+  Hint: Remember to add the geom to the ggplot_carat object. Don't forget the title
+
+
+- Class: mult_question
+  Output: What happens when you make the binwidth larger?
+  AnswerChoices: The number of bins decreases; The width of each bin increases; There is less detail; All of the statements are true.
+  CorrectAnswer: All of the statements are true.
+  AnswerTests: omnitest(correctVal= 'All of the statements are true.')
+  Hint: Look over your plots to see how they compare to each other.
+
+
+- Class: cmd_question
+  Output: We can also show our histogram as a proportion, which means we have to divide the number of observations in the bin by the total number of observations. To do this, setting the binwidth parameter at .1,  change the histogram geom to geom_histogram(binwidth = .1, aes(y=..count../sum(..count..)). Don't forget to keep track of your parentheses.
+  CorrectAnswer: ggplot_carat + geom_histogram(binwidth = .1, aes(y=..count../sum(..count..))) + carat_title
+  AnswerTests: any_of_exprs('ggplot_carat + geom_histogram(binwidth = .1, aes(y=..count../sum(..count..)))+ carat_title', 'ggplot_carat + carat_title + geom_histogram(binwidth = .1, aes(y=..count../sum(..count..)))')
+  Hint: Type the geom_histogram as written and don't lose track of your parentheses!
+
+- Class: text
+  Output: In sociology we often show proportions or percents (which are just proportions times 100).  One thing to notice is that if you add up all the proportions you get 1.0. Try to see why that is from the forumula   y=..count../sum(..count..).
+
+
+- Class: cmd_question
+  Output: Another way to represent the same data is using the geom_freqpoly() with binwidth of .1 insted of geom_histogram.
+  CorrectAnswer: ggplot_carat + geom_freqpoly(binwidth = .1) + carat_title
+  AnswerTests: omnitest(correctExpr='ggplot_carat + geom_freqpoly(binwidth = .1) + carat_title')
+  Hint: Don't forget the binwidth and the title. Title has to go last to match.
+
+- Class: text
+  Output: The polygon is connectng what would be the midpoint of each of the bars. It is a different way of representing the exact same information.
+
+- Class: cmd_question
+  Output: A third way to present this is using geom_denisty(). Make your plot using geom_density(). Do not put a binwidth.
+  CorrectAnswer: ggplot_carat + geom_density() + carat_title
+  AnswerTests: any_of_exprs('ggplot_carat + geom_density() + carat_title', 'ggplot_carat + carat_title + geom_density() ')
+  Hint: Make it as before, but change the geom. Do not include a binwidth.
+
+- Class: text
+  Output: This represents what is called a kernel density. The density geom smooths out the distribution and makes the differences between  individual bins less sharp. No longer does every x value within the same bin have the same y value.
+
+- Class: mult_question
+  Output: Look at the y axis of your density plot. What is one way it differs from the y axis in your histogram?
+  AnswerChoices: In the density plot the axis label is density rather than count; In the density plot the axis label is count rather than density; In the density plot the label is density rather than frequency.
+  CorrectAnswer: In the density plot the axis label is density rather than count
+  AnswerTests: omnitest(correctVal= 'In the density plot the axis label is density rather than count')
+  Hint: Use the back arrow in the plot viewer to see the previous plots.
+
+- Class: mult_question
+  Output: What is a second thing that is different about the y axes?
+  AnswerChoices: In the density plot the axis starts at 0 and goes to about 1.75.; In the histogram the axis starts at 0 and goes over 10000.; Both are true.
+  CorrectAnswer: Both are true.
+  AnswerTests: omnitest(correctVal= 'Both are true.')
+  Hint: Look at the numbers on the vertical axis of the plots.
+
+- Class: text
+  Output: Densities are a statistical transformation of our data, similar but more complicated than, the taking a log or squaring. Even though it is not correct from a calculus point of view, for our purposes right now we can think of densities as being similar to histograms with infinitely small bins (shout out to people with calc). If we could calculate the area under the density it would add up to 1.0 just like adding up the proportions in each bin adds up to 1.0.
+
+- Class: text
+  Output: We can show a density and a histogram on the same plot by using both geoms and some options.
+
+- Class: cmd_question
+  Output: Use the + sign to add both geom_density() and geom_histogram(), but change geom_histogram so it is geom_histogram(binwidth = .1, aes(y = ..density..)). Tip--you can get your previous code by clicking the up arrow.
+  CorrectAnswer: ggplot_carat + geom_histogram(binwidth = .1, aes(y = ..density..)) + geom_density() + carat_title
+  AnswerTests: any_of_exprs('ggplot_carat + geom_histogram(binwidth = .1, aes(y = ..density..)) + geom_density() + carat_title', 'ggplot_carat + geom_density()  + geom_histogram(binwidth = .1, aes(y = ..density..)) + carat_title', 'ggplot_carat + geom_histogram(binwidth = .1, aes(y = ..density..)) + carat_title + geom_density()', 'ggplot_carat + geom_density() + carat_title  + geom_histogram(binwidth = .1, aes(y = ..density..))')
+  Hint: Use +.  Always put ggplot_carat in the first position.
+
+- Class: text
+  Output: Notice that this is an example of using aesthetics inside a geom ... you will want to do this more as you become a more advanced user of ggplot.
+
+- Class: cmd_question
+  Output: That is a little hard to see. Change the color of the density by adding color="green" inside geom_density. Remember the up arrow trick!
+  CorrectAnswer: ggplot_carat + geom_histogram(binwidth = .1, aes(y = ..density..)) + geom_density(color="green") + carat_title
+  AnswerTests: any_of_exprs('ggplot_carat + geom_histogram(binwidth = .1, aes(y = ..density..)) + geom_density(color="green") + carat_title', 'ggplot_carat + geom_density(color="green")  + geom_histogram(binwidth = .1, aes(y = ..density..)) + carat_title', 'ggplot_carat + geom_histogram(binwidth = .1, aes(y = ..density..)) + carat_title + geom_density(color="green")', 'ggplot_carat + geom_density(color="green") + carat_title  + geom_histogram(binwidth = .1, aes(y = ..density..))')
+  Hint: Don't forget the title and to put green in quotation marks.
+
+- Class: video
+  Output: Would you like to see the Wikipedia article on density functions? Then you'll know why we aren't going to explain more than we have about how they are calculated.
+  VideoLink: https://en.wikipedia.org/wiki/Kernel_density_estimation
+
+- Class: text
+  Output: To close out our first lesson on plotting one continuous variable we will do one more kind of plot, the empirical cumulative distribution function or ecdf for short.  Unlike the other plots we have done thus far this plot uses a stat_ function rather than a geom_ function for its layer.
+
+
+- Class: cmd_question
+  Output: To make your plot, instead of your geom, put stat_ecdf().
+  CorrectAnswer: ggplot_carat + stat_ecdf() + carat_title
+  AnswerTests: any_of_exprs('ggplot_carat + stat_ecdf() + carat_title', 'ggplot_carat + carat_title  + stat_ecdf()')
+  Hint: Don't forget the title and to put stat_ecdf() exactly.
+
+- Class: text
+  Output: In a cumulative distribution the y axis represents the proportion of observations that have a given value (in this case carats) or lower.
+
+
+- Class: mult_question
+  Output: What weight are about 50% of the diamonds lower than?
+  AnswerChoices: About .75 carats; about 1 carat; about .5 carats, about 1.5 carats
+  CorrectAnswer: About .75 carats
+  AnswerTests: omnitest(correctVal= 'About .75 carats')
+  Hint: Find .5 on the y axis and go right to the line, then down.
+
+
+- Class: mult_question
+  Output: What is the special name for the value that divides the observations in half?
+  AnswerChoices: Mean; Median; Mode
+  CorrectAnswer: Median
+  AnswerTests: omnitest(correctVal= 'Median')
+  Hint: Think about how you find each of these?
+
+
+- Class: mult_question
+  Output: What proportion of diamonds are under 2.5 carats?
+  AnswerChoices: Almost 1.0; about .85; about .6; about .5
+  CorrectAnswer: Almost 1.0
+  AnswerTests: omnitest(correctVal= 'Almost 1.0')
+  Hint: Find 2.5 on the x axis and find where the line crosses it. Trace to the left.
+
+- Class: mult_question
+  Output: What is the approximate lowest number of carats in the sample?
+  AnswerChoices: .2;1;0;.5
+  CorrectAnswer: .2
+  AnswerTests: omnitest(correctVal= '.2')
+  Hint: If thw cumulative distribution at a point is 0 that means there are no observations that value or lower.
+
+- Class: cmd_question
+  Output: Get the summary() of the carat variable from diamonds using the $ notation.
+  CorrectAnswer: summary(diamonds$carat)
+  AnswerTests: omnitest(correctExpr='summary(diamonds$carat)')
+  Hint: The notation would be diamonds$carat
+
+
+
+- Class: text
+  Output: The summary shows some special names for specific points in the empirical cumulative distribution. The 1st Quartile, also known as the 25th percentile, is the point 25% (proportion .25) is lower. The Median is also known as the 50th percentile and splits the sample in half. The 3rd quartile is also called the 75th percentile and is the point at which 75% of the sample is smaller. The minimum is the minimum observed value, while the maximum is the maximum observed value.
+
+
+- Class: text
+  Output: This lesson just scratches the surface of the options for plotting continuous variables and the many options that are available.
+
+

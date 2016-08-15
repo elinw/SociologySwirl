@@ -82,14 +82,14 @@
 
 
 - Class: cmd_question
-  Output:  " Now compare the individual elements for the baseball.team variable."
-  CorrectAnswer: "nycdata$baseball.team  == nycdata[, 'baseball.team']"
-  AnswerTests: omnitest(correctExpr="nycdata$baseball.team  == nycdata[, 'baseball.team']")
+  Output:  " Now compare the individual elements for the has.baseball.team variable."
+  CorrectAnswer: "nycdata$has.baseball.team  == nycdata[, 'has.baseball.team']"
+  AnswerTests: omnitest(correctExpr="has.nycdata$baseball.team  == nycdata[, 'has.baseball.team']")
   Hint: "Use the == operator to test if two items are equal"
 
 - Class: cmd_question
   Output: "Now see if the two vectors as a whole are identical"
-  CorrectAnswer: identical(nycdata$baseball.team, nycdata[, 'baseball.team'])
+  CorrectAnswer: identical(nycdata$has.baseball.team, nycdata[, 'has.baseball.team'])
   AnswerTests: omnitest(correctVal=TRUE)
   Hint: Use the identical() function.
 

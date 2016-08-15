@@ -1,0 +1,213 @@
+- Class: meta
+  Course: SociologySwirl
+  Lesson: Start with Plots
+  Author: Elin Waring
+  Type: Standard
+  Organization: Lehman College Sociology
+  Version: 2.4.1
+
+
+- Class: text
+  Output: One of the great features of R is that it can be used to create excellent data visualizations,  graphs or charts but also many other ways of displaying data. There are many ways to create visualizations in R. In this course we are going to focus on using the package called ggplot2.
+
+
+- Class: cmd_question
+  Output: To load the entire ggplot2 library type library(ggplot2).
+  CorrectAnswer: library(ggplot2)
+  AnswerTests: omnitest(correctExpr='library(ggplot2)')
+  Hint: Just type library(ggplot2).
+
+- Class: text
+  Output: Using the library() function is an alternative to the package::function()  notation to load individual functions that we used before.  When you are using many parts of the same package it is more efficient to load the whole package. When you become a more advanced R user the difference between these will become more important.
+
+- Class: cmd_question
+  Output: Ggplot2 comes with a data set called diamonds. Let's take at the structure of the dataset using the str() function.
+  CorrectAnswer: str(diamonds)
+  AnswerTests: omnitest(correctExpr='str(diamonds)')
+  Hint: Use the str() function on diamonds.
+
+
+- Class: cmd_question
+  Output: To find out more about the data set go to help by typing ?diamonds
+  CorrectAnswer: ?diamonds
+  AnswerTests: omnitest(correctExpr='?diamonds')
+  Hint: Just type ?diamonds
+
+
+- Class: mult_question
+  Output: Look at the help tab.  Which of the following is not a possible value of cut?
+  AnswerChoices: Premium; Excellent; Good; Fair
+  CorrectAnswer: Excellent
+  AnswerTests: omnitest(correctVal= 'Excellent')
+  Hint: Rea the information for cut.
+
+- Class: mult_question
+  Output: Which variable is created using a formula?
+  AnswerChoices: cut; depth; clarity; table
+  CorrectAnswer: depth
+  AnswerTests: omnitest(correctVal= 'depth')
+  Hint: Look at the list of variable definitions
+
+- Class: mult_question
+  Output: Which is considered the best color?
+  AnswerChoices: D; E; G; J
+  CorrectAnswer: D
+  AnswerTests: omnitest(correctVal= 'D')
+  Hint: Read the information in the help screen carefully.
+
+
+
+- Class: text
+  Output: If you search the internet you will find many examples of working with ggplot2 and with the diamonds data set. In this lesson we will cover some of the basics and in later lessons we will learn more complex options.
+
+- Class: text
+  Output: "Two books about ggplot are R Graphics Cookbook by Winston Chang  and ggplot2: Elegant Graphics for Data Analyis by Hadley Wickham. These were used to help create this lesson."
+
+- Class: text
+  Output: "ggplot2 works by adding together pieces of a plot in a structured way.  The three basic elements are: data, aesthetics and a layer. You use a + to add the pieces together in a flexible way."
+
+- Class: cmd_question
+  Output: Create a scatter plot of diamonds data by typing  ggplot(diamonds, aes(x=carat, y=price)) + geom_point().
+  CorrectAnswer: ggplot(diamonds, aes(x=carat, y=price)) + geom_point()
+  AnswerTests: omnitest(correctExpr='ggplot(diamonds, aes(x=carat, y=price)) + geom_point()')
+  Hint: Type ggplot(diamonds, aes(x=carat, y=price)) + geom_point()  exactly.
+
+- Class: text
+  Output: Cool! A scatter plot! In this case the data is diamonds, the aesthetics are the x and y variable names and the layer is called geom_point.  The layer is added to the data and aesthetic information with the + sign.
+
+- Class: cmd_question
+  Output: Save the first part of the graph definition to a variable name using this command myggplot<-ggplot(diamonds, aes(x=carat, y=price))
+  CorrectAnswer: myggplot<-ggplot(diamonds, aes(x=carat, y=price))
+  AnswerTests: omnitest(correctExpr='myggplot<-ggplot(diamonds, aes(x=carat, y=price))')
+  Hint: Type it exactly as it is written.
+
+- Class: cmd_question
+  Output: See what we get in the Plots tab if you just type myggplot.
+  CorrectAnswer: myggplot
+  AnswerTests: omnitest(correctExpr='myggplot')
+  Hint: hint
+
+- Class: text
+  Output: The ggplot() part supplies the background by using information on the data set and the x and y variables.  Now we need to add a layer to actually display the data.
+
+- Class: cmd_question
+  Output: Now use a + to add the geom_point() to myggplot
+  CorrectAnswer: myggplot + geom_point()
+  AnswerTests: omnitest(correctExpr='myggplot + geom_point()')
+  Hint: Use a + sign to put myggplot and geom_point() together.
+
+- Class: cmd_question
+  Output: All graphs should have titles, let's create one. Type mytitle<-ggtitle("Diamond Prices and Carats")
+  CorrectAnswer: mytitle<-ggtitle("Diamond Prices and Carats")
+  AnswerTests: omnitest(correctExpr='mytitle<-ggtitle("Diamond Prices and Carats")')
+  Hint: Type it just as is, making sure to check the parentheses and quotation marks.
+
+- Class: cmd_question
+  Output: Now use + signs to add the geom_point() and mytitle to myggplot.
+  CorrectAnswer: myggplot + geom_point() + mytitle
+  AnswerTests: omnitest(correctExpr='myggplot + geom_point() + mytitle')
+  Hint: Use + signs to put them together. Us () where you need it and not where you don't.
+
+
+- Class: text
+  Output: Now we are cooking!  Now let's make some basic changes to our scatterplot.
+
+- Class: cmd_question
+  Output: 'Change the color of the dots to red by putting color="red" inside the parentheses of geom_point'
+  CorrectAnswer: myggplot + geom_point(color= "red") + mytitle
+  AnswerTests: omnitest(correctExpr='myggplot + geom_point(color= "red") + mytitle')
+  Hint: This is the same as before, but with the color red specified.
+
+- Class: cmd_question
+  Output: 'This time change the shape by putting shape = 5 inside geom_point() insted'
+  CorrectAnswer: myggplot + geom_point(shape = 5) + mytitle
+  AnswerTests: any_of_exprs('myggplot + geom_point(shape = 5) + mytitle', 'myggplot + mytitle + geom_point(shape = 5)')
+  Hint: This is the same as before but with shape instead of color.
+
+- Class: cmd_question
+  Output: This time make the color blue and use shape = 5, separating the two with a comma. Put color first and shape second.
+  CorrectAnswer: 'myggplot + geom_point(color = "blue", shape= 5) + mytitle'
+  AnswerTests: any_of_exprs('myggplot + geom_point(color = "blue", shape= 5) + mytitle', 'myggplot + mytitle + geom_point(color = "blue", shape= 5)', 'myggplot + geom_point( shape= 5, color = "blue") + mytitle', 'myggplot + mytitle + geom_point(shape= 5, color = "blue")')
+  Hint: Use geom_point(color = "blue", shape= 5) Make sure to include the title.
+
+- Class: text
+  Output: Great job. Now take a minute to look at the graph and see what you notice.
+
+- Class: mult_question
+  Output: As the number of carats increases, the price tends to increase.
+  AnswerChoices: True; False
+  CorrectAnswer: True
+  AnswerTests: omnitest(correctVal= 'True')
+  Hint: hint
+
+- Class: mult_question
+  Output: There seem to be some spaces that make vertical lines at 1, 1.5, 2 and 3 carats.
+  AnswerChoices: True; False
+  CorrectAnswer: True
+  AnswerTests: omnitest(correctVal= 'True')
+  Hint: Look at the patterns in the plot.
+
+- Class: mult_question
+  Output: There are a lot more low carat, low price diamonds than expensive, high carat diamonds
+  AnswerChoices: True; Fales
+  CorrectAnswer: True
+  AnswerTests: omnitest(correctVal= 'True')
+  Hint: Look at how many diamonds there are on the lower left and the upper right of the graph.
+
+- Class: text
+  Output: Probably there are other characteristics that relate to the price of diamonds. For example, clarity may make a difference.  There are several ways to approach this in ggplot.
+
+
+- Class: cmd_question
+  Output: The first method we will use is called facetting. We add facets for clarity by adding facet_wrap(~clarity) to our last graph with a +.
+  CorrectAnswer: 'myggplot + geom_point(shape= 5, color = "blue") + mytitle + facet_wrap(~clarity)'
+  AnswerTests: any_of_exprs('myggplot + geom_point(shape= 5, color = "blue") + mytitle + facet_wrap(~clarity)','myggplot + geom_point(shape= 5, color = "blue") + facet_wrap(~clarity) + mytitle','myggplot + facet_wrap(~clarity) + geom_point(shape= 5, color = "blue") + mytitle','myggplot + facet_wrap(~clarity) +  mytitle + geom_point(shape= 5, color = "blue")' )
+  Hint: Don't forget the geom_point, title and myggplot. Please put shape first and color second.
+
+- Class: cmd_question
+  Output: Now the title is no longer totally correct, make a new mytitle that says "Diamond Prices and Carats by Clarity"
+  CorrectAnswer: mytitle<-ggtitle("Diamond Prices and Carats by Clarity")
+  AnswerTests: omnitest(correctExpr='mytitle<-ggtitle("Diamond Prices and Carats by Clarity")')
+  Hint: hint
+
+- Class: cmd_question
+  Output: Make the graph again with the new title.
+  CorrectAnswer: 'myggplot + geom_point(shape= 5, color = "blue") + mytitle + facet_wrap(~clarity)'
+  AnswerTests: omnitest(correctExpr='myggplot + geom_point(shape= 5, color = "blue") + mytitle + facet_wrap(~clarity)')
+  Hint: Don't forget the geom_point, title and myggplot.
+
+- Class: mult_question
+  Output: Which level of clarity has the most straight linear (non curved) relationship between price and carat.
+  AnswerChoices: I1; IF; VVS2; SI1
+  CorrectAnswer: I1
+  AnswerTests: omnitest(correctVal= 'I1')
+  Hint: hint
+
+
+- Class: text
+  Output: For our second method, we will make a single plot. To do this we need to change the aes() in the ggplot() statement.  So we need to create a new version of myggplot, let's call it myggplot_clarity. Remember that the way we created the first one was this myggplot<-ggplot(diamonds, aes(x=carat, y=price)).
+
+- Class: cmd_question
+  Output: Create myggplot_clarity with color=clarity added to the aes.
+  CorrectAnswer: myggplot_clarity<-ggplot(diamonds, aes(x=carat, y=price, color=clarity))
+  AnswerTests: omnitest(correctExpr='myggplot_clarity<-ggplot(diamonds, aes(x=carat, y=price, color=clarity))')
+  Hint: Make sure the name is myggplot_clarity and that you added color = clarity inside the aes().
+
+- Class: cmd_question
+  Output: Create a plot using myggplot_clarity, geom_point() with shape = 5 and your title.
+  CorrectAnswer: myggplot_clarity + geom_point(shape = 5) + mytitle
+  AnswerTests: omnitest(correctExpr='myggplot_clarity + geom_point(shape = 5) + mytitle')
+  Hint: Put the pieces in the order ggplot, geom, title.
+
+- Class: mult_question
+  Output: Look carefully. Based on this plot, what clarity will would you buy if you want the most carats for a given price?
+  AnswerChoices: IF; VS1; SI2; VVS1
+  CorrectAnswer: IF
+  AnswerTests: omnitest(correctVal= 'IF')
+  Hint: Pick a price and then go across to the highest carats for that price. Check the legend for the clarity.
+
+- Class: text
+  Output: Ggplot has many different geoms, aesthetics options and other features.  In the next lesson we will explore another one.
+
+
+
