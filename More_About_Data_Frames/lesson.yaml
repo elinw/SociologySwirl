@@ -146,6 +146,9 @@
 - Class: text
   Output: "In the previous question the idea of a 'package' called dplyr.  One of the great things about R is that in addition to what is included in the 'base' R, people have written many extra packages that are basically extra, specialized functions to do certain tasks.  For example Swirl is a package designed to help create instructional materials for learning R. In this case dplyr is a package to help with managing data frames. There are different ways to access the functions in a package; using the the :: notation is one. This notation helps you know for sure which package the function is in."
 
+- Class: text
+  Output: One important thing to know is that we have not saved our data set with the new name. So if we reloaded nycdata we would get the old name.  This is fine as long as we always keep track of what we want to do and can rerun it. That is called making your analysis reproducable.
+
 - Class: mult_question
   Output: If you see some code that says readxl::excel_sheets( "mydata.xlsx" ) what does that mean?
   AnswerChoices: Use the excel_sheets function from the readxl package.;Use the readxl function from the excel_sheets package.;Use the ::excel_sheets function from the dplyr package.
@@ -153,12 +156,16 @@
   AnswerTests: omnitest(correctVal= 'Use the excel_sheets function from the readxl package.')
   Hint: "The :: separates package name and function name."
 
-
-
-
-
 - Class: text
   Output: You can see the list of installed packages in the Packages tab.
 
+- Class: cmd_question
+  Output: "Let's make a new variable in the data frame called population.density by dividing population by square miles to get population per square mile.  Use the $ notation."
+  CorrectAnswer: nycdata$population.density <- nycdata$population/nycdata$square.miles
+  AnswerTests: omnitest(correctExpr='nycdata$population.density <- nycdata$population/nycdata$square.miles')
+  Hint: "Remember that / is the divison operator. Don't forget to use $ between the data frame name and the variable name."
+
+
+
 - Class: text
-  Output: Next let's take a look at working with data to make plots.
+  Output: Next, let's take a look at working with data to make plots.

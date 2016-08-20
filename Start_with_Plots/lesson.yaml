@@ -149,7 +149,7 @@
 
 - Class: mult_question
   Output: There are a lot more low carat, low price diamonds than expensive, high carat diamonds
-  AnswerChoices: True; Fales
+  AnswerChoices: True; False
   CorrectAnswer: True
   AnswerTests: omnitest(correctVal= 'True')
   Hint: Look at how many diamonds there are on the lower left and the upper right of the graph.
