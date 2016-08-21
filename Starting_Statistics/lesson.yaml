@@ -1,0 +1,43 @@
+- Class: meta
+  Course: SociologySwirl
+  Lesson: Starting Statistics
+  Author: Elin Waring
+  Type: Standard
+  Organization: Lehman College Sociology
+  Version: 2.4.1
+
+- Class: text
+  Output: R is a programming language that is used for statistical analysis. You have already seen some statistical functions, but now let's take a closer look at them. 
+
+
+- Class: text
+  Output: put your text output here
+
+- Class: text
+  Output: put your text output here
+
+- Class: cmd_question
+  Output: explain what the user must do here
+  CorrectAnswer: EXPR or VAL
+  AnswerTests: omnitest(correctExpr='EXPR', correctVal=VAL)
+  Hint: hint
+
+- Class: cmd_question
+  Output: explain what the user must do here
+  CorrectAnswer: EXPR or VAL
+  AnswerTests: omnitest(correctExpr='EXPR', correctVal=VAL)
+  Hint: hint
+
+- Class: mult_question
+  Output: ask the multiple choice question here
+  AnswerChoices: ANS;2;3
+  CorrectAnswer: ANS
+  AnswerTests: omnitest(correctVal= 'ANS')
+  Hint: hint
+
+- Class: mult_question
+  Output: ask the multiple choice question here
+  AnswerChoices: ANS;2;3
+  CorrectAnswer: ANS
+  AnswerTests: omnitest(correctVal= 'ANS')
+  Hint: hint
