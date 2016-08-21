@@ -1,0 +1,173 @@
+- Class: meta
+  Course: SociologySwirl
+  Lesson: More on Dichtomizing
+  Author: Elin Waring
+  Type: Standard
+  Organization: Lehman Sociology
+  Version: 2.4.2
+
+
+- Class: text
+  Output: "As we saw previously, it is often helpful do redefine a variable so that it has two categories that are valued as either TRUE, FALSE or 1,0.  In this lesson we will extend the use of dichtomizing. We will start with a review."
+
+- Class: cmd_question
+  Output: Let's start with our nycdata again, and this time let's create a dichtomous variable based on population size.  In this case let's say all boroughs with 2 million or more residents will be TRUE and the other boroughs will be considered false.  The way we will express this criteria would be nycdata$population >= 2000000 or popluation greater than 2 milllion. The variable will be nycdata$population.2millionplus. Create that variable.
+  CorrectAnswer: nycdata$population.2millionplus <- nycdata$population >= 2000000
+  AnswerTests: omnitest(correctExpr='nycdata$population.2millionplus <- nycdata$population >= 2000000')
+  Hint: Make sure to copy the code exactly and to use the assignment operator.
+
+- Class: cmd_question
+  Output: Type the name of the variable to see the values.
+  CorrectAnswer: nycdata$population.2millionplus
+  AnswerTests: omnitest(correctExpr='nycdata$population.2millionplus')
+  Hint: Type nycdata$population.2millionplus.
+
+- Class: text
+  Output: "When creating logical variables you can use any expression that will result in TRUE or FALSE. Besides == and >= you could use the comparison operators <= and != which means not equal.  Also there are many functions in R that return logical values.  You can also use more complex operations including & which represents a logical AND and | which represents a logical OR.  See there is a reason that logic is a good course for sociology students." 
+
+- Class: text
+  Output: Let's look at something a bit more complex using a simple example from our nycdata data frame.
+
+- Class: cmd_question
+  Output: Let's start by making a table of the baseball.team variable.
+  CorrectAnswer: table(nycdata$baseball.team)
+  AnswerTests: omnitest(correctExpr='table(nycdata$baseball.team)')
+  Hint: hint
+
+- Class: mult_question
+  Output: Why are there only two observations? 
+  AnswerChoices: Because only two boroughs have baseball teams; Because there are only two boroughs; Because there is an error in R.
+  CorrectAnswer: Because only two boroughs have baseball teams
+  AnswerTests: omnitest(correctVal= 'Because only two boroughs have baseball teams')
+  Hint: You may want to look in the Environment tab to recall how this variable is coded.
+
+
+
+- Class: cmd_question
+  Output: "Let's try this instead table(nycdata$baseball.team, useNA='always'). "
+  CorrectAnswer: table(nycdata$baseball.team, useNA="always")
+  AnswerTests: omnitest(correctExpr='table(nycdata$baseball.team, useNA="always")')
+  Hint: Type table(nycdata$baseball.team, useNA="always") exactly as written.
+
+- Class: text
+  Output: Now we can see that the other three boroughs are set to missing because they do not have baseball teams. We set them that way when we created the data set. If we don't pay attention to the use of missing values we can easily make mistakes. 
+
+- Class: cmd_question
+  Output: For example make a prop.table for the original baseball.team variable (without useNA="always").
+  CorrectAnswer: prop.table(table(nycdata$baseball.team))
+  AnswerTests: omnitest(correctExpr='prop.table(table(nycdata$baseball.team))')
+  Hint: Use prop.table(table())
+
+- Class: text
+  Output: We would not want to say that 50% of boroughs have teams named Yankees. Instead this is saying 50% of boroughs that have baseball teams have baseball teams named Yankees. True, but not very interesting.  So what happens with missing values when we create logical dichtomous variables?
+  
+- Class: cmd_question
+  Output: Create a new logical variable called yankees in the nycdata dataframe.
+  CorrectAnswer: nycdata$yankees <- nycdata$baseball.team == "Yankees"
+  AnswerTests: omnitest(correctExpr='nycdata$yankees <- nycdata$baseball.team == "Yankees"')
+  Hint: Remember that the value of baseball.team is spelled with a capital Y.
+
+- Class: cmd_question
+  Output: Look at your new variable by typing its name.
+  CorrectAnswer: nycdata$yankees
+  AnswerTests: omnitest(correctExpr='nycdata$yankees')
+  Hint: Type nycdata$yankees.
+
+- Class: cmd_question
+  Output: So again we see that when we dichtomize the way we did before we will get missing values that could make results, such as calculating the mean, confusing. To start to think about a solution use the is.na() function on the nycdata$baseball.team variable. 
+  CorrectAnswer: is.na(nycdata$baseball.team)
+  AnswerTests: omnitest(correctExpr='is.na(nycdata$baseball.team)')
+  Hint: Type is.na(nycdata$baseball.team)
+
+- Class: cmd_question
+  Output: Great, is.na() has values for all 5 boroughs. We can use this to help us.  This is tricky so here is the entire line of code you need. nycdata$yankees <- nycdata$baseball.team == "Yankees" & is.na(nycdata$baseball.team) == FALSE
+  CorrectAnswer: nycdata$yankees <- nycdata$baseball.team == "Yankees" & is.na(nycdata$baseball.team) == FALSE
+  AnswerTests: omnitest(correctExpr='nycdata$yankees <- nycdata$baseball.team == "Yankees" & is.na(nycdata$baseball.team) == FALSE')
+  Hint: Type the line nycdata$yankees <- nycdata$baseball.team == "Yankees" & is.na(nycdata$baseball.team) == FALSE
+
+- Class: cmd_question
+  Output: Type the variable name to see what the data look like.
+  CorrectAnswer: nycdata$yankees
+  AnswerTests: omnitest(correctExpr='nycdata$yankees')
+  Hint: That's nycdata$yankees
+
+- Class: text
+  Output: Great! Now we have TRUE for the Bronx and false for all the others.  What happened? In our expression we used the & symbol which is a logical operator. If two values are TRUE, & returns a TRUE.  So TRUE & TRUE is TRUE.  On the other hand, TRUE & FALSE or FALSE & TRUE will return FALSE. So in our case, Brooklyn would be FALSE on whether it has a team named Yankees and TRUE on whether it has a value of NA. That means that the question of whether or not it is FALSE is TRUE ... okay take a minute to think about that,  You may want to scroll up and look at the results from when you did is.na(). FALSE & FALSE would therefore give us FALSE.  Brooklyn does not have a team named the Yankees.
+  
+- Class: text
+  Output: For the Bronx we already know that nycdata$baseball.team is TRUE.  We no that is.na(nycdata$baseball.team) is FALSE.  Therefore FALSE == FALSE   .. is true! So the Bronx gets TRUE for our Yankees variable.
+  
+- Class: text
+  Output: For Queens, there is not a team named the Yankees, so the first part is FALSE.  However, is.na(nycdata$baseball.team) is FALSE because it has the Mets.  FALSE == FALSE is TRUE!  But FALSE & TRUE still give us a final value of FALSE because & is asking whether both statements are TRUE, and for Queens only one statment is true.
+  
+- Class: text
+  Output: So the rule is ..  TRUE & TRUE == TRUE,  TRUE & FALSE == FALSE, FALSE & TRUE == FALSE and FALSE & FALSE == FALSE.
+  
+- Class: text
+  Output: In terms of order of operations, you always do the logical operations last, after you have finished working through everything on either side.
+  
+- Class: cmd_question
+  Output: Now create a variable nycdata$mets that is TRUE when a borough has a team called the Mets and FALSE for the others.
+  CorrectAnswer: nycdata$mets <- nycdata$baseball.team == "Mets" & is.na(nycdata$baseball.team) == FALSE
+  AnswerTests: omnitest(correctExpr='nycdata$mets <- nycdata$baseball.team == "Mets" & is.na(nycdata$baseball.team) == FALSE')
+  Hint: Retype the code you used for yankees but change it to mets. Don't forget you can use the up arrow key.
+
+- Class: cmd_question
+  Output: Type the variable name to see what the data look like.
+  CorrectAnswer: nycdata$mets
+  AnswerTests: omnitest(correctExpr='nycdata$mets')
+  Hint: That's nycdata$mets
+
+- Class: cmd_question
+  Output: Now create a variable nycdata$no.team that is TRUE if the borough has no team and false if they have a team. Hint ... you did this earlier but didn't put it into the data frame.
+  CorrectAnswer: nycdata$no.team <- is.na(nycdata$baseball.team)
+  AnswerTests: omnitest(correctExpr='nycdata$no.team <- is.na(nycdata$baseball.team)')
+  Hint: Use is.na() by itself.
+
+- Class: cmd_question
+  Output: Let's look at just the three variables that we just created by typing nycdata[,c('yankees', 'mets', 'no.team')]  ... making sure to includ the commas and quotation marks in the right places.
+  CorrectAnswer: nycdata[,c('yankees', 'mets', 'no.team')]
+  AnswerTests: omnitest(correctExpr="nycdata[,c('yankees', 'mets', 'no.team')]")
+  Hint: Don't foget the comma inside the []
+
+- Class: mult_question
+  Output: If you look at each row of data, which of the following is true?
+  AnswerChoices: Each row has two FALSE and one TRUE; Each row has two TRUE and one FALSE; Some rows have two TRUE values and some have two FALSE values.
+  CorrectAnswer: Each row has two FALSE and one TRUE
+  AnswerTests: omnitest(correctVal= 'Each row has two FALSE and one TRUE')
+  Hint: Look carefully at all five rows.
+
+- Class: mult_question
+  Output: If a borough has FALSE for yankees and FALSE for mets, what value of no.team does it have?
+  AnswerChoices: TRUE; FALSE; NA; Can't predict
+  CorrectAnswer: TRUE
+  AnswerTests: omnitest(correctVal= 'TRUE')
+  Hint: Do any boroughs have teams that are not the Mets or Yankees?
+
+- Class: mult_question
+  Output: If a borough has TRUE for yankees, what are its values for mets and no.team?
+  AnswerChoices: FALSE and FALSE; FALSE and TRUE; TRUE and TRUE
+  CorrectAnswer: FALSE and FALSE
+  AnswerTests: omnitest(correctVal= 'FALSE and FALSE')
+  Hint: If a borough has the Yankees, it does not have the Mets and it does not have no team.
+
+- Class: mult_question
+  Output: If a borough has TRUE for no.team, what are its values for mets and yankees?
+  AnswerChoices: FALSE and FALSE; FALSE and TRUE; TRUE and TRUE
+  CorrectAnswer: FALSE and FALSE
+  AnswerTests: omnitest(correctVal= 'FALSE and FALSE')
+  Hint: Look at the rows where no.team is TRUE.
+
+- Class: text
+  Output: What all these TRUE and FALSE values are telling us is something interesting.  If we just have  the informaiton from two of the variables we know what the value of the third one is. We saw this before where we did not really need to have both has.baseball.team.logical and no.baseball.team.logical in order to know whether each borough had a baseball team. You always have complete informaiton if we have (number of categories)-1 dichtomous variables. 
+
+- Class: mult_question
+  Output: "If we have a variable political party with four attributes Democat, Republican, Other, Independent how many variables do we need to have complete infomation?"
+  AnswerChoices: 4;3;2
+  CorrectAnswer: 3
+  AnswerTests: omnitest(correctVal= '3')
+  Hint: Remember that we need one fewer variable than the number of categories.
+  
+- Class: text
+  Output: In sociology articles you will often see this referred to as dummy variable coding, and the data will contain one fewer variable than the number of categories in the variable. Keep an eye out for this when reading articles.
+  
