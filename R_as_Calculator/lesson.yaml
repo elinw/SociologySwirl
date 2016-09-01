@@ -56,7 +56,7 @@
   Output: Now raise 7 to the 2nd power
   CorrectAnswer: '7 ^ 2'
   AnswerTests: omnitest(correctExpr='7^2')
-  Hint: Use ** to indicate that you are raising a number to a power.
+  Hint: Use ^ to indicate that you are raising a number to a power.
 
 
 
