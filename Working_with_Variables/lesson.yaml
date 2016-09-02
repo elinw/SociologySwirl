@@ -18,8 +18,8 @@
   Output: In R variables are names -- that can be one letter, letters, or even contain numbers or punctuation marks -- that store values.  If you look in the Environment window you probably already see a section called Values with names on the left, and values on the right.
 
 
-- Class: cmd_text
-  Output: To create a variable we use the "assignment operator" <- which you create by typing a less than sign followed by a hyphen, <-.
+- Class: text
+  Output: "To create a variable we use the assignment operator <- which you create by typing a less than sign followed by a hyphen, <-."
 
 
 - Class: cmd_question
@@ -175,7 +175,7 @@
   Output: NA!  Remember the help told us this would happen; it said "If na.rm is FALSE an NA value in any of the arguments will cause a value of NA to be returned" and by default na.rm = FALSE.
 
 - Class: cmd_question
-  Output: Now try this -- prod(x, na.rm = TRUE)
+  Output: "Now try this: prod(x, na.rm = TRUE)"
   CorrectAnswer: prod(x, na.rm = TRUE)
   AnswerTests: omnitest(correctExpr='prod(x, na.rm = TRUE)')
   Hint: TRUE has to be in capital letters.
@@ -193,7 +193,7 @@
   Output: Yay! One last thing to know is that you can create your own function. You might not want to do that very often, but if you are clever you might sometimes see ways to use functions to make doing your course work easier. People say good coders are lazy, but what they really mean by that is that they come clever shortcuts for things that also reduce errors.
 
 - Class: script
-  Output: Look at this new function called "myfunction" and notice that it contains the same calculation that we have been doing. Click on save. After you save, type submit().
+  Output: 'Look at this new function called "myfunction" and notice that it contains the same calculation that we have been doing. Click the checkbox next to "Source on Save" and then on save. After you save, type submit().'
   AnswerTests: test_myfunction()
   Hint: Really, just save it.
   Script: myfunction.R
@@ -224,6 +224,4 @@
 
 - Class: text
   Output: Now that you know more about how variables and functions work, in the next we will start looking at some data.
-
-
 

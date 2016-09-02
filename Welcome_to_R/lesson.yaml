@@ -26,7 +26,7 @@
 - Class: cmd_question
   Output: Type the word map and then look in the Plot viewer on the right.
   CorrectAnswer: map
-  AnswerTests: omnitest(correctVal=map)
+  AnswerTests: omnitest(correctExpr='map')
   Hint: Make sure it is typed exactly the same.
 
 
@@ -42,7 +42,7 @@
 - Class: cmd_question
   Output: It can tell you the current date if you type Sys.Date().  Try it.
   CorrectAnswer: Sys.Date()
-  AnswerTests: omnitest(correctVal=Sys.Date())
+  AnswerTests: omnitest(correctExpr='Sys.Date()')
   Hint: Make sure it is typed exactly the same, including upper case letters.
 
 

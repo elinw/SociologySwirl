@@ -59,7 +59,7 @@
 
 - Class: mult_question
   Output: Is this new vector a categorical variable?
-  AnswerChoices: "Yes; No"
+  AnswerChoices: Yes; No
   CorrectAnswer: Yes
   AnswerTests: omnitest(correctVal= 'Yes')
   Hint: In a categorical variable, we expect that multiple observations could have the same value.
