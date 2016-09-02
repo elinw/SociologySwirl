@@ -79,7 +79,7 @@
 
 - Class: mult_question
   Output: Is this new vector a categorical variable?
-  AnswerChoices: "Yes;No"
+  AnswerChoices: Yes;No
   CorrectAnswer: No
   AnswerTests: omnitest(correctVal= 'No')
   Hint: In a categorical variable, we expect that multiple observations could have the same value.
@@ -217,4 +217,4 @@
 
 
 - Class: text
-  Output: Now that we have a basic idea, we are ready to learn more about how to work with data framesl
+  Output: Now that we have a basic idea, we are ready to learn more about how to work with data frames!

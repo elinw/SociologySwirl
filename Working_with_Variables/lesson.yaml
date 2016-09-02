@@ -23,7 +23,7 @@
 
 
 - Class: cmd_question
-  Output: Now lets create a new variable call c with a value of 7 by typing c <- 7
+  Output: Now lets create a new variable called c with a value of 7 by typing c <- 7
   CorrectAnswer: c <- 7
   AnswerTests: omnitest(correctExpr='c <- 7')
   Hint: Type c <- 7
@@ -35,7 +35,7 @@
 - Class: cmd_question
   Output: Now type c
   CorrectAnswer: c
-  AnswerTests: omnitest(correctExpr='c ')
+  AnswerTests: omnitest(correctExpr='c')
   Hint: Just type c
 
 - Class: text
@@ -55,8 +55,8 @@
 
 - Class: cmd_question
   Output: This time create a new variable e and assign c*d to it.
-  CorrectAnswer: 14
-  AnswerTests: omnitest(correctVal=14)
+  CorrectAnswer: e<-c*d
+  AnswerTests: omnitest(correctExpr='e<-c*d')
   Hint: It's the same as the previous question, but use <- to assign the result to e.
 
 - Class: text
@@ -68,14 +68,14 @@
 
 - Class: cmd_question
   Output: Not all variables have to be numbers.  You can make a character variable. For example try state <- 'New York'.  Note that you always surround these with quotation marks.
-  CorrectAnswer: state <- 'New York'
-  AnswerTests: omnitest(correctVal='New York')
+  CorrectAnswer: state <- "New York"
+  AnswerTests: omnitest(correctExpr="state <- 'New York'")
   Hint: Don't forget the quotation marks and capitalization.
 
 - Class: cmd_question
-  Output: Now make a varabiable called borough with an assign value of Bronx
-  CorrectAnswer: borough <- 'Bronx'
-  AnswerTests: omnitest(correctVal='Bronx')
+  Output: Now make a variable called borough with an assign value of Bronx
+  CorrectAnswer: borough <- "Bronx"
+  AnswerTests: omnitest(correctExpr='borough <- "Bronx"')
   Hint: Don't forget the quotation marks and to capitalize Bronx.
 
 - Class: text
@@ -94,8 +94,8 @@
   Output: paste() takes character values (as many as you wants) and combines them into one longer character variable with each part separate with whatever is seleted by sep = .
 
 - Class: cmd_question
-  Output: One of the most important functions in R is c() which stands for combine. Combine takes a set of values or variables and combines them into a vector. Being able to have a vector of numbers or a vector of character variables turns out to be incredibly powerful.  Try this example to start off -- c(10, 15,21, d)
-  CorrectAnswer: c(10, 15,21)
+  Output: "One of the most important functions in R is c() which stands for combine. Combine takes a set of values or variables and combines them into a vector. Being able to have a vector of numbers or a vector of character variables turns out to be incredibly powerful.  Try this example to start off: c(10, 15,21, d)"
+  CorrectAnswer: c(10, 15,21, d)
   AnswerTests: omnitest(correctExpr='c(10, 15,21, d)')
   Hint: Don't forget to put commas between the values.
 
@@ -106,14 +106,14 @@
 
 
 - Class: cmd_question
-  Output: Let's use the c() function to create a vector containing 2,3,4,5 and assign it to x -- x <- c(2, 3, 4, 5)
+  Output: "Let's use the c() function to create a vector containing 2,3,4,5 and assign it to x : x <- c(2, 3, 4, 5)"
   CorrectAnswer: x<- c(2, 3, 4, 5)
   AnswerTests: omnitest(correctExpr='x<- c(2, 3, 4, 5)')
   Hint: Make sure you use the assignment operator <- and put the numbers in order and separated by commas.
 
 
 - Class: cmd_question
-  Output: Now let's get the answer using our vector x and some functions --  sum(x) + prod(x) + sum(x^2)
+  Output: "Now let's get the answer using our vector x and some functions:  sum(x) + prod(x) + sum(x^2)"
   CorrectAnswer: sum(x) + prod(x) + sum(x^2)
   AnswerTests: omnitest(correctExpr='sum(x) + prod(x) + sum(x^2)')
   Hint: Copy the code exactly.
