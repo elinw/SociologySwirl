@@ -76,15 +76,15 @@
 
 - Class: cmd_question
   Output: "Now use the identical() function to see if the two vectors as a whole are identical: identical(nycdata$square.miles, nycdata[, 'square.miles'])"
-  CorrectAnswer: TRUE
-  AnswerTests: omnitest(correctVal=TRUE)
+  CorrectAnswer: "identical(nycdata$square.miles, nycdata[, 'square.miles'])"
+  AnswerTests: omnitest(correctExpr="identical(nycdata$square.miles, nycdata[, 'square.miles'])")
   Hint: Make sure you have quotation marks and the comma in the right location.
 
 
 - Class: cmd_question
-  Output:  " Now compare the individual elements for the has.baseball.team variable."
+  Output: "Now compare the individual elements for the has.baseball.team variable."
   CorrectAnswer: "nycdata$has.baseball.team  == nycdata[, 'has.baseball.team']"
-  AnswerTests: omnitest(correctExpr="has.nycdata$baseball.team  == nycdata[, 'has.baseball.team']")
+  AnswerTests: omnitest(correctExpr="nycdata$has.baseball.team  == nycdata[, 'has.baseball.team']")
   Hint: "Use the == operator to test if two items are equal"
 
 - Class: cmd_question
