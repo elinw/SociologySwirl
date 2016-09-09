@@ -3,7 +3,7 @@
   Lesson: More About Data Frames
   Author: your name goes here
   Type: Standard
-  Organization: your organization's name goes here
+  Organization: SociologySwirl
   Version: 2.4.1
 
 - Class: text
@@ -90,11 +90,11 @@
 - Class: cmd_question
   Output: "Now see if the two vectors as a whole are identical"
   CorrectAnswer: identical(nycdata$has.baseball.team, nycdata[, 'has.baseball.team'])
-  AnswerTests: omnitest(correctVal=TRUE)
+  AnswerTests: omnitest(correctExpr="nycdata$has.baseball.team, nycdata[, 'has.baseball.team']")
   Hint: Use the identical() function.
 
 - Class: text
-  Output: It might seem that == and Identical() would mean the same thing, but the don't. It's important to make sure you know exactly what a function or operator does. Don't be fooled by the name. You can read the help file, try some examples or search the web to find out more about a function.
+  Output: It might seem that == and Identical() would mean the same thing, but they don't. It's important to make sure you know exactly what a function or operator does. Don't be fooled by the name. You can read the help file, try some examples or search the web to find out more about a function.
 
 
 - Class: text
