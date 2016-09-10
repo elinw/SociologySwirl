@@ -133,8 +133,8 @@
 
 - Class: cmd_question
   Output: "Previously we created the variable called size. However this is not a very good name, because size could refer to many things.  Let's change the name size to geographic.size.  We are going to do this using the rename function from the dplyr package.  dplyr::rename(nycdata, geographic.size = size)"
-  CorrectAnswer: dplyr::rename(nycdata, geographic.size = size)
-  AnswerTests: omnitest(correctExpr='dplyr::rename(nycdata, geographic.size = size)')
+  CorrectAnswer: nycdata<-dplyr::rename(nycdata, geographic.size = size)
+  AnswerTests: omnitest(correctExpr='nycdata<-dplyr::rename(nycdata, geographic.size = size)')
   Hint: "Copy the code exactly including the ::"
 
 - Class: cmd_question
@@ -165,6 +165,11 @@
   AnswerTests: omnitest(correctExpr='nycdata$population.density <- nycdata$population/nycdata$square.miles')
   Hint: "Remember that / is the divison operator. Don't forget to use $ between the data frame name and the variable name."
 
+- Class: cmd_question
+  Output: "Type nycdata to see your updated data frame"
+  CorrectAnswer: nycdata
+  AnswerTests: omnitest(correctExpr='nycdata')
+  Hint: Just type nycdata.
 
 
 - Class: text
