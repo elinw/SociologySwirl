@@ -90,7 +90,7 @@
 - Class: cmd_question
   Output: "Now see if the two vectors as a whole are identical"
   CorrectAnswer: identical(nycdata$has.baseball.team, nycdata[, 'has.baseball.team'])
-  AnswerTests: omnitest(correctExpr="nycdata$has.baseball.team, nycdata[, 'has.baseball.team']")
+  AnswerTests: omnitest(correctExpr="identical(nycdata$has.baseball.team, nycdata[, 'has.baseball.team'])")
   Hint: Use the identical() function.
 
 - Class: text
