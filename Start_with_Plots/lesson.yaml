@@ -21,18 +21,16 @@
   Output: Using the library() function is an alternative to the package::function()  notation to load individual functions that we used before.  When you are using many parts of the same package it is more efficient to load the whole package. When you become a more advanced R user the difference between these will become more important.
 
 - Class: cmd_question
-  Output: Ggplot2 comes with a data set called diamonds. Let's take at the structure of the dataset using the str() function.
+  Output: "Ggplot2 comes with a data set called diamonds. Let's take a look at at the structure of the diamonds dataset using the str() function."
   CorrectAnswer: str(diamonds)
   AnswerTests: omnitest(correctExpr='str(diamonds)')
   Hint: Use the str() function on diamonds.
-
 
 - Class: cmd_question
   Output: To find out more about the data set go to help by typing ?diamonds
   CorrectAnswer: ?diamonds
   AnswerTests: omnitest(correctExpr='?diamonds')
   Hint: Just type ?diamonds
-
 
 - Class: mult_question
   Output: Look at the help tab.  Which of the following is not a possible value of cut?
@@ -91,7 +89,7 @@
   Output: The ggplot() part supplies the background by using information on the data set and the x and y variables.  Now we need to add a layer to actually display the data.
 
 - Class: cmd_question
-  Output: Now use a + to add the geom_point() to myggplot
+  Output: "Now use a + to add the geom_point() to myggplot like this: myggplot + geom_point()."
   CorrectAnswer: myggplot + geom_point()
   AnswerTests: omnitest(correctExpr='myggplot + geom_point()')
   Hint: Use a + sign to put myggplot and geom_point() together.
@@ -115,7 +113,7 @@
 - Class: cmd_question
   Output: 'Change the color of the dots to red by putting color="red" inside the parentheses of geom_point'
   CorrectAnswer: myggplot + geom_point(color= "red") + mytitle
-  AnswerTests: omnitest(correctExpr='myggplot + geom_point(color= "red") + mytitle')
+  AnswerTests: any_of_exprs('myggplot + geom_point(color= "red") + mytitle','myggplot + geom_point(colour= "red") + mytitle')
   Hint: This is the same as before, but with the color red specified.
 
 - Class: cmd_question
@@ -138,7 +136,7 @@
   AnswerChoices: True; False
   CorrectAnswer: True
   AnswerTests: omnitest(correctVal= 'True')
-  Hint: hint
+  Hint: Look at the points and try to identify the pattern
 
 - Class: mult_question
   Output: There seem to be some spaces that make vertical lines at 1, 1.5, 2 and 3 carats.
@@ -168,7 +166,7 @@
   Output: Now the title is no longer totally correct, make a new mytitle that says "Diamond Prices and Carats by Clarity"
   CorrectAnswer: mytitle<-ggtitle("Diamond Prices and Carats by Clarity")
   AnswerTests: omnitest(correctExpr='mytitle<-ggtitle("Diamond Prices and Carats by Clarity")')
-  Hint: hint
+  Hint: Make sure you type the title exactly.
 
 - Class: cmd_question
   Output: Make the graph again with the new title.
