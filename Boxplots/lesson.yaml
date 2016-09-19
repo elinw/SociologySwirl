@@ -1,0 +1,223 @@
+- Class: meta
+  Course: SociologySwirl
+  Lesson: Boxplots
+  Author: Elin Waring
+  Type: Standard
+  Organization: SociologySwirl
+  Version: 2.4.2
+
+
+- Class: text
+  Output: Box plots are a useful way to visually summarize a large amount of information about numeric and ordinal variables. They are most useful when there are a large number of observations and we want to compare two or more groups.
+
+- Class: text
+  Output: "We'll use this lesson to learn about box plots while also learning about how to use features of R."
+
+- Class: text
+  Output: "Box plots provide information about many different characteristics at once, including the 5 number summary which is the minimum, maximum, median and the first and third quartiles. Let's use the diamonds dataset from the ggplot2 package."
+
+- Class: cmd_question
+  Output: Load the ggplot2 package using the library() function.
+  CorrectAnswer: library(ggplot2)
+  AnswerTests: omnitest(correctExpr='library(ggplot2)')
+  Hint: Put the name of the package inside the parentheses.
+
+- Class: text
+  Output: You cannot understand box plots if you do not understand percentiles and quartiles and what the five number summary is.
+
+- Class: cmd_question
+  Output: The function fivenum() gives us the 5 number summary for a variable (minimum, 1st quartile, median, 2nd quartile, maximum). Use fivenum() to get the five number summary for the variable carat. Use the $ notation.
+  CorrectAnswer: fivenum(diamonds$carat)
+  AnswerTests: omnitest(correctExpr='fivenum(diamonds$carat)')
+  Hint: Refer to carat as diamonds$carat
+
+- Class: text
+  Output: There are many other ways to get the five number summary in R, but this special function is convenient and also works well for what we are doing.
+
+- Class: cmd_question
+  Output: This time assign the five number summary to a variable called carat.5num using the <- operator.
+  CorrectAnswer: carat.5num<-fivenum(diamonds$carat)
+  AnswerTests: omnitest(correctExpr='carat.5num<-fivenum(diamonds$carat)')
+  Hint: To assign use carat.5num<-   followed by the summary function for diamonds$carat.
+
+
+- Class: cmd_question
+  Output: Now that the information is stored in carat.5num we can get the minimum by using carat.5num[1] since that is the first value. Try that now.
+  CorrectAnswer: carat.5num[1]
+  AnswerTests: omnitest(correctExpr='carat.5num[1]')
+  Hint: Copy carat.5num[1] exactly, make sure you hae the period and the number 5  in the variable name.
+
+- Class: cmd_question
+  Output: Use the same technique to get the maximum.
+  CorrectAnswer: carat.5num[5]
+  AnswerTests: omnitest(correctExpr='carat.5num[5]')
+  Hint: Remember that the maximum is given by the 5th number in the array.
+
+- Class: mult_question
+  Output: The median is the 3rd number in the array.  How would you ask for the specific value of the median?
+  AnswerChoices: carat.sum5[3];carat.sum5[4];carat.sum5
+  CorrectAnswer: carat.sum5[3]
+  AnswerTests: omnitest(correctVal= 'carat.sum5[3]')
+  Hint: Use carat.sum5 and ask for the 3rd value.
+
+- Class: text
+  Output: "The median is also known as the 50th percentile, which is the point that divides the observations into two even sized groups. You should always think of it this way, not just as 'the middle number.' Finding the middle number is a way to get the value of the median, it is not what the median really is."
+
+- Class: text
+  Output: The first quartile is between the median and the minimum. It is the value that divides the bottom 25% of the data from the top 75%.  It is called the first quartile because 25% is a quarter of the observations.
+
+
+- Class: mult_question
+  Output: How would you ask for the specific value of the first quartile?
+  AnswerChoices: carat.sum5[2];carat.sum5[3];carat.sum5[5]
+  CorrectAnswer: carat.sum5[2]
+  AnswerTests: omnitest(correctVal= 'carat.sum5[2]')
+  Hint: Remember that the minimum is carat.sum5[1] and the median is carat.sum5[3] and the first quartile is between them.
+
+- Class: cmd_question
+  Output: Let's look more closely at our data by creating some univariate plots. First create a base plot object called carat.plot by assigning it ggplot(diamonds, aes(x = carat)) with <-
+  CorrectAnswer: carat.plot<-ggplot(diamonds, aes(x=carat))
+  AnswerTests: omnitest(correctExpr='carat.plot<-ggplot(diamonds, aes(x=carat))')
+  Hint: Put carat.plot on the left, then <-, then the ggplot function.
+
+
+- Class: cmd_question
+  Output: Add geom_histogram(binwidth = .1) to the plot using a +.  We are using binwidth of .1 because the weight is measured to two decimals.
+  CorrectAnswer: carat.plot + geom_histogram(binwidth = .1)
+  AnswerTests: omnitest(correctExpr='carat.plot + geom_histogram(binwidth = .1)')
+  Hint: This should be carat.plot + geom_histogram(binwidth = .1)
+
+
+- Class: cmd_question
+  Output: This time let's make a cumulative distribution plot by adding stat_ecdf() instead of geom_histogram().
+  CorrectAnswer: carat.plot + stat_ecdf()
+  AnswerTests: omnitest(correctExpr='carat.plot + stat_ecdf()')
+  Hint: Use a + to add stat_ecdf() to carat.plot.
+
+- Class: cmd_question
+  Output: To help understand how these plots relate to each other and to the 5 number summary we will add a series of vertical lines representing the five numbers. We will do this by creating 5 line geoms. The first will be vline1 <- geom_vline(xintercept = carat.5num[1]), type that below.
+  CorrectAnswer: vline1 <- geom_vline(xintercept = carat.5num[1])
+  AnswerTests: omnitest(correctExpr='vline1 <- geom_vline(xintercept = carat.5num[1])')
+  Hint: Copy the code exactly.
+
+- Class: cmd_question
+  Output: Now make vline2 representing the first quartile.
+  CorrectAnswer: vline2 <- geom_vline(xintercept = carat.5num[2])
+  AnswerTests: omnitest(correctExpr='vline2 <- geom_vline(xintercept = carat.5num[2])')
+  Hint: hint
+
+- Class: text
+  Output: vline3, vline4, and vline5 have already been created. Now we will add the 5 lines to the plots using the plus sign.
+
+- Class: cmd_question
+  Output: Make the histogram as before, but this time add + vline1 + vline2 ... up to + vline5.
+  CorrectAnswer: carat.plot + geom_histogram(binwidth = .1) + vline1 + vline2 + vline3 + vline4 + vline5
+  AnswerTests: omnitest(correctExpr='carat.plot + geom_histogram(binwidth = .1) + vline1 + vline2 + vline3 + vline4 + vline5')
+  Hint: Make sure you do + vline1 + vline2 + vline3 + vline4 + vline5 added to carat.plot + geom_histogram(binwidth = .1).
+
+- Class: text
+  Output: Look carefully at the graph. You can see how uneven the spacing between the points is. This tells us interesting information about the distribution.
+
+- Class: cmd_question
+  Output: Now do the same thing with the ecdf plot, adding the 5 lines to what you did earlier.
+  CorrectAnswer: carat.plot + stat_ecdf() + vline1 + vline2 + vline3 + vline4 + vline5
+  AnswerTests: omnitest(correctExpr='carat.plot + stat_ecdf() + vline1 + vline2 + vline3 + vline4 + vline5')
+  Hint: Make sure you do stat_ecdf() (not geom_ecdf()).
+
+- Class: text
+  Output: Again we see the uneven spacing of the lines. Also, notice that the second line crosses the cumulative distribution where y = .25.
+
+- Class: mult_question
+  Output: Look at the fourth vline from the left, representing the 3rd quartile or 75th percentile.  At what value of y does the third line cross the cumulative distribution?
+  AnswerChoices: .75;.5;.82
+  CorrectAnswer: .75
+  AnswerTests: omnitest(correctVal= '.75')
+  Hint: Find the fourth line, trace up to the distribution, then go to the left.
+
+- Class: cmd_question
+  Output: "Now let's create a box plot. In ggplot a box plot requires both an x and a y axis so since we are just looking at a single variable we wil create a fake variable factor(0).  This is the code for your boxplot: ggplot(diamonds, aes(x=factor(0), y=carat)) + geom_boxplot()"
+  CorrectAnswer: ggplot(diamonds, aes(x=factor(0), y=carat)) + geom_boxplot()
+  AnswerTests: omnitest(correctExpr='ggplot(diamonds, aes(x=factor(0), y=carat)) + geom_boxplot()')
+  Hint: Make sure to copy the code exactly.
+
+- Class: cmd_question
+  Output: You can switch the orientation of the box plot by adding coord_flip() to the plot command. Try that now.
+  CorrectAnswer: ggplot(diamonds, aes(x=factor(0), y=carat)) + geom_boxplot() + coord_flip()
+  AnswerTests: omnitest(correctExpr='ggplot(diamonds, aes(x=factor(0), y=carat)) + geom_boxplot() + coord_flip()')
+  Hint: Put  + coord_flip()  at the end of the previous command.
+
+
+- Class: mult_question
+  Output: The box part of the graph has three vertical lines (the two edges and the one in the middle). Approximatey what values of carat do these lines match.
+  AnswerChoices: 0.40 0.70 1.04;0.70 1.04, 1.5; 0.20 0.40 0.70
+  CorrectAnswer: 0.40 0.70 1.04
+  AnswerTests: omnitest(correctVal= '0.40 0.70 1.04')
+  Hint: Trace down to the carat axis and estimate the values.
+
+- Class: text
+  Output: Notice also that the left hand whisker goes to .40 which is the minimum.
+
+- Class: text
+  Output: However, you will also notice that the highest values are represented by dots and the whisker only extends to 2. The maximum length of a whisker by default is 1.5*(1.04 - .40), adding that to 1.04 which is the high edge of the box gives us 2.  After that dots are used.
+
+- Class: text
+  Output: So far this is really not that much more helpful than our other graphs. The real usefulness of box plots is when you use them to compare groups.
+
+- Class: cmd_question
+  Output: This time use clarity for the x axis.
+  CorrectAnswer: ggplot(diamonds, aes(x=clarity, y=carat)) + geom_boxplot() + coord_flip()
+  AnswerTests: omnitest(correctExpr='ggplot(diamonds, aes(x=clarity, y=carat)) + geom_boxplot() + coord_flip()')
+  Hint: Your ggplot function should be ggplot(diamonds, aes(x=clarity, y=carat)).
+
+- Class: text
+  Output: 'This graph lets us understand the relationship between clarity and carats. From the Help file "clarity: a measurement of how clear the diamond is (I1 (worst), SI1, SI2, VS1, VS2, VVS1, VVS2, IF (best))"'
+
+- Class: mult_question
+  Output: Overall, which level of clarity has the highest weights?
+  AnswerChoices: I1;SI1;VS2
+  CorrectAnswer: I1
+  AnswerTests: omnitest(correctVal= 'I1')
+  Hint: The clarity labels are on the vertical axis. Look for high values of carat.
+
+- Class: mult_question
+  Output: Which of these statements is true?
+  AnswerChoices: All of the clarity levels have points above the high whisker;Some of the clarity levels have points above the high whisker;Some of the clarity levels have points below the low whisker
+  CorrectAnswer: All of the clarity levels have points above the high whisker
+  AnswerTests: omnitest(correctVal= 'All of the clarity levels have points above the high whisker')
+  Hint: hint
+
+- Class: text
+  Output: When box plots have longer whiskers or all of their extreme values on one side that indicates that the distribution is skewed in that direction.
+
+- Class: mult_question
+  Output: Is the following statement true or false? The weights of IF and VVS1 clarity diamonds have very similar distributions.
+  AnswerChoices: True;False;Not enough informaiton to know.
+  CorrectAnswer: True
+  AnswerTests: omnitest(correctVal= 'True')
+  Hint: Find the two boxplots and compare them.
+
+- Class: mult_question
+  Output: Is the following statement true or false? More than 75% of the I1 diamonds weigh more than the 75th percentil of IF diamonds.
+  AnswerChoices: True;False;Not enough informaiton to know.
+  CorrectAnswer: True
+  AnswerTests: omnitest(correctVal= 'True')
+  Hint: Find the two boxplots and compare them using the carat values.
+
+- Class: mult_question
+  Output: Is the following statement true or false? The median for VS2 is higher than the 3rd quartile of VVS2.
+  AnswerChoices: True;False;Not enough informaiton to know.
+  CorrectAnswer: False
+  AnswerTests: omnitest(correctVal= 'False')
+  Hint: Find the two boxplots and compare them using the carat values.
+
+- Class: text
+  Output: Box plots are surprisingly complex and contain a large amount of information that lets us compare distributions visually and in a compact way. There are many options and variations on creating box plots.
+
+- Class: video
+  Output: Would you like to read the Wikipedia article on box and whiskers plots?
+  VideoLink: https://en.wikipedia.org/wiki/Box_plot
+
+- Class: text
+  Output: Box plots are particularly useful for exploring data and for comparing distributions in terms of center, variation, skew and the presence of outliers.  They are an important tool for analysis.
+
+
