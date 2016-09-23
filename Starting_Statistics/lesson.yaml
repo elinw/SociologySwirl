@@ -109,7 +109,7 @@
 
 - Class: cmd_question
   Output: Now try min() for Sepal.Length. This gives you the minimum value. Don't include the 0!
-  CorrectAnswer: min(iris$Sepal.Length, na.rm=0)
+  CorrectAnswer: min(iris$Sepal.Length, na.rm=TRUE)
   AnswerTests: omnitest(correctExpr='min(iris$Sepal.Length, na.rm=0)')
   Hint: Type min() and put iris$Sepal.Length inside the parentheses.
 
@@ -148,7 +148,7 @@
 - Class: cmd_question
   Output: Calculate the range for Sepal.Width.
   CorrectAnswer:  quantile(iris$Sepal.Width, 1, na.rm=TRUE) - quantile(iris$Sepal.Width, 0, na.rm=TRUE)
-  AnswerTests: omnitest(correctExpr='quantile(iris$Sepal.Width, 1, na.rm=TRUE) - quantile(iris$Sepal.WidthWi, 0, na.rm=TRUE)')
+  AnswerTests: omnitest(correctExpr='quantile(iris$Sepal.Width, 1, na.rm=TRUE) - quantile(iris$Sepal.Width, 0, na.rm=TRUE)')
   Hint: Do the same thing you did for Sepal.Width but change the variable names.
 
 - Class: mult_question
