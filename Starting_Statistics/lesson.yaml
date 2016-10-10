@@ -170,7 +170,7 @@
 
 - Class: cmd_question
   Output: We can use the quantile() function to get any quantile and we an also use it to get multiple quantiles. For example let's try quantile(iris$Sepal.Length, probs=c(.25, .5, .75, 1), na.rm = 0)
-  CorrectAnswer: quantile(iris$Sepal.Length, probs=c(.25, .5, .75, 1), na.rm = 0)
+  CorrectAnswer: quantile(iris$Sepal.Length, probs=c(.25, .5, .75, 1), na.rm = TRUE)
   AnswerTests: omnitest(correctExpr='quantile(iris$Sepal.Length, probs=c(.25, .5, .75, 1), na.rm = TRUE)')
   Hint: Copy the code exactly -- check for typing errors.
 
