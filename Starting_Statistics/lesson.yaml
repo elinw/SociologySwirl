@@ -110,7 +110,7 @@
 - Class: cmd_question
   Output: Now try min() for Sepal.Length. This gives you the minimum value. Don't include the 0!
   CorrectAnswer: min(iris$Sepal.Length, na.rm=TRUE)
-  AnswerTests: omnitest(correctExpr='min(iris$Sepal.Length, na.rm=0)')
+  AnswerTests: omnitest(correctExpr='min(iris$Sepal.Length, na.rm= TRUE)')
   Hint: Type min() and put iris$Sepal.Length inside the parentheses.
 
 - Class: mult_question
