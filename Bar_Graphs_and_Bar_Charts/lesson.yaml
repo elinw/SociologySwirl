@@ -12,14 +12,14 @@
 
 
 - Class: text
-  Output: Today data visualization is a hot topic, with many websites and publications.  Three classic books on data visualization are Wilkerson The Grammar of Graphics, Tufte The Visual Display of Quantitative Information, and Cleveland The Elements of Graphing Data. 
+  Output: Today data visualization is a hot topic, with many websites and publications.  Three classic books on data visualization are Wilkerson The Grammar of Graphics, Tufte The Visual Display of Quantitative Information, and Cleveland The Elements of Graphing Data.
 
 - Class: text
   Output: All of these books, and many more, agree that the most important thing to do when creating a graph is that it communicate information in a manner that is clear (and not confusing) to the people reading the graph. Some have even done researh on what kinds of graphs produce the most and fewest errors in interpretation.
 
 
 - Class: text
-  Output: These books all discuss bar graphs and they have a lot to say.  We won't go into all of it, but it  is important to know that bar graphs are a lot more complex to think about than you might think from making them in a spreasheet. Many other books and websites also explain things in confusing ways. 
+  Output: These books all discuss bar graphs and they have a lot to say.  We won't go into all of it, but it  is important to know that bar graphs are a lot more complex to think about than you might think from making them in a spreasheet. Many other books and websites also explain things in confusing ways.
 
 - Class: cmd_question
   Output: Let's start by loading the ggplot2 package in case it is not already loaded.
@@ -91,10 +91,10 @@
   CorrectAnswer: ggplot(diamonds, aes(x=color)) + geom_bar(color="blue", fill="purple") + ggtitle("Diamond Colors")
   AnswerTests: omnitest(correctExpr='ggplot(diamonds, aes(x=color)) + geom_bar(color="blue", fill="purple") + ggtitle("Diamond Colors")')
   Hint: geom_bar should be geom_bar(color="blue", fill="purple") while everything else is the same as for the previous question.
-  
+
 - Class: cmd_question
   Output: Let's continue to get fancy by displaying the results as percents. To do this we add aes(y = scales::percent((..count..)/sum(..count..)))  inside the geom_bar(). Yes this is a long line of code, but don't forget that you can use the up arrow to get the previous commands.
-  CorrectAnswer: ggplot(diamonds, aes(x=color)) + geom_bar(color="blue", fill="purple", aes(y = scales::percent((..count..)/sum(..count..)))) + ggtitle("Diamond Colors") 
+  CorrectAnswer: ggplot(diamonds, aes(x=color)) + geom_bar(color="blue", fill="purple", aes(y = scales::percent((..count..)/sum(..count..)))) + ggtitle("Diamond Colors")
   AnswerTests: omnitest(correctExpr='ggplot(diamonds, aes(x=color)) + geom_bar(color="blue", fill="purple", aes(y = scales::percent((..count..)/sum(..count..)))) + ggtitle("Diamond Colors") ')
   Hint: Don't forget to put the comma between the fill option and the aes(). Also be careful that your parentheses add up. Don't worry if it takes a few tries, it is complex.
 
@@ -102,26 +102,26 @@
   Output: We'll learn to make the axis label nicer later on.
 
 - Class: mult_question
-  Output: True or False -- There are spaces between the bars on a bar graph but not on a histogram.   
+  Output: True or False -- There are spaces between the bars on a bar graph but not on a histogram.
   AnswerChoices: True; False
   CorrectAnswer: True
   AnswerTests: omnitest(correctVal= 'True')
   Hint: Look at the plot of your bar graph and compare it to what you got when doing histograms.
 
 - Class: mult_question
-  Output: True or False -- Both bar graphs and histograms have binwidths   
+  Output: True or False -- Both bar graphs and histograms have binwidths
   AnswerChoices: True; False
   CorrectAnswer: False
   AnswerTests: omnitest(correctVal= 'False')
   Hint: Look at the plot of your bar graph. Could you you calculate a bin width?
 
 - Class: mult_question
-  Output: True or False -- In both bar graphs and histograms we can present the distribution with axes labelled as counts, percents or propotions.   
+  Output: True or False -- In both bar graphs and histograms we can present the distribution with axes labelled as counts, percents or propotions.
   AnswerChoices: True; False
   CorrectAnswer: True
   AnswerTests: omnitest(correctVal= 'True')
   Hint: Look at the plot of your bar graphs and review or think about what you did in histograms.
- 
+
 - Class: mult_question
   Output: "Quick review: What does scales::percent() mean?"
   AnswerChoices: Use the percent function from the scales package.;Use the scales function from the percents package.; Use the scales::percent function from the ggplot2 package.
@@ -130,7 +130,7 @@
   Hint: To use a function from a package that isn't loaded you put the package name before the function name, separated by ::.
 
 - Class: text
-  Output: Sociologists working with data sets often make these kinds of bar charts from their data. However, if you have ever used a spreadsheet or had to create a lot of graphs of different types (not just counts) you will know that often you make bar graphs from data that has already been summarized in some way.  In that case ggplot is not doing the calculations for you, it is just doing the display. 
+  Output: Sociologists working with data sets often make these kinds of bar charts from their data. However, if you have ever used a spreadsheet or had to create a lot of graphs of different types (not just counts) you will know that often you make bar graphs from data that has already been summarized in some way.  In that case ggplot is not doing the calculations for you, it is just doing the display.
 
 - Class: cmd_question
   Output: Let's summarize our data using the dplyr package. The first step is to group the data by color, using the dplyr::group_by(diamonds, color) which we will assign to the by_color data frame using the assignment operator.
@@ -151,7 +151,7 @@
   Hint: Just type color_summary
 
 - Class: cmd_question
-  Output: Here is the code to create a bar chart using the summary data. ggplot(color_summary, aes(x=color, y = count)) + geom_bar(stat = "identity",  color="blue", fill="purple") + ggtitle("Diamond Colors").   
+  Output: Here is the code to create a bar chart using the summary data. ggplot(color_summary, aes(x=color, y = count)) + geom_bar(stat = "identity",  color="blue", fill="purple") + ggtitle("Diamond Colors").
   CorrectAnswer: ggplot(color_summary, aes(x=color, y = count)) + geom_bar(stat = "identity",  color="blue", fill="purple") + ggtitle("Diamond Colors")
   AnswerTests: omnitest(correctExpr='ggplot(color_summary, aes(x=color, y = count)) + geom_bar(stat = "identity",  color="blue", fill="purple") + ggtitle("Diamond Colors")')
   Hint: Make sure you copy exactly, with no extra characters.
@@ -182,7 +182,7 @@
 
 
 - Class: cmd_question
-  Output: Make a bar graph of the median price and add coor_flip() to the end using a + sign.
+  Output: Make a bar graph of the median price and add coord_flip() to the end using a + sign.
   CorrectAnswer: ggplot(color_summary, aes(x=color, y = median_price)) + geom_bar(stat = "identity",  color="blue", fill="purple") + ggtitle("Diamond Colors") + coord_flip()
   AnswerTests: omnitest(correctExpr='ggplot(color_summary, aes(x=color, y = median_price)) + geom_bar(stat = "identity",  color="blue", fill="purple") + ggtitle("Diamond Colors") + coord_flip()')
   Hint: plot median_price as the y variable. Dont forget to add the flip.
@@ -197,7 +197,7 @@
 
 
 - Class: cmd_question
-  Output: The width of the bars in a bar plot do not mean anything. This is very different than a histogram where changing the width sometimes changes the whole shape of the plot. However it is important that you always use the same width for all of the bars since doing otherwise can be misleading to the viewer.  Because the width is not meaningful we can change geom_bar to geom_point and still present the same information. Try that now, using the median_price graph but don't use coord_flip(). 
+  Output: The width of the bars in a bar plot do not mean anything. This is very different than a histogram where changing the width sometimes changes the whole shape of the plot. However it is important that you always use the same width for all of the bars since doing otherwise can be misleading to the viewer.  Because the width is not meaningful we can change geom_bar to geom_point and still present the same information. Try that now, using the median_price graph but don't use coord_flip().
   CorrectAnswer: ggplot(color_summary, aes(x=color, y = median_price)) + geom_point(stat = "identity",  color="blue", fill="purple") + ggtitle("Diamond Colors")
   AnswerTests: omnitest(correctVal= 'ggplot(color_summary, aes(x=color, y = median_price)) + geom_point(stat = "identity",  color="blue", fill="purple") + ggtitle("Diamond Colors")')
   Hint: Make sure not to include coord_flip().
@@ -210,7 +210,7 @@
 
 
 - Class: text
-  Output: This kind of plot is called a Cleveland Dot Plot, named after the Cleveland mentioned earlier. He argued that the focus should be on the actual values, and that the bars in a regular bar graph draw attention to themselves rather than what the reader should really be looking at which is the location of the top of the bar. 
+  Output: This kind of plot is called a Cleveland Dot Plot, named after the Cleveland mentioned earlier. He argued that the focus should be on the actual values, and that the bars in a regular bar graph draw attention to themselves rather than what the reader should really be looking at which is the location of the top of the bar.
 
 - Class: text
-  Output: This lesson has given you an overview of basic bar graphs. Just like all ggplots, you can extend these by using facet_wrap(), adding additional elements and using complex aesthetics.  
+  Output: This lesson has given you an overview of basic bar graphs. Just like all ggplots, you can extend these by using facet_wrap(), adding additional elements and using complex aesthetics.
