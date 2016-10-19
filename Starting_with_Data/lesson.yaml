@@ -188,7 +188,7 @@
   Hint: Copy exactly .. .no quotation marks this time!
 
 - Class: mult_question
-  Output: Why do you get the same answer for nybdata[4,6] as for nycdata['Brooklyn','square.miles']?
+  Output: Why do you get the same answer for nycdata[4,6] as for nycdata['Brooklyn','square.miles']?
   AnswerChoices: Because Brooklyn is row 4 and square.miles is column 6; because Brooklyn is row 6 and square.miles is column 4; because 6 * 4 == 24.
   CorrectAnswer: Because Brooklyn is row 4 and square.miles is column 6
   AnswerTests: omnitest(correctVal= 'Because Brooklyn is row 4 and square.miles is column 6')
@@ -209,7 +209,7 @@
 
 
 - Class: cmd_question
-  Output: We can get a whole column of data by referencing just the column, dataframe[,'columnname']. Notice that the comma mus come first, because rows go before the comma and columns after.  Get the colum of data for baseball.team
+  Output: We can get a whole column of data by referencing just the column, dataframe[,'columnname']. Notice that the comma must come first, because rows go before the comma and columns after.  Get the colum of data for baseball.team
   CorrectAnswer: nycdata[ , 'baseball.team']
   AnswerTests: omnitest(correctExpr="nycdata[ , 'baseball.team']")
   Hint: Make sure that comma is first and that you have quotation marks in the right location.

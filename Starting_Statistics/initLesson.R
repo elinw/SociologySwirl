@@ -9,3 +9,4 @@
 }
 datapath<-file.path(.get_course_path(), "SociologySwirl", "More_About_Data_Frames", "nycdata.rda")
 load(datapath)
+library(lehmansociology)

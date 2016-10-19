@@ -78,7 +78,7 @@
 
 - Class: cmd_question
   Output: Since we know that carats are measured to two decimal places, it is reasonable to try a binwidth of .1.  To do this set the binwidth parameter inside the histogram geom like this geom_histogram(bindwith = .1)
-  CorrectAnswer: ggplot_carat + geom_histogram(binwidth = .1)
+  CorrectAnswer: ggplot_carat + geom_histogram(binwidth = .1) + carat_title
   AnswerTests: any_of_exprs('ggplot_carat + geom_histogram(binwidth = .1)+ carat_title', 'ggplot_carat + carat_title + geom_histogram(binwidth = .1)')
   Hint: Remember to add the geom to the ggplot_carat object. Don't forget the title
 

@@ -60,11 +60,11 @@
   AnswerTests: omnitest(correctExpr='mean(iris$Petal.Length, na.rm=TRUE)')
   Hint: Copy the code mean(iris$Petal.Length, na.rm=TRUE)
 
-- Class: cmd_text
+- Class: text
   Output: We use the na.rm option to remove the missing values from the data frame before doing the calculation. If we did not do this and there were any missing values the result would have been a missing value. Fortunately the iris data set has no missing values.
 
 - Class: cmd_question
-  Output: The second main measure of central tendancy for interval and ordinal variables is the median which is a special name for the 50th percentile. That is, it is the number that half of the values are above and half are below.  Use median() to get the median of Sepal.Length.  Don't forget to use na.rm.
+  Output: The second main measure of central tendency for interval and ordinal variables is the median which is a special name for the 50th percentile. That is, it is the number that half of the values are above and half are below.  Use median() to get the median of Sepal.Length.  Don't forget to use na.rm.
   CorrectAnswer: median(iris$Sepal.Length, na.rm=TRUE)
   AnswerTests: omnitest(correctExpr='median(iris$Sepal.Length, na.rm=TRUE)')
   Hint: Make sure to use upper and lower case exactly as written, Sepal.Length.

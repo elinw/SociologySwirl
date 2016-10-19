@@ -136,7 +136,7 @@
 
 - Class: mult_question
   Output: What did prod(x) represent in our example?
-  AnswerChoices: Calculate 2*3*4*5; Calculate the product of the values in x; Both
+  AnswerChoices: Calculate 2 * 3 * 4 * 5; Calculate the product of the values in x; Both
   CorrectAnswer: Both
   AnswerTests: omnitest(correctVal= 'Both')
   Hint: There can be different ways of saying the same thing.
