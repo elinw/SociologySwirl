@@ -187,7 +187,7 @@
 
 - Class: mult_question
   Output: What weight are about 50% of the diamonds lower than?
-  AnswerChoices: About .75 carats; about 1 carat; about .5 carats, about 1.5 carats
+  AnswerChoices: About .75 carats; about 1 carat; about .5 carats; about 1.5 carats
   CorrectAnswer: About .75 carats
   AnswerTests: omnitest(correctVal= 'About .75 carats')
   Hint: Find .5 on the y axis and go right to the line, then down.
