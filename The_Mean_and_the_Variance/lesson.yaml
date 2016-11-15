@@ -6,8 +6,6 @@
   Organization: Soc 345
   Version: 2.4.2
 
-
-
 - Class: text
   Output: In this lesson we will continue to learn about the mean using the chickwts data set.
      We will also learn about a key measure of variation called the variance.
