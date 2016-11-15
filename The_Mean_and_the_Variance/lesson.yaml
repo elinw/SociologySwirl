@@ -1,0 +1,214 @@
+- Class: meta
+  Course: SociologySwirl
+  Lesson: The Mean and the Variance
+  Author: Elin Waring
+  Type: Standard
+  Organization: Soc 345
+  Version: 2.4.2
+
+
+
+- Class: text
+  Output: In this lesson we will continue to learn about the mean using the chickwts data set.
+     We will also learn about a key measure of variation called the variance.
+     Some additional variables have been added, median_weight (the median value of weight) and weight_deviation_median
+     which is the value of weight minus the median of weight.
+
+- Class: text
+  Output: In the previous lesson we saw that if you subtract the mean from all
+    of the values for a variable, both the sum and the mean of the new values will be 0.
+
+- Class: cmd_question
+  Output: What happens if we take the sum of the differences between
+    the values and the median? Use the weight_deviation_median variable to get this.
+  CorrectAnswer: sum(chickwts$weight_deviation_median)
+  AnswerTests: omnitest(correctExpr='sum(chickwts$weight_deviation_median)')
+  Hint: Use the sum function and the dataset$variable notation.
+
+- Class: cmd_question
+  Output: What if we calculate the mean of the differences from the median?
+  CorrectAnswer: mean(chickwts$weight_deviation_median)
+  AnswerTests: omnitest(correctExpr='mean(chickwts$weight_deviation_median)')
+  Hint: Use the mean function and the dataset$variable notation.
+
+- Class: text
+  Output: Notice that neither the sum nor the mean is 0. The only time they
+    would be 0 would be if the mean and median were equal to each other.
+    The mean is the only statistic that will always give you a sum and mean of
+    0 for the deviations.
+
+- Class: text
+  Output: However, as you can see, if we want to know, on average, how far
+    specific weights are from the center of the weights, the mean deviation does not help us
+    much since it is always 0.
+    In reality, in terms of how far away observations are from the center we
+    do not care if they are above or below the mean. This is just like saying
+    that when we want to know how many blocks the subway is from our home, we do
+    not care if the blocks take us to the north or south, we only care how many there
+    are.
+
+- Class: text
+  Output: The most obvious way to meaningfully measure how far an observation is
+    from the mean is to use the absolute value instead of the value with a sign.
+    Remember that the absolute value removes the sign, meaning that all numbers are
+    treated as positive.
+
+- Class: cmd_question
+  Output: Calculate the mean of the absolute value of weight_deviation by
+    using mean(abs(chickwts$weight_deviation)). Recall that abs() is the absolute
+    value function.
+  CorrectAnswer: mean(abs(chickwts$weight_deviation))
+  AnswerTests: omnitest(correctExpr='mean(abs(chickwts$weight_deviation))')
+  Hint: Copy the code mean(abs(chickwts$weight_deviation)).
+
+- Class: cmd_question
+  Output: Calculate the mean of the absolute value of weight_deviation_median.
+  CorrectAnswer: mean(abs(chickwts$weight_deviation_median))
+  AnswerTests: omnitest(correctExpr='mean(abs(chickwts$weight_deviation_median))')
+  Hint: Follow the pattern from the previous question but change the variable name.
+
+- Class: mult_question
+  Output: Which is smaller, the mean absolute deviation around the  mean or the median?
+  AnswerChoices: Around the median;Around the mean;They are the same.
+  CorrectAnswer: Around the median
+  AnswerTests: omnitest(correctVal= 'Around the median')
+  Hint: Compare the values for the two previous answers.
+
+- Class: text
+  Output: The mean absolute deviation will be smaller around the median than
+     any other value. The values for mean and median will only be tied if the
+     mean and median are equal.
+
+- Class: text
+  Output: The other main approach to describing the mean distance of observations
+     from the center of a distribution is to square the distances. This also always
+     gives a positive number. It also has some other advantages that we will not
+     go into here.
+
+- Class: video
+  Output: Would you like to read a web discussion about why many people prefer
+     squaring but use the absolute value?
+  VideoLink: http://stats.stackexchange.com/questions/118/why-square-the-difference-instead-of-taking-the-absolute-value-in-standard-devia
+
+- Class: text
+  Output: The important thing to know is that statisticians use both approaches
+     with the choice depending on what they are doing.
+
+- Class: cmd_question
+  Output:    Calculate the mean of the square of weight_deviation by
+     using mean(chickwts$weight_deviation^2). Recall that ^2 means to
+     raise to the second power (square) the value.
+  CorrectAnswer: mean(chickwts$weight_deviation^2)
+  AnswerTests: omnitest(correctExpr='mean(chickwts$weight_deviation^2)')
+  Hint: Copy the code mean(chickwts$weight_deviation^2).
+
+- Class: cmd_question
+  Output:    Calculate the mean of the square of weight_deviation_median.
+  CorrectAnswer: mean(chickwts$weight_deviation_median^2)
+  AnswerTests: omnitest(correctExpr='mean(chickwts$weight_deviation_median^2)')
+  Hint: Follow the pattern from the previous question but change the variable name.
+
+- Class: mult_question
+  Output: Which is smaller, the squared deviation around the  mean or the median?
+  AnswerChoices: Around the median;Around the mean;They are the same.
+  CorrectAnswer: Around the mean
+  AnswerTests: omnitest(correctVal= 'Around the mean')
+  Hint: Compare the values for the two previous answers.
+
+- Class: text
+  Output: The mean squared deviation will always be smaller around the mean than
+     any other value. The values for mean and median will only be tied if the
+    mean and median are equal.
+
+- Class: text
+  Output: The mean squared deviation has a special name, which is the variance.
+     Sometimes you will see this formula referred to as the population variance.
+
+- Class: text
+  Output: If we had just added up the squared deviations without dividing by
+     the sample size, that number is often called the sum of squares
+     or total sum of squares.
+
+
+- Class: cmd_question
+  Output: The square root of the variance is called the standard deviation or
+     sometimes called the population standard deviation. Calculate the standard
+     deviation by putting the variance formula for weight_deviation inside the sqrt() function.
+  CorrectAnswer: sqrt(mean(chickwts$weight_deviation^2))
+  AnswerTests: omnitest(correctExpr='sqrt(mean(chickwts$weight_deviation^2))')
+  Hint: The formula should look like sqrt(mean(variable^2))
+
+- Class: text
+  Output: The standard deviation is very useful because by taking the square root
+     of the variance you return to the original units, in this case grams.
+
+- Class: text
+  Output:  R has functions sd() and var() to calculate the standard deviation and
+    variance.  What happens when we use them?
+
+- Class: cmd_question
+  Output: Use the var function on weight_deviation
+  CorrectAnswer: var(chickwts$weight_deviation)
+  AnswerTests: omnitest(correctExpr='var(chickwts$weight_deviation)')
+  Hint: Put the variable name inside the var() function using the dataset$variable notation.
+
+- Class: mult_question
+  Output: How do the two calculations of variance compare?
+  AnswerChoices: The var() version is higher; The mean() version is higher; The two versions are the same.
+  CorrectAnswer: The var() version is higher
+  AnswerTests: omnitest(correctVal= 'The var() version is higher')
+  Hint: hint
+
+- Class: cmd_question
+  Output: The var() command will always give a higher variance estimate than calculating the mean
+      of the squared deviations. Type ?var to load the help page for var().
+  CorrectAnswer: ?var
+  AnswerTests: omnitest(correctExpr='?var')
+  Hint: Type ?var
+
+- Class: mult_question
+  Output:  In the Details section at about paragraph 7, it starts The denominator.
+     What value is used for the denominator?
+  AnswerChoices: n-1;n;n+1
+  CorrectAnswer: n-1
+  AnswerTests: omnitest(correctVal= 'n-1')
+  Hint: Look in the help file.
+
+- Class: mult_question
+  Output: A variance calculated with n-1 in the denominator instead of n is sometimes
+     called the sample variance.  Why would dividing by n-1 give a bigger value than
+     dividing by n?
+  AnswerChoices: Because dividing by a smaller number gives a bigger result;Because the sample size is smaller;Neither of these reasons
+  CorrectAnswer: Because dividing by a smaller number gives a bigger result
+  AnswerTests: omnitest(correctVal= 'Because dividing by a smaller number gives a bigger result')
+  Hint: hint
+
+- Class: cmd_question
+  Output: Multiply the var() results for weight_deviation by (n-1)/1 which can
+    be expressed as (nrow(chickwts)-1)/nrow(chickwts)
+  CorrectAnswer: var(chickwts$weight_deviation)*(nrow(chickwts)-1)/nrow(chickwts)
+  AnswerTests: omnitest(correctExpr='var(chickwts$weight_deviation)*(nrow(chickwts)-1)/nrow(chickwts)')
+  Hint: Start with var(chickwts$weight_deviation)
+
+- Class: cmd_question
+  Output: Calculate the variance for weight.
+  CorrectAnswer: var(chickwts$weight)
+  AnswerTests: omnitest(correctExpr='var(chickwts$weight)')
+  Hint: Put chickwts$weight inside var().
+
+- Class: mult_question
+  Output: How does the variance of weight compare to the variance of weight_deviation?
+  AnswerChoices: They are the same;Variance of weight is higher;Variance of weight_deviation is higher
+  CorrectAnswer: They are the same
+  AnswerTests: omnitest(correctVal= 'They are the same')
+  Hint: Compare the value in the previous question to the one for weight_deviation.
+
+- Class: text
+  Output: The two variances are the same because the formula for variance builds in
+     subtracting the mean from each observation. That is, the formula converts the weight
+      values into weight_deviation values. On the other hand, since the mean of weight_deviation
+      is 0, subtracting it from the weight_deviation values has no impact. So you end
+      up with the same numbers being used in the calculation.
+
+      The variance and the sum of squares are very widely used in statistics.
+
