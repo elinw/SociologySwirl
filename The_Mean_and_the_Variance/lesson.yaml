@@ -182,7 +182,7 @@
   Hint: hint
 
 - Class: cmd_question
-  Output: Multiply the var() results for weight_deviation by (n-1)/1 which can
+  Output: Multiply the var() results for weight_deviation by (n-1)/n which can
     be expressed as (nrow(chickwts)-1)/nrow(chickwts)
   CorrectAnswer: var(chickwts$weight_deviation)*(nrow(chickwts)-1)/nrow(chickwts)
   AnswerTests: omnitest(correctExpr='var(chickwts$weight_deviation)*(nrow(chickwts)-1)/nrow(chickwts)')
