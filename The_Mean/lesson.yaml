@@ -7,8 +7,7 @@
   Version: 2.4.2
 
 - Class: text
-  Output: In this lesson we are going to us R to deepen understanding of the
-  mean.  For this lesson we will use the chickwts data set to explore the mean.
+  Output: In this lesson we are going to us R to deepen understanding of the mean.  For this lesson we will use the chickwts data set to explore the mean.
 
 
 - Class: cmd_question
@@ -38,12 +37,12 @@
 
 - Class: text
   Output: As you work on this make sure not to confuse this data set with the
-  other chicken data set called chickWeight.
+   other chicken data set called chickWeight.
 
 - Class: cmd_question
   Output: The mean is a statistic you are already familiar with and R has a
-  simple to use function mean() that will calculate it for you. Use R to get
-  the mean() of chickwts$weight. We know that all the data are present so we do not need to include na.rm.
+   simple to use function mean() that will calculate it for you. Use R to get
+   the mean() of chickwts$weight. We know that all the data are present so we do not need to include na.rm.
   CorrectAnswer: mean(chickwts$weight)
   AnswerTests: omnitest(correctExpr='mean(chickwts$weight)')
   Hint: Check your spelling
@@ -65,21 +64,21 @@
 
 - Class: text
   Output: Now we want to look more deeply into what the mean really is and why
-  it is so important to statistians.
+   it is so important to statistians.
 
 - Class: cmd_question
   Output: The mean is calculated by adding up all of the values of a variable
-  and dividing by the sample size. In this case sum() for the weight variable
-  can be used to add the values up and nrow(chickwts) can count the number of
-  observations. Do this calculation.
+   and dividing by the sample size. In this case sum() for the weight variable
+   can be used to add the values up and nrow(chickwts) can count the number of
+   observations. Do this calculation.
   CorrectAnswer: sum(chickwts$weight)/nrow(chickwts)
   AnswerTests: omnitest(correctExpr='sum(chickwts$weight)/nrow(chickwts)')
   Hint: Make sure you use sum(chickwts$weight) and nrow(chickwts)
 
 - Class: cmd_question
   Output: "Lets create a new variable in the chickwts data called mean_weight
-  and set it equal to the mean of chickwts using the assignment operator (<-).
-  Use the mean() function."
+   and set it equal to the mean of chickwts using the assignment operator (<-).
+   Use the mean() function."
   CorrectAnswer: chickwts$mean_weight <- mean(chickwts$weight)
   AnswerTests: omnitest(correctExpr='chickwts$mean_weight <- mean(chickwts$weight)')
   Hint: THe new variable is created as chickwts$mean_weight. Use the mean() function to calculate it.
@@ -107,8 +106,8 @@
 
 - Class: text
   Output: The values of mean_weight are all the same because when we created
-  the variable we set it equal to the mean of weight, which is 261.3 (rounded),
-  meaning all of the values are the same.
+   the variable we set it equal to the mean of weight, which is 261.3 (rounded),
+   meaning all of the values are the same.
 
 - Class: cmd_question
   Output: "What is the sum of mean_weight? Use the sum() function."
@@ -167,7 +166,7 @@
 
 - Class: cmd_question
   Output: Create a new variable called weight_deviation in chickwts by
-  subtracting the mean_weight from the weight.
+   subtracting the mean_weight from the weight.
   CorrectAnswer: chickwts$weight_deviation<-chickwts$weight - chickwts$mean_weight
   AnswerTests: omnitest(correctExpr='chickwts$weight_deviation<-chickwts$weight - chickwts$mean_weight')
   Hint: The code should be like chickwts$weight_deviation<-chickwts$weight - chickwts$mean_weight
@@ -211,8 +210,6 @@
   AnswerTests: omnitest(correctExpr='IQR(chickwts$weight) == IQR(chickwts$weight_deviation)')
   Hint: Type IQR(chickwts$weight) == IQR(chickwts$weight_deviation)
 
-
-
 - Class: mult_question
   Output: Why are the IQR values for weight and weight_deviation the same?
   AnswerChoices: Both statements are true.;Because subtracting the mean from each value does not change how far apart and two values are from each other.; Because all we did was shift everything down by 261.3
@@ -235,13 +232,13 @@
 
 - Class: text
   Output: You may wonder why R does not give you 0 here. -1.421085e-12 is the
-  same as -.000000000001421085 which is very, very close to 0. The problem is
-  that both the mean_weight and weight_deviation were rounded and now the rounding is showing up in this
-  calculation.
+   same as -.000000000001421085 which is very, very close to 0. The problem is
+   that both the mean_weight and weight_deviation were rounded and now the rounding is showing up in this
+   calculation.
 
 - Class: cmd_question
   Output: Now use round(sum(), 11) to get the sum of weight_deviation rounded
-  to 11 digits.
+   to 11 digits.
   CorrectAnswer: sum(chickwts$weight_deviation)
   AnswerTests: omnitest(correctExpr='sum(chickwts$weight_deviation)')
   Hint: Don't forget chickwts$  and to check your spelling.
