@@ -1,0 +1,305 @@
+- Class: meta
+  Course: SociologySwirl
+  Lesson: Group Means and Variances
+  Author: Elin Waring
+  Type: Standard
+  Organization: Soc 345
+  Version: 2.4.2
+
+- Class: text
+  Output: Let's continue with the chickwts data.  In the data set we have data
+        on chicks and the
+          type of feed they were given. In this lesson we are going to look more
+          closely at the
+          relationship between the type of feed and the weight of the chicks.
+
+         Let's review some of the basics.
+
+- Class: cmd_question
+  Output: Let's start by obtaining the mean of weight.
+  CorrectAnswer: mean(chickwts$weight)
+  AnswerTests: omnitest(correctExpr='mean(chickwts$weight)')
+  Hint: Use the mean() function and the variable weight from the chickwts dataset.
+
+- Class: cmd_question
+  Output: Now get the sample variance of weight.
+  CorrectAnswer: var(chickwts$weight)
+  AnswerTests: omnitest(correctExpr='var(chickwts$weight)')
+  Hint: Use the var() function and the chickswts$weight variable.
+
+- Class: cmd_question
+  Output: Remember from the previous lesson that the sample variance is the
+     (total sum of squares)/(n-1) where n is the sample size.
+     We've created a function called ` TSS() ` to get the total sum of squares
+     from the variance.  Type ` TSS ` to see the code for the function. Be
+     careful not to include ().
+  CorrectAnswer: TSS
+  AnswerTests: omnitest(correctExpr='TSS')
+  Hint: Just type TSS. Don't use parentheses.
+
+- Class: mult_question
+  Output: What does the function do?
+  AnswerChoices: Multiplies the variance by n-1;Divides the variance by n-1;Multiplies the variance by n
+  CorrectAnswer: Multiplies the variance by n-1
+  AnswerTests: omnitest(correctVal='Multiplies the variance by n-1')
+  Hint: Look at what is done in the code step by step.
+
+- Class: cmd_question
+  Output: Use the ` TSS() ` function to get the total sum of squares for weight.
+  CorrectAnswer: TSS(chickwts$weight)
+  AnswerTests: omnitest(correctExpr='TSS(chickwts$weight)')
+  Hint: Remember to use the $ notation when referring to the weight variable from the
+    chickswts data set.
+
+- Class: text
+  Output: The total sum of squares is what you get when you subtract each observation
+        from the mean, square the difference, and add them all up.  The sum of the
+        differences between the observations and some constant is always minimized
+        around the mean.
+
+- Class: cmd_question
+  Output: We also previously created the variable ` weight_deviation ` that is the
+     difference between each observation and the mean weight.  Get the total sum
+     of squares for the ` weight_deviation `.
+  CorrectAnswer: TSS(chickwts$weight_deviation)
+  AnswerTests: omnitest(correctExpr='TSS(chickwts$weight_deviation)')
+  Hint: Use the TSS() function and the variable chickwts$weight_deviation.
+
+- Class: cmd_question
+  Output: Let's also see how many chicks there were that received each of the different
+     types of feed using ` crosstab(chickwts, row.vars="feed") `.
+  CorrectAnswer: crosstab(chickwts, row.vars="feed")
+  AnswerTests: omnitest(correctExpr='crosstab(chickwts, row.vars="feed") ')
+  Hint: Just copy the code given.
+
+- Class: mult_question
+  Output: Which type of feed is most common?
+  AnswerChoices: Sunflower;Soybean;Linseed;Casein
+  CorrectAnswer: Soybean
+  AnswerTests: omnitest(correctVal='Soybean')
+  Hint: Look at the table in the previous question.
+
+- Class: mult_question
+  Output: What percent of chicks ate sunflower seeds?
+  AnswerChoices: 16.9; 71; 14; 19.7
+  CorrectAnswer: 16.9
+  AnswerTests: omnitest(correctVal='16.9')
+  Hint: Look at the table and find the answer.
+
+- Class: cmd_question
+  Output: Let's make a boxplot to show the centers and variations of weight
+          for each feed type ` ggplot(chickwts, aes(x=feed, y=weight)) + geom_boxplot()  `.
+  CorrectAnswer: ggplot(chickwts, aes(x=feed, y=weight)) + geom_boxplot()
+  AnswerTests: omnitest(correctExpr='ggplot(chickwts, aes(x=feed, y=weight)) + geom_boxplot()')
+  Hint: Copy the code for the boxplot.
+
+- Class: text
+  Output: The boxes represent the range of the middle 50% of the sample for
+          each group, with the heavy line showing the median.  Dots represent
+          outliers, while whiskers represent the highest and lowest values that
+          that are not outliers.
+
+- Class: cmd_question
+  Output: We are interested in knowing whether the type of feed a chick eats is related
+    to its weight.  Let's use the grouping and summarizing functions from
+    the dplyr package to do this.   First group the data into feed types
+    using ` feedgroups <- dplyr::group_by(chickwts, feed) `.  Don't worry this won't show a
+    result yet.
+  CorrectAnswer: feedgroups <- dplyr::group_by(chickwts, feed)
+  AnswerTests: omnitest(correctExpr='feedgroups <- dplyr::group_by(chickwts, feed)')
+  Hint: Copy the code given.
+
+- Class: cmd_question
+  Output: Now let's do something new and summarize a lot of group data in a compact
+     table using the ` dylpr::summarize() ` function.  We want to get make a
+     table that has one row per feed type and shows the number of observations,
+     the mean weight, and the mean weight_deviation. You have to make sure to pay attention to spelling
+     and commas. Here is the
+     code ` dplyr::summarize(feedgroups, n(), mean(weight), mean(weight_deviation )) `
+  CorrectAnswer:  dplyr::summarize(feedgroups, n(), mean(weight),  mean(weight_deviation ))
+  AnswerTests: omnitest(correctExpr=' dplyr::summarize(feedgroups, n(), mean(weight),
+     mean(weight_deviation ))')
+  Hint: Copy the code.
+
+- Class: mult_question
+  Output: Which three feed types have the lowest means?
+  AnswerChoices: horsebean, linseed, soybean;meatmeal, soybean, sunflower; casein, meatmeal, sunflower
+  CorrectAnswer: horsebean, linseed, soybean
+  AnswerTests: omnitest(correctVal='horsebean, linseed, soybean')
+  Hint: Look at the appopriate column in the table.
+
+- Class: mult_question
+  Output: What do you notice about the ` mean(weight_deviation) ` values for the
+          feeds with the lowest means.
+  AnswerChoices: They are all negative;They are all positive; They have no real pattern
+  CorrectAnswer: They are all negative
+  AnswerTests: omnitest(correctVal='They are all negative')
+  Hint: Look at the appropriate column in the table.
+
+- Class: cmd_question
+  Output: Let's use new, shorter column names and add a new column showing the difference
+          between the mean(weight) and mean(weight_deviation).  Replace the column definitions with
+     this ` "Mean weight" = mean(weight),  "Mean weight dev " =   mean(weight_deviation ), "Difference" = mean(weight) - mean(weight_deviation) `.
+  CorrectAnswer: dplyr::summarize(feedgroups, "Mean weight" = mean(weight),  "Mean weight dev " =   mean(weight_deviation ), "Difference" = mean(weight) - mean(weight_deviation))
+  AnswerTests: omnitest(correctExpr='dplyr::summarize(feedgroups, "Mean weight" = mean(weight),  "Mean weight dev " =   mean(weight_deviation ), "Difference" = mean(weight) - mean(weight_deviation))')
+  Hint: Remember that you need the dplyr::summarize ... also check spelling.
+
+- Class: mult_question
+  Output: What do you notice about the difference column?
+  AnswerChoices: All the values are the same;All the values equal the mean for the whole sample;Both are true;Neither are true
+  CorrectAnswer: Both are true
+  AnswerTests: omnitest(correctVal='Both are true')
+  Hint: Look at the column carefully and scroll up if you need to.
+
+- Class: cmd_question
+  Output: Let's change the name ` Difference ` to ` Overall mean `.
+  CorrectAnswer: dplyr::summarize(feedgroups, "Mean weight" = mean(weight),  "Mean weight dev " =   mean(weight_deviation ), "Overall mean" = mean(weight) - mean(weight_deviation))
+  AnswerTests: omnitest(correctExpr='dplyr::summarize(feedgroups, "Mean weight" = mean(weight),  "Mean weight dev " =   mean(weight_deviation ), "Overall mean" = mean(weight) - mean(weight_deviation))')
+  Hint: Remember that you need the dplyr::summarize ... also check spelling.
+
+- Class: text
+  Output: If you think back, the weight_deviation is the ( overall sample mean - the observation
+     weight).  The mean of weight_deviation in our table is the mean distance
+     difference for each of the groups.  The mean(weight) is the mean weight for
+     each group.   So, for a theoretical mean observation, which has the mean(weight)
+     for its group as its weight will have mean(weight_deviation) as its devation
+     from the sample mean,
+     (mean(weight_deviation) = sample mean - mean(weight))
+
+- Class: cmd_question
+  Output: Now let's look more closely at the sum of squares within each group.
+       This sum of squares is based on the difference between the group mean and
+       each observation in the group instead of the sample mean and each
+       observation.    Use ` dplyr::summarize() `  to get  ` TSS(weight) ` with
+       the column title ` "Within Group SS" `.
+  CorrectAnswer: dplyr::summarize(feedgroups, "Within Group SS"= TSS(weight))
+  AnswerTests: omnitest(correctExpr='dplyr::summarize(feedgroups, "Within Group SS" = TSS(weight))')
+  Hint: Continue with the same pattern as earlier but use TSS(weight).
+
+- Class: mult_question
+  Output: Which feed type had the highest TSS?
+  AnswerChoices: casein;horsebean;meatmeal
+  CorrectAnswer: casein
+  AnswerTests: omnitest(correctVal='casein')
+  Hint: Look at the table.
+
+- Class: cmd_question
+  Output: Now we will use a feature of dplyr called piping to get the total of all
+          of the Within Group Sum of Squares. Add this code to the code creating the
+          group data ` %>% summarize("Total Within Group SS" =sum(`Within Group SS`)) `.
+          Piping takes the result of what is on the left and uses it as the data for what is
+          on the right. So in this case it will sum up the values in the Within Group SS column.
+  CorrectAnswer: dplyr::summarize(feedgroups, "Within Group SS" = TSS(weight))  %>% summarize("Total Within Group SS" =sum(`Within Group SS`))
+  AnswerTests: omnitest(correctExpr='dplyr::summarize(feedgroups, "Within Group SS" = TSS(weight))  %>% summarize("Total Within Group SS" =sum(`Within Group SS`))')
+  Hint: Use the up arrow to get the previous code, then add the new code.
+
+- Class: cmd_question
+  Output: This code is getting long, so let's do the same thing and assign it to
+          a variable called WGSS. This total is giving us all of the variation
+          in weight that is left after accounting for the mean weight for each feed
+          type. This is also called the residual sum of squares and the error sum of squares.
+  CorrectAnswer: WGSS <- dplyr::summarize(feedgroups, "Within Group SS" = TSS(weight))  %>% summarize("Total Within Group SS" =sum(`Within Group SS`))
+  AnswerTests: omnitest(correctExpr='WGSS <- dplyr::summarize(feedgroups, "Within Group SS" = TSS(weight))  %>% summarize("Total Within Group SS" =sum(`Within Group SS`))')
+  Hint: Use the assignment operator.
+
+- Class: cmd_question
+  Output: To understand how much of the original variation in weight is left
+          once we account for feed, we can see what proportion of the original
+          Total Sum of Squares is still left in the WGSS.  Just like any proportion
+          this can range from 0, meaning that there is no variation within the groups,
+          to 1 meaning that there is the same amount of variation within the groups
+          as there was with no without the groups. To find the proportion remaining
+          divide ` WGSS ` by ` TSS(chickwts$weight) `.
+  CorrectAnswer: WGSS/TSS(chickwts$weight)
+  AnswerTests: omnitest(correctExpr='WGSS/TSS(chickwts$weight)')
+  Hint: Use the ` / ` sign to divide.
+
+- Class: mult_question
+  Output: Remembering that you turn a proportion to a percent by multiplying by 100,
+          what percent of the overall variation around the mean of weight is *not*
+          explained
+          by feed?
+  AnswerChoices: 46%;54%;50%
+  CorrectAnswer: 46%
+  AnswerTests: omnitest(correctVal= '46%')
+  Hint: Look at the proportion an multiply by 100.
+
+- Class: mult_question
+  Output: If 46% of the sum of squares is left after accounting for feed type,
+          what percent of the sum of squares was accounted for by the feed type?
+  AnswerChoices: 54%;46%;60%;Cannot determine
+  CorrectAnswer: 54%
+  AnswerTests: omnitest(correctVal= '54%')
+  Hint: Remember 100% would be the Totall Sum of Squares and 46% is within group sum of squares. The rest is due to the feed type.
+
+- Class: text
+  Output: This statistic, in proportion form, is sometimes called the coefficient of determination or the r square.
+           is a measure of the size or strength of the relationship.
+
+- Class: cmd_question
+  Output: Of course it is not necessary to go through all the steps we have here to
+          calculate the r squared. One method is to estimate a linear regression model
+          using the ` lm() ` function. This uses what R calls a formula, which is
+          dependent variable ~ independent variables. The dependent variable goes on
+          the left and one or more independent variable goes on the right. In our case
+          the fomula would be ` weight ~ feed `.  Let's run a linear model and save the
+          results in a variable called weightlm. This is the
+          code  ` weightlm <- lm(weight ~ feed, chickwts)  `.
+  CorrectAnswer: weightlm <- lm(weight ~ feed, chickwts)
+  AnswerTests: omnitest(correctExpr='weightlm <- lm(weight ~ feed, chickwts)')
+  Hint: Copy the code.
+
+- Class: cmd_question
+  Output: We can get the R squared from this object with this complicated looking
+          command ` summary(weightlm)$r.squared `.
+  CorrectAnswer: summary(weightlm)$r.squared
+  AnswerTests: omnitest(correctExpr='summary(weightlm)$r.squared')
+  Hint: Copy the code.
+
+- Class: cmd_question
+  Output: We can see where this comes from by looking at ` anova(weightlm) `.
+  CorrectAnswer: anova(weightlm)
+  AnswerTests: omnitest(correctExpr='anova(weightlm)')
+  Hint: Copy the code.
+
+- Class: cmd_question
+  Output: Look at the Sum Sq column.  Notice that the Residuals row has the same
+          195556 that we saw earlier is the sum of squares that is left after
+          accounting for the feed type.  Notice that feed also has a value,
+          one we have not seen before, 231129. Add these two sum of squares together.
+  CorrectAnswer: 426685
+  AnswerTests: omnitest(correctVal=426685)
+  Hint: Use + to add the two numbers.
+
+- Class: text
+  Output: The total of the two Sums of Squares in the ANOVA table is the
+          total sum of squares for
+          weight.  The Sum of Squares for feed represents the difference between
+          our WGSS (within group sum of squares) and our TSS (total sum of squares).
+          It is the part of the total sum of squares that is accounted for by
+          the independent variable feed.
+
+- Class: cmd_question
+  Output: Divide the feed sum of squares by the TSS() of chickwts$weight.
+  CorrectAnswer: 231129/TSS(chickwts$weight)
+  AnswerTests: omnitest(correctExpr='231129/TSS(chickwts$weight)')
+  Hint: Use the ` / ` for division and the TSS() function for the
+        total sum of squares.
+
+- Class: mult_question
+  Output: What does the previous result equal?
+  AnswerChoices: R Squared;Within Group Sum of Squares;1 - R Squared
+  CorrectAnswer: R Squared
+  AnswerTests: omnitest(correctVal= 'R Squared')
+  Hint: Look over your earlier results.
+
+- Class: text
+  Output: Using the linear model gives us a quick way to obtain the R squared for
+          measuring the strength of the relationshp between two variables, specifically
+          in this case between a nominal independent variable and an interval or ration
+          depedent variable.
+
+- Class: text
+  Output: In this lesson we saw that the means and variances
+          for groups representing a nominal variable can be used to analyze
+          the strength of relationship with an interval dependent variable.
