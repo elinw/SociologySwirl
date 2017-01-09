@@ -10,13 +10,15 @@
   Output: Hi. Hey. Hello. Good afternoon. Howdy. So nice to see you again.
 
 - Class: text
-  Output: Before we start, we should make one thing clear. Just like any language there are many ways to say the same thing, there are many ways to accomplish the same goal in R. Sometimes we will show different ways, and sometimes we will try to be consistent and stick to one method. But as you learn more, just like in any language, you will get more comfortable with that.
+  Output: Before we start, we should make one thing clear. Just like any language there are many ways to say the same thing, there are many ways
+          to accomplish the same goal in R. Sometimes we will show different ways, and sometimes we will try to
+          be consistent and stick to one method. But as you learn more, just like in any language, you will get more comfortable with that.
 
 - Class: text
   Output: So far we have created a data frame with data about the boroughs of New York City.  In this lesson we will explore some more things we can do with them.
 
 - Class: cmd_question
-  Output: Just in case you forgot the names of the variables, you can get them by typing colnames(nycdata). Try it now.
+  Output: Just in case you forgot the names of the variables, you can get them by typing `colnames(nycdata)`. Try it now.
   CorrectAnswer: colnames(nycdata)
   AnswerTests: omnitest(correctExpr='colnames(nycdata)')
   Hint: Just type colnames(nycdata).
@@ -28,7 +30,8 @@
   Hint: Put nycdata inside the parentheses.
 
 - Class: text
-  Output: The str() function tells you what kind of variable you have (Factor, Ordered Factor, Numeric or AsIs (which we use for things like names)).   It also shows us the values from the first few observations.
+  Output: The str() function tells you what kind of variable you have (Factor, Ordered Factor, Numeric or AsIs (which we use for things like names)).
+      It also shows us the values from the first few observations.
 
 - Class: cmd_question
   Output: "Another way to get information about a data frame is by using the summary() function. Try that now for your data set."
@@ -43,7 +46,7 @@
   Output: What if we want to find out how many rows of data there are? Try nrow() on your data.
   CorrectAnswer: nrow(nycdata)
   AnswerTests: omnitest(correctExpr='nrow(nycdata)')
-  Hint: Your data in nycdata. Put it inside nrow().
+  Hint: Your data is nycdata. Put it inside nrow().
 
 - Class: cmd_question
   Output: What if we want to find out how many columns of data there are? Try ncol() on your data.
@@ -63,19 +66,18 @@
   AnswerTests: omnitest(correctExpr='tail(nycdata, 2)')
   Hint: Make sure to put the 2 to get the two rows. Put nycdata inside the parentheses of tail().
 
-
 - Class: text
-  Output: Previously we saw that we could get a column of data -- a variable from a data frame -- using data.frame.name[, 'column.name']  notation.  In this lesson we will see a second kind of notation. That notation is data.frame.name$column.name ... so for example nycdata$square.miles.
-
+  Output: Previously we saw that we could get a column of data -- a variable from a data frame -- using `data.frame.name[, 'column.name']`  notation.  In this lesson we will see a second kind of notation. That notation is `data.frame.name$column.name` ...
+      so for example `nycdata$square.miles`.
 
 - Class: cmd_question
-  Output:  "Let's see if we get the same results for the two methods of referring to the same data by using the == operator, which will compare each of the elements in the two vectors by typing nycdata$square.miles  == nycdata[, 'square.miles']"
+  Output:  "Let's see if we get the same results for the two methods of referring to the same data by using the == operator, which will compare each of the elements in the two vectors by typing `nycdata$square.miles  == nycdata[, 'square.miles']`"
   CorrectAnswer: "nycdata$square.miles  == nycdata[, 'square.miles']"
   AnswerTests: omnitest(correctExpr="nycdata$square.miles  == nycdata[, 'square.miles']")
   Hint: "Make sure you put the quotation marks inside the suqare brakets []s."
 
 - Class: cmd_question
-  Output: "Now use the identical() function to see if the two vectors as a whole are identical: identical(nycdata$square.miles, nycdata[, 'square.miles'])"
+  Output: "Now use the identical() function to see if the two vectors as a whole are identical: `identical(nycdata$square.miles, nycdata[, 'square.miles'])`"
   CorrectAnswer: "identical(nycdata$square.miles, nycdata[, 'square.miles'])"
   AnswerTests: omnitest(correctExpr="identical(nycdata$square.miles, nycdata[, 'square.miles'])")
   Hint: Make sure you have quotation marks and the comma in the right location.
@@ -102,7 +104,7 @@
 
 
 - Class: cmd_question
-  Output: "Get the square root of the population variable.  Refer to population using the $ notation."
+  Output: "Get the square root of the population variable.  Refer to population using the `$` notation."
   CorrectAnswer: sqrt(nycdata$population)
   AnswerTests: omnitest(correctExpr='sqrt(nycdata$population)')
   Hint: "Refer to population with nycdata$population."
@@ -117,7 +119,7 @@
 
 
 - Class: cmd_question
-  Output: "Get the sum of the population variable.  Refer to population using the $ notation."
+  Output: "Get the sum of the population variable.  Refer to population using the `$` notation."
   CorrectAnswer: sum(nycdata$population)
   AnswerTests: omnitest(correctExpr='sum(nycdata$population)')
   Hint: "Refer to population with nycdata$population."
@@ -132,7 +134,8 @@
 
 
 - Class: cmd_question
-  Output: "Previously we created the variable called size. However this is not a very good name, because size could refer to many things.  Let's change the name size to geographic.size.  We are going to do this using the rename function from the dplyr package.  nycdata<-dplyr::rename(nycdata, geographic.size = size)"
+  Output: "Previously we created the variable called size. However this is not a very good name, because size could refer to many things.  Let's change the name size to geographic.size.
+          We are going to do this using the rename function from the dplyr package.  `nycdata<-dplyr::rename(nycdata, geographic.size = size)`"
   CorrectAnswer: nycdata<-dplyr::rename(nycdata, geographic.size = size)
   AnswerTests: omnitest(correctExpr='nycdata<-dplyr::rename(nycdata, geographic.size = size)')
   Hint: "Copy the code exactly including the ::"
@@ -144,13 +147,16 @@
   Hint: Just type nycdata.
 
 - Class: text
-  Output: "In the previous question the idea of a 'package' called dplyr.  One of the great things about R is that in addition to what is included in the 'base' R, people have written many extra packages that are basically extra, specialized functions to do certain tasks.  For example Swirl is a package designed to help create instructional materials for learning R. In this case dplyr is a package to help with managing data frames. There are different ways to access the functions in a package; using the the :: notation is one. This notation helps you know for sure which package the function is in."
+  Output: "In the previous question the idea of a 'package' called dplyr.  One of the great things about R is that in addition to what is included in the 'base' R,
+           people have written many extra packages that are basically extra, specialized functions to do certain tasks.
+           For example Swirl is a package designed to help create instructional materials for learning R. In this case dplyr is a package to help with managing data frames.
+           There are different ways to access the functions in a package; using the the :: notation is one. This notation helps you know for sure which package the function is in."
 
 - Class: text
   Output: One important thing to know is that we have not saved our data set with the new name. So if we reloaded nycdata we would get the old name.  This is fine as long as we always keep track of what we want to do and can rerun it. That is called making your analysis reproducable.
 
 - Class: mult_question
-  Output: If you see some code that says readxl::excel_sheets( "mydata.xlsx" ) what does that mean?
+  Output: If you see some code that says `readxl::excel_sheets( "mydata.xlsx" )` what does that mean?
   AnswerChoices: Use the excel_sheets function from the readxl package.;Use the readxl function from the excel_sheets package.;Use the ::excel_sheets function from the dplyr package.
   CorrectAnswer: "Use the excel_sheets function from the readxl package."
   AnswerTests: omnitest(correctVal= 'Use the excel_sheets function from the readxl package.')

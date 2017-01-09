@@ -6,8 +6,6 @@
   Organization: Lehman College Sociology
   Version: 2.4.2
 
-
-
 - Class: text
   Output: Previously we looked at scatter plots, which let us explore two or even three variables at the same time. There are other kinds of graphs that are created around looking at one variable at a time. These are very useful in practical ways, but also are important for understanding statistics.
 
@@ -18,14 +16,18 @@
   Hint: Put ggplot2 inside the parentheses.
 
 - Class: text
-  Output: One important issue in creating any graph is the type of variable you have. For example, you may have categorical variables (factors in R), ordinal variables (ordered factors in R), and interval and ratio variables (numeric variables in R).  It is also important to consider whether variables are discrete or continuous. A discrete numeric variable can only take on integer values. An example would be the number of children a woman has had.  A continuous numeric variable can take values that have decimals. Examples might be a person's weekly take-home pay or how many hours a day someone spends on house work.  Even though we usually collect numbers that are rounded off to whole numbers, the underlying values have decimal places.
+  Output: One important issue in creating any graph is the type of variable you have. For example, you may have categorical variables (factors in R),
+          ordinal variables (ordered factors in R), and interval and ratio variables (numeric variables in R).  It is also important to consider whether
+          variables are discrete or continuous. A discrete numeric variable can only take on integer values.
+          An example would be the number of children a woman has had.
+          A continuous numeric variable can take values that have decimals.
+          Examples might be a person's weekly take-home pay or how many hours a day someone spends on house work.  Even though we usually collect numbers that are rounded off to whole numbers, the underlying values have decimal places.
 
 - Class: cmd_question
   Output: Let's look again at the variables in the diamonds dataset but using the str() function.
   CorrectAnswer: str(diamonds)
   AnswerTests: omnitest(correctExpr='str(diamonds)')
   Hint: Put diamonds inside str()
-
 
 - Class: mult_question
   Output: How many ordered factors are in the diamonds data frame?
@@ -45,7 +47,9 @@
   Hint: Look at the column that lists the type of variable.
 
 - Class: text
-  Output: Even though price is listed as int, it is really not discrete since someone could pay an amount between that is not an integer.  The underlying variable is continuous even though the data was not stored that way. Similarly we can tell by the way depth is calculated that it could take on a decimal value, so even though the data about it is stored in whole numbers it is really continuous.
+  Output: Even though price is listed as int, it is really not discrete since someone could pay an amount between that is not an integer.
+          The underlying variable is continuous even though the data was not stored that way. Similarly we can tell by the way depth is calculated that it
+          could take on a decimal value, so even though the data about it is stored in whole numbers it is really continuous.
 
 - Class: text
   Output: In collecting and analyzing sociological data it is essential that you consider what type of variables you have, not just for statistical reasons but also for theoretical ones. For example some theorists see social class as a continuous variable and others see it as discrete.
@@ -54,7 +58,8 @@
   Output: In this lesson we will graph continuous variables.  There are a number of ways to do this, and we won't even do them all in this lesson.
 
 - Class: cmd_question
-  Output: Since we are only dealing with one variable, our ggplot statement is going to look different. Let's make a base ggplot object for carat by typing ggplot_carat<-ggplot(diamonds, aes(carat)). You could also type x= carat but it is not necesssary.
+  Output: Since we are only dealing with one variable, our ggplot statement is going to look different. Let's make a base ggplot object for
+          carat by typing `ggplot_carat<-ggplot(diamonds, aes(carat))`. You could also type `x <- carat` but it is not necesssary.
   CorrectAnswer: ggplot_carat<-ggplot(diamonds, aes(carat))
   AnswerTests: omnitest(correctExpr='ggplot_carat<-ggplot(diamonds, aes(carat))')
   Hint: Copy the code exactly.
@@ -65,23 +70,23 @@
   AnswerTests: omnitest(correctExpr="carat_title<-ggtitle('Distribution of Diamond Weights in Carats')")
   Hint: Make sure to use quotation marks around the title.
 
-
 - Class: cmd_question
   Output: Now make a histogram by using + to add geom_histogram() and your title to your plot object.
-  CorrectAnswer: ggplot_carat + geom_histogram() +carat_title
+  CorrectAnswer: ggplot_carat + geom_histogram() + carat_title
   AnswerTests: omnitest(correctExpr='ggplot_carat + geom_histogram() + carat_title')
   Hint: Add the histogram geom to ggplot_carat, then add the title
 
 - Class: text
-  Output: Did you get a message saying `stat_bin()` using `bins = 30`. Pick better value with `binwidth`? This does not mean you did anything wrong, but it is true that there might be better binwiths to use and that more or less than 30 bins might make sense. Do you see how the histogram you made looks like it has somewhat wide bars? These group the diamonds together, for example all the diamonds between .1 and .3 might be in one bin.  That bin would have a binwidth of .2 (.3- .1).
-
+  Output: "Did you get a message saying `stat_bin()` using `bins = 30`. Pick better value with `binwidth`?
+  This does not mean you did anything wrong, but it is true that there might be better binwiths to use and that  more or less than 30 bins might make sense. Do you see how the histogram you made looks like it has somewhat wide bars?
+  These group the diamonds together, for example all the diamonds between .1 and .3 might be in one bin.
+  That bin would have a binwidth of .2 (which is .3- .1)."
 
 - Class: cmd_question
-  Output: Since we know that carats are measured to two decimal places, it is reasonable to try a binwidth of .1.  To do this set the binwidth parameter inside the histogram geom like this geom_histogram(bindwith = .1)
+  Output: Since we know that carats are measured to two decimal places, it is reasonable to try a binwidth of .1. To do this set the binwidth parameter inside the histogram geom like this `geom_histogram(bindwith = .1)`.
   CorrectAnswer: ggplot_carat + geom_histogram(binwidth = .1) + carat_title
   AnswerTests: any_of_exprs('ggplot_carat + geom_histogram(binwidth = .1)+ carat_title', 'ggplot_carat + carat_title + geom_histogram(binwidth = .1)')
   Hint: Remember to add the geom to the ggplot_carat object. Don't forget the title
-
 
 - Class: cmd_question
   Output: Now try with a binwidth of .5
@@ -95,7 +100,6 @@
   AnswerTests: any_of_exprs('ggplot_carat + geom_histogram(binwidth = .2) + carat_title', 'ggplot_carat + carat_title + geom_histogram(binwidth = .2)')
   Hint: Remember to add the geom to the ggplot_carat object. Don't forget the title
 
-
 - Class: mult_question
   Output: What happens when you make the binwidth larger?
   AnswerChoices: The number of bins decreases; The width of each bin increases; There is less detail; All of the statements are true.
@@ -103,16 +107,15 @@
   AnswerTests: omnitest(correctVal= 'All of the statements are true.')
   Hint: Look over your plots to see how they compare to each other.
 
-
 - Class: cmd_question
-  Output: We can also show our histogram as a proportion, which means we have to divide the number of observations in the bin by the total number of observations. To do this, setting the binwidth parameter at .1,  change the histogram geom to geom_histogram(binwidth = .1, aes(y=..count../sum(..count..)). Don't forget to keep track of your parentheses.
+  Output: We can also show our histogram as a proportion, which means we have to divide the number of observations in the bin by the total number of observations. To do this, setting the binwidth parameter at .1,
+          change the histogram geom to `geom_histogram(binwidth = .1, aes(y=..count../sum(..count..))`. Don't forget to keep track of your parentheses.
   CorrectAnswer: ggplot_carat + geom_histogram(binwidth = .1, aes(y=..count../sum(..count..))) + carat_title
   AnswerTests: any_of_exprs('ggplot_carat + geom_histogram(binwidth = .1, aes(y=..count../sum(..count..)))+ carat_title', 'ggplot_carat + carat_title + geom_histogram(binwidth = .1, aes(y=..count../sum(..count..)))')
   Hint: Type the geom_histogram as written and don't lose track of your parentheses!
 
 - Class: text
   Output: In sociology we often show proportions or percents (which are just proportions times 100).  One thing to notice is that if you add up all the proportions you get 1.0. Try to see why that is from the forumula   y=..count../sum(..count..).
-
 
 - Class: cmd_question
   Output: Another way to represent the same data is using the geom_freqpoly() with binwidth of .1 insted of geom_histogram.
@@ -162,7 +165,7 @@
   Output: Notice that this is an example of using aesthetics inside a geom ... you will want to do this more as you become a more advanced user of ggplot.
 
 - Class: cmd_question
-  Output: That is a little hard to see. Change the color of the density by adding color="green" inside geom_density. Remember the up arrow trick!
+  Output: That is a little hard to see. Change the color of the density by adding `color="green"` inside `geom_density()`. Remember the up arrow trick!
   CorrectAnswer: ggplot_carat + geom_histogram(binwidth = .1, aes(y = ..density..)) + geom_density(color="green") + carat_title
   AnswerTests: any_of_exprs('ggplot_carat + geom_histogram(binwidth = .1, aes(y = ..density..)) + geom_density(color="green") + carat_title', 'ggplot_carat + geom_density(color="green")  + geom_histogram(binwidth = .1, aes(y = ..density..)) + carat_title', 'ggplot_carat + geom_histogram(binwidth = .1, aes(y = ..density..)) + carat_title + geom_density(color="green")', 'ggplot_carat + geom_density(color="green") + carat_title  + geom_histogram(binwidth = .1, aes(y = ..density..))')
   Hint: Don't forget the title and to put green in quotation marks.
@@ -173,7 +176,6 @@
 
 - Class: text
   Output: To close out our first lesson on plotting one continuous variable we will do one more kind of plot, the empirical cumulative distribution function or ecdf for short.  Unlike the other plots we have done thus far this plot uses a stat_ function rather than a geom_ function for its layer.
-
 
 - Class: cmd_question
   Output: To make your plot, instead of your geom, put stat_ecdf().
@@ -192,14 +194,12 @@
   AnswerTests: omnitest(correctVal= 'About .75 carats')
   Hint: Find .5 on the y axis and go right to the line, then down.
 
-
 - Class: mult_question
   Output: What is the special name for the value that divides the observations in half?
   AnswerChoices: Mean; Median; Mode
   CorrectAnswer: Median
   AnswerTests: omnitest(correctVal= 'Median')
   Hint: Think about how you find each of these?
-
 
 - Class: mult_question
   Output: What proportion of diamonds are under 2.5 carats?
@@ -221,11 +221,14 @@
   AnswerTests: omnitest(correctExpr='summary(diamonds$carat)')
   Hint: The notation would be diamonds$carat
 
-
-
 - Class: text
-  Output: The summary shows some special names for specific points in the empirical cumulative distribution. The 1st Quartile, also known as the 25th percentile, is the point 25% (proportion .25) is lower. The Median is also known as the 50th percentile and splits the sample in half. The 3rd quartile is also called the 75th percentile and is the point at which 75% of the sample is smaller. The minimum is the minimum observed value, while the maximum is the maximum observed value.
-
+  Output: The summary shows some special names for specific points in
+          the empirical cumulative distribution. The 1st Quartile, also
+          known as the 25th percentile, is the point 25% (proportion .25)
+          is lower. The Median is also known as the 50th percentile and
+          splits the sample in half. The 3rd quartile is also called the 75th percentile
+          and is the point at which 75% of the sample is smaller. The minimum is
+          the minimum observed value, while the maximum is the maximum observed value.
 
 - Class: text
   Output: This lesson just scratches the surface of the options for plotting continuous variables and the many options that are available.

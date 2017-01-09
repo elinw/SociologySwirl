@@ -7,10 +7,13 @@
   Version: 2.4.2
 
 - Class: text
-  Output: We have seen that it is possible to create new variables from existing variables. In this lesson we are going to work on a particular way of doing this. This is called dichotomizing a variable. A dichtomous variable is one that has exactly two attributes or values. 
+  Output: We have seen that it is possible to create new variables from existing variables.
+          In this lesson we are going to work on a particular way of doing this. This is called
+          dichotomizing a variable. A dichtomous variable is one that has exactly two attributes or values.
 
 - Class: text
-  Output: In sociology it is very common to have to transform (or recode) a variable into a new variable with just two values. We can think of these values of TRUE and FALSE, Yes and No, or 1 and 0. There are also some variables that are often measured dichtomously on surveys, such as gender being treated as having two values, Male or Female (we won't go in to the measurement issues with this here). We do this for many reasons. Sometimes these are theoretical (for example when our theory compares one group to all other groups without differentiating them such as married people compared to everyone else regardless of their marital status). Other times this is practical because we have many small groups and differentiating them is not helpful.  Finally there are some statistical procedures where dichtomizing provides us a way to analyze data in useful and complex ways. 
+  Output: In sociology it is very common to have to transform (or recode) a variable into a new
+          variable with just two values. We can think of these values of TRUE and FALSE, Yes and No, or 1 and 0. There are also some variables that are often measured dichtomously on surveys, such as gender being treated as having two values, Male or Female (we won't go in to the measurement issues with this here). We do this for many reasons. Sometimes these are theoretical (for example when our theory compares one group to all other groups without differentiating them such as married people compared to everyone else regardless of their marital status). Other times this is practical because we have many small groups and differentiating them is not helpful.  Finally there are some statistical procedures where dichtomizing provides us a way to analyze data in useful and complex ways.
 
 - Class: cmd_question
   Output: Let's look again at our nycdata data set. If you have restarted R since the last time you used it, it will just be the original variables. Display the data by typing its name.
@@ -37,7 +40,7 @@
   Output: Looking at the structure of the variable we can see that when we created the variable as a factor R assigned "No" a numeric value of 1 and "Yes" a numeric value of 2. This is totally fine for some purposes such as making a table.
 
 - Class: cmd_question
-  Output: Make a frequency table for has.baseball.team using the table() function. 
+  Output: Make a frequency table for has.baseball.team using the table() function.
   CorrectAnswer: table(nycdata$has.baseball.team)
   AnswerTests: omnitest(correctExpr='table(nycdata$has.baseball.team)')
   Hint: Remember to refer to the variable as nycdata$has.baseball.team.
@@ -59,7 +62,7 @@
 
 
 - Class: text
-  Output: Oops! Trouble! You can't calculate a mean of a factor. This makes sense because to get the mean you have to add up values and "Yes" and "No" are not values that can be added together.  And even if you could access the 1s and 2s ... the mean would be 1.4 and what would that mean? 
+  Output: Oops! Trouble! You can't calculate a mean of a factor. This makes sense because to get the mean you have to add up values and "Yes" and "No" are not values that can be added together.  And even if you could access the 1s and 2s ... the mean would be 1.4 and what would that mean?
 
 - Class: text
   Output: However there is a way that we can calculate a meaningful mean.  The warning message gives a hint of what we need to do. We need to turn our variable into a logical variable or one that has numeric values.  A logical variable (also known as a Boolean) is one that can take the values TRUE or FALSE.
@@ -97,13 +100,13 @@
   Hint: Type this mean(nycdata$has.baseball.team.logical)
 
 - Class: text
-  Output: Cool! The mean of the new variable equals the proportion of the observations for which the value is TRUE. 
+  Output: Cool! The mean of the new variable equals the proportion of the observations for which the value is TRUE.
 
 - Class: cmd_question
-  Output: If we want to use 0 and 1 instead, we can change the type to numeric by using this code nycdata$has.baseball.team.numeric <- as.numeric(nycdata$has.baseball.team.logical)
+  Output: If we want to use 0 and 1 instead, we can change the type to numeric by using this code `nycdata$has.baseball.team.numeric <- as.numeric(nycdata$has.baseball.team.logical)`.
   CorrectAnswer: nycdata$has.baseball.team.numeric <- as.numeric(nycdata$has.baseball.team.logical)
   AnswerTests: omnitest(correctExpr='nycdata$has.baseball.team.numeric <- as.numeric(nycdata$has.baseball.team.logical)')
-  Hint: Type it exactly how it is written. 
+  Hint: Type it exactly how it is written.
 
 - Class: cmd_question
   Output: Type the full name of the new variable.
@@ -115,42 +118,47 @@
   Output: Calculate the mean of your new numeric variable.
   CorrectAnswer: mean(nycdata$has.baseball.team.numeric)
   AnswerTests: omnitest(correctExpr='mean(nycdata$has.baseball.team.numeric)')
-  Hint: Put nycdata$has.baseball.team.numeric inside mean(). 
+  Hint: Put nycdata$has.baseball.team.numeric inside mean().
 
 - Class: text
   Output: "In this case we can see how calculating the mean works  (1+0+1+0+0)/5 =2/5 = .4"
 
 - Class: text
-  Output: Great! So now we have three ways to get the proportion of boroughs that have baseball teams by using the prop.table(table()) functions and two ways to do it using the mean() function. 
+  Output: Great! So now we have three ways to get the proportion of boroughs that have baseball teams
+          by using the `prop.table(table())` functions and two ways to do it using the `mean()` function.
 
 - Class: cmd_question
-  Output: To understand why this works, you should know that logical variables are considered to be binary values, meaning that TRUE is 1 and FALSE is 0.  In fact, you can see this using the == operator that we used to compare whole vectors previously by typing nycdata$has.baseball.team.logical == nycdata$has.baseball.team.numeric.
+  Output: To understand why this works, you should know that logical variables are considered to be binary
+           values, meaning that TRUE is 1 and FALSE is 0.  In fact, you can see this using the == operator
+           that we used to compare whole vectors previously by typing `nycdata$has.baseball.team.logical == nycdata$has.baseball.team.numeric`.
   CorrectAnswer: nycdata$has.baseball.team.logical == nycdata$has.baseball.team.numeric
   AnswerTests: omnitest(correctExpr='nycdata$has.baseball.team.logical == nycdata$has.baseball.team.numeric')
   Hint: Make sure to use the double equal sign ==.
 
 - Class: cmd_question
-  Output: Now use the identical() function to compare the two vectors. 
+  Output: Now use the identical() function to compare the two vectors.
   CorrectAnswer: identical(nycdata$has.baseball.team.logical, nycdata$has.baseball.team.numeric)
   AnswerTests: any_of_exprs('identical(nycdata$has.baseball.team.logical, nycdata$has.baseball.team.numeric)', 'identical(nycdata$has.baseball.team.numeric,nycdata$has.baseball.team.logical)')
   Hint: Put the two variable names inside identical() separated by a comma.
 
 - Class: text
-  Output: This is false, because the vectors are not of the same type. One is logical, the other is numeric. You can see this if you look at the descriptions of the variables in nycdata in th Environment tab. 
+  Output: This is false, because the vectors are not of the same type. One is logical,
+          the other is numeric. You can see this if you look at the descriptions of the variables in nycdata
+          in the Environment tab.
 
 - Class: mult_question
-  Output: Suppose we want to know the proportion of boroughs that do *not* gave a baseball team. How could we get that value? 
+  Output: Suppose we want to know the proportion of boroughs that do *not* gave a baseball team. How could we get that value?
   AnswerChoices: Create a new logical variable where not having a baseball team is TRUE; Get 1 - mean(nycdata$has.baseball.team.logical) or 1 - mean(has.baseball.team.numeric); Both statements are true.
   CorrectAnswer: Both statements are true.
   AnswerTests: omnitest(correctVal= 'Both statements are true.')
   Hint: Think through each possibility and what result it would give.
 
 - Class: cmd_question
-  Output: Use the original nycdata$has.baseball.team variable to create a new logical variable called no.baseball.team in nycdata that is TRUE when a borough has no team and FALSE when it does.
+  Output: Use the original `nycdata$has.baseball.team` variable to create a new logical variable called no.baseball.team in nycdata that
+          is TRUE when a borough has no team and FALSE when it does.
   CorrectAnswer: nycdata$no.baseball.team <- nycdata$has.baseball.team == "No"
   AnswerTests: omnitest(correctExpr='nycdata$no.baseball.team <- nycdata$has.baseball.team == "No"')
   Hint: This would be nycdata$no.baseball.team <- nycdata$has.baseball.team == "No"
-
 
 - Class: cmd_question
   Output: Get the mean of your new variable
@@ -158,23 +166,32 @@
   AnswerTests: omnitest(correctExpr='mean(nycdata$no.baseball.team)')
   Hint: Use the mean() function on the nycdata$no.baseball.team variable.
 
-
 - Class: mult_question
-  Output: What does mean(nycdata$no.baseball.team) represent?
+  Output: What does `mean(nycdata$no.baseball.team)` represent?
   AnswerChoices: The proportion of boroughs without major league baseball; The proportion of boroughs with major league baseball; The number of boroughs without major league baseball.
   CorrectAnswer: The proportion of boroughs without major league baseball
   AnswerTests: omnitest(correctVal= 'The proportion of boroughs without major league baseball')
   Hint: Remember that in this case TRUE means having no baseball team.
 
 - Class: text
-  Output: One useful practice we have followed here is to always name your dichtomous variable after the value represented by the TRUE or 1.  
-
-
-- Class: text
-  Output: You might be thinking that this is a neat trick, but how can it actually be valid? Having a baseball team or not is still a nominal or categorical variable, not an interval variable! This is a a really good point. The definition of an interval variable is that there are fixed intervals, like a mile, represented by the values.  If we were running a marathon going from mile 8 to mile 9  is the same distance as going from mile 15 to mile 16. 1 mile is a fixed interval, and all the intervals are equal.  But in the case of having exactly two attributes (0,1 or TRUE, FALSE or Yes, No) there is only one interval.  The length of the interval is 1.  Since there is only one interval  *all* of the intervals are the same! So in the case of a dichtomous variable you can calculate a mean and it is totally valid.
-  
-- Class: text
-  Output: If it is so great to have dictomous variables as logical or numeric, why did we make our original variable a factor?  Think back to the tables that we made for has.baseball.team, has.baseball.team.logical and has.baseball.team.numeric.  In terms of being a nice, table presenting both poportions, which was best? It was has.baseball.team because it had the labels.  
+  Output: One useful practice we have followed here is to always name your dichtomous
+          variable after the value represented by the TRUE or 1.
 
 - Class: text
-  Output: The flexibility to work with factor variables and calculate proportions using different approaches is extremely powerful. It will allow us to work with many important sociological variables in flexible ways.
+  Output: You might be thinking that this is a neat trick, but how can it actually be valid?
+          Having a baseball team or not is still a nominal or categorical variable, not an interval variable!
+          This is a a really good point. The definition of an interval variable is that there are fixed intervals,
+          like a mile, represented by the values.  If we were running a marathon going from mile 8 to mile 9  is the
+          same distance as going from mile 15 to mile 16. 1 mile is a fixed interval, and all the intervals are equal.
+          But in the case of having exactly two attributes (0,1 or TRUE, FALSE or Yes, No) there is only one interval.
+          The length of the interval is 1.  Since there is only one interval  *all* of the intervals are the same!
+          So in the case of a dichtomous variable you can calculate a mean and it is totally valid.
+
+- Class: text
+  Output: If it is so great to have dictomous variables as logical or numeric, why did we make our original variable a factor?
+          Think back to the tables that we made for has.baseball.team, has.baseball.team.logical and has.baseball.team.numeric.
+          In terms of being a nice, table presenting both poportions, which was best? It was has.baseball.team because it had the labels.
+
+- Class: text
+  Output: The flexibility to work with factor variables and calculate proportions using different approaches is extremely powerful.
+          It will allow us to work with many important sociological variables in flexible ways.

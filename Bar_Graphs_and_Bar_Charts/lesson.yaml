@@ -1,25 +1,35 @@
 - Class: meta
   Course: SociologySwirl
   Lesson: Bar Graphs and Bar Charts
-  Author: your name goes here
+  Author: Elin Waring
   Type: Standard
-  Organization: your organization's name goes here
+  Organization:
   Version: 2.4.2
 
+- Class: text
+  Output: Bar chart or bar graph, which is it? Really, they are different things,
+          but English being what it is it is probably a losing batttle to try to make
+          it clear what the difference is. Whatever you call them they are very popular and
+          useful, but also misunderstood.
 
 - Class: text
-  Output: Bar chart or bar graph, which is it? Really, they are different things, but English being what it is it is probably a losing batttle to try to make it clear what the difference is. Whatever you call them they are very popular and useful, but also misunderstood.
-
-
-- Class: text
-  Output: Today data visualization is a hot topic, with many websites and publications.  Three classic books on data visualization are Wilkerson The Grammar of Graphics, Tufte The Visual Display of Quantitative Information, and Cleveland The Elements of Graphing Data.
-
-- Class: text
-  Output: All of these books, and many more, agree that the most important thing to do when creating a graph is that it communicate information in a manner that is clear (and not confusing) to the people reading the graph. Some have even done researh on what kinds of graphs produce the most and fewest errors in interpretation.
-
+  Output: Today data visualization is a hot topic, with many websites and publications.  Three
+          classic books on data visualization are Wilkerson The Grammar of Graphics,
+          Tufte The Visual Display of Quantitative Information, and
+          Cleveland The Elements of Graphing Data.
 
 - Class: text
-  Output: These books all discuss bar graphs and they have a lot to say.  We won't go into all of it, but it  is important to know that bar graphs are a lot more complex to think about than you might think from making them in a spreasheet. Many other books and websites also explain things in confusing ways.
+  Output: All of these books, and many more, agree that the most important thing
+          to do when creating a graph is that it communicate information in a manner
+          that is clear (and not confusing) to the people reading the graph. Some have
+          even done researh on what kinds of graphs produce the most and fewest errors
+          in interpretation.
+
+- Class: text
+  Output: These books all discuss bar graphs and they have a lot to say.  We won't go
+          into all of it, but it  is important to know that bar graphs are a lot more
+          complex to think about than you might think from making them in a spreasheet.
+          Many other books and websites also explain things in confusing ways.
 
 - Class: cmd_question
   Output: Let's start by loading the ggplot2 package in case it is not already loaded.
@@ -55,7 +65,6 @@
   AnswerTests: omnitest(correctVal= 'Because they represent a continuous variable.')
   Hint: Think about weight in carats as a variable, which of these would describe it?
 
-
 - Class: mult_question
   Output: What does the height of a bar in a histogram represent?
   AnswerChoices: The count or density of the variable; The mean of the variable; The median of the variable.
@@ -71,35 +80,63 @@
   Hint: Think about the binwidth parameter
 
 - Class: text
-  Output: We reviewed histogram basics because people often get histograms and bar graphs mixed up because they are often visually similar.  In fact you shoud be careful reading information online about the difference between bar graphs and histograms since they look alike in some ways. Do not believe everything you read on the internet!
+  Output: We reviewed histogram basics because people often get histograms and bar graphs
+          mixed up because they are often visually similar.  In fact you shoud be careful
+          reading information online about the difference between bar graphs and histograms
+          since they look alike in some ways. Do not believe everything you read on the internet!
 
 - Class: text
-  Output: The first key difference is that bar graphs are used where the x axis is a discrete variable. That can still be a number or it can be an ordinal or nominal (categorical) variable where there is clear separation between the values.
-
+  Output: The first key difference is that bar graphs are used where the x axis is a discrete variable.
+          That can still be a number or it can be an ordinal or nominal (categorical) variable where
+          there is clear separation between the values.
 
 - Class: cmd_question
-  Output: Let's use the diamonds data to make a simple, default bar chart for the color variable. To do that use ggplot(diamonds, aes(x=color)) + geom_bar() + ggtitle("Diamond Colors")
+  Output: Let's use the diamonds data to make a simple, default bar chart for the color variable.
+          To do that use `ggplot(diamonds, aes(x=color)) + geom_bar() + ggtitle("Diamond Colors")`.
   CorrectAnswer: ggplot(diamonds, aes(x=color)) + geom_bar() + ggtitle("Diamond Colors")
   AnswerTests: omnitest(correctExpr='ggplot(diamonds, aes(x=color)) + geom_bar() + ggtitle("Diamond Colors")')
   Hint: Type ggplot(diamonds, aes(x=color)) + geom_bar() + ggtitle("Diamond Colors")
 
-
-
-
 - Class: cmd_question
-  Output: Just for fun, add color="blue", fill="purple" inside the geom_bar() function.
+  Output: Just for fun, add `color="blue", fill="purple"` inside the geom_bar() function.
   CorrectAnswer: ggplot(diamonds, aes(x=color)) + geom_bar(color="blue", fill="purple") + ggtitle("Diamond Colors")
   AnswerTests: omnitest(correctExpr='ggplot(diamonds, aes(x=color)) + geom_bar(color="blue", fill="purple") + ggtitle("Diamond Colors")')
   Hint: geom_bar should be geom_bar(color="blue", fill="purple") while everything else is the same as for the previous question.
 
 - Class: cmd_question
-  Output: Let's continue to get fancy by displaying the results as percents. To do this we add aes(y = scales::percent((..count..)/sum(..count..)))  inside the geom_bar(). Yes this is a long line of code, but don't forget that you can use the up arrow to get the previous commands.
-  CorrectAnswer: ggplot(diamonds, aes(x=color)) + geom_bar(color="blue", fill="purple", aes(y = scales::percent((..count..)/sum(..count..)))) + ggtitle("Diamond Colors")
-  AnswerTests: omnitest(correctExpr='ggplot(diamonds, aes(x=color)) + geom_bar(color="blue", fill="purple", aes(y = scales::percent((..count..)/sum(..count..)))) + ggtitle("Diamond Colors") ')
-  Hint: Don't forget to put the comma between the fill option and the aes(). Also be careful that your parentheses add up. Don't worry if it takes a few tries, it is complex.
+  Output: "To make things simpler and less likely to have errors, let's create a plot object called bar that contains the `ggplot()`
+          function and the `ggtitle()`
+          function. `bar <- ggplot(diamonds, aes(x=color)) +  ggtitle('Diamond Colors')`"
+  CorrectAnswer: bar <- ggplot(diamonds, aes(x=color)) +  ggtitle("Diamond Colors")
+  AnswerTests: omnitest(correctExpr='bar <- ggplot(diamonds, aes(x=color)) +  ggtitle("Diamond Colors")')
+  Hint: Copy the code exactly as given.
 
 - Class: text
-  Output: We'll learn to make the axis label nicer later on.
+  Output: Now when you type bar it will stand for the code you assigned to it.
+
+- Class: cmd_question
+  Output: Now we will add `geom_bar()` but this time let's change the results to be percents.
+          We do this by addding `aes(y = ((..count..)/sum(..count..)))`  inside the `geom_bar()`.
+          This represents the proportion which is the number of observations in a category
+          divided by the total number of all observations, which is the sum of all of the counts.
+          We use a `+` to add this to `bar`.
+  CorrectAnswer: bar + geom_bar(aes(y = ((..count..)/sum(..count..))))
+  AnswerTests: omnitest(correctExpr='bar + geom_bar(aes(y = ((..count..)/sum(..count..))))')
+  Hint: Use the bar object you created earlier.  Add the new code to it.  The new code is `geom_bar(aes(y = ((..count..)/sum(..count..))))`.
+        Don't forget to put the comma between the fill option and the aes(). Also be careful that your parentheses add up.
+
+- Class: cmd_question
+  Output: "This looks good but the labels on the y axis values are not that great. This time use a `+` to add `scale_y_continuous(labels=scales::percent)`.
+           Don't forget that you can use the up arrow to get the previous commands."
+  CorrectAnswer: bar + geom_bar(color="blue", fill="purple", aes(y = (..count..)/sum(..count..)),  stat="count") + scale_y_continuous(labels=scales::percent)
+  AnswerTests: omnitest(correctExpr='bar + geom_bar(color="blue", fill="purple", aes(y = (..count..)/sum(..count..)),  stat="count") + scale_y_continuous(labels=scales::percent)')
+  Hint: "Don't worry if it takes a few tries, it is complex. You should have the bar, the geom_bar() and the scale."
+
+- Class: cmd_question
+  Output: Finally we want to make the label for the y axis. Add `ylab("Percent")` to the code. Remember you can use the up arrow to get the code for the previous command.
+  CorrectAnswer: bar + geom_bar(color="blue", fill="purple", aes(y = (..count..)/sum(..count..)),  stat="count") + scale_y_continuous(labels=scales::percent) + ylab("Percent")
+  AnswerTests: omnitest(correctExpr='bar + geom_bar(color="blue", fill="purple", aes(y = (..count..)/sum(..count..)),  stat="count") + scale_y_continuous(labels=scales::percent) + ylab("Percent")')
+  Hint: Add  + ylab("Percent")  to the previous code.
 
 - Class: mult_question
   Output: True or False -- There are spaces between the bars on a bar graph but not on a histogram.
@@ -197,9 +234,11 @@
 
 
 - Class: cmd_question
-  Output: The width of the bars in a bar plot do not mean anything. This is very different than a histogram where changing the width sometimes changes the whole shape of the plot. However it is important that you always use the same width for all of the bars since doing otherwise can be misleading to the viewer.  Because the width is not meaningful we can change geom_bar to geom_point and still present the same information. Try that now, using the median_price graph but don't use coord_flip().
+  Output: The width of the bars in a bar plot do not mean anything. This is very different than a histogram where changing the width sometimes changes the whole shape of the plot. However it is important that
+          you always use the same width for all of the bars since doing otherwise can be misleading to the viewer.  Because the width is not meaningful we can change geom_bar to geom_point and still present the
+          same information. Try that now, using the median_price graph but don't use coord_flip().
   CorrectAnswer: ggplot(color_summary, aes(x=color, y = median_price)) + geom_point(stat = "identity",  color="blue", fill="purple") + ggtitle("Diamond Colors")
-  AnswerTests: omnitest(correctVal= 'ggplot(color_summary, aes(x=color, y = median_price)) + geom_point(stat = "identity",  color="blue", fill="purple") + ggtitle("Diamond Colors")')
+  AnswerTests: omnitest(correctExpr= 'ggplot(color_summary, aes(x=color, y = median_price)) + geom_point(stat = "identity",  color="blue", fill="purple") + ggtitle("Diamond Colors")')
   Hint: Make sure not to include coord_flip().
 
 - Class: cmd_question
@@ -208,9 +247,12 @@
   AnswerTests: omnitest(correctExpr='ggplot(color_summary, aes(x=color, y = median_price)) + geom_point(stat = "identity",  color="blue", fill="purple", size=5) + ggtitle("Diamond Colors")')
   Hint: Your geom should be geom_point(stat = "identity",  color="blue", fill="purple", size=5)
 
+- Class: text
+  Output: This kind of plot is called a Cleveland Dot Plot, named after the author Cleveland mentioned earlier.
+          He argued that the focus should be on the actual values, and that the bars in a regular bar graph draw attention to
+          themselves rather than what the reader should really be looking at which is the location of the top of the bar.
 
 - Class: text
-  Output: This kind of plot is called a Cleveland Dot Plot, named after the Cleveland mentioned earlier. He argued that the focus should be on the actual values, and that the bars in a regular bar graph draw attention to themselves rather than what the reader should really be looking at which is the location of the top of the bar.
+  Output: This lesson has given you an overview of basic bar graphs. Just like all ggplots,
+          you can extend these by using facet_wrap(), adding additional elements and using complex aesthetics.
 
-- Class: text
-  Output: This lesson has given you an overview of basic bar graphs. Just like all ggplots, you can extend these by using facet_wrap(), adding additional elements and using complex aesthetics.
