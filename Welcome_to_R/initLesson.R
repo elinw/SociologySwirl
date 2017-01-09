@@ -10,4 +10,9 @@ swirl_options(swirl_logging = TRUE)
 }
 states_map<-map_data("state")
 # Note this assumes you have set a system environment value for census key.
-censuskey<-Sys.getenv('CENSUS_KEY')
+
+library(ggplot2)
+library(maps)
+showmap <- ggplot(states_map, aes(x=long, y=lat, group = group)) +
+  geom_polygon(fill = "white", color = "black")
+

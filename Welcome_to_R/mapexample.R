@@ -1,5 +1,5 @@
 library(ggplot2)
 library(maps)
-map <- ggplot(states_map, aes(x=long, y=lat, group = group)) +
+showmap <- ggplot(states_map, aes(x=long, y=lat, group = group)) +
   geom_polygon(fill = "white", color = "black")
-map
+showmap

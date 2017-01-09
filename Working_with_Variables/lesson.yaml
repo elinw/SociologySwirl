@@ -1,60 +1,63 @@
 - Class: meta
   Course: SociologySwirl
   Lesson: Working with Variables
-  Author: your name goes here
+  Author: Elin Waring
   Type: Standard
-  Organization: your organization's name goes here
+  Organization: Sociology Swirl
   Version: 2.4.1
 
 - Class: text
-  Output: R works well as a simple calculator, but now we want to see how it is even better than a calculator thanks to being able to use variables and functions.
-
-
-- Class: text
-  Output: You probably remember the idea of a variable from  algebra, where a letter stands in for a number in an equation or formula. You may also remember the idea from research methods that a variable is a characteristic that can vary, a set of attributes or properties.
-
+  Output: R works well as a simple calculator, but now we want to see how it is even
+          better than a calculator thanks to being able to use variables and functions.
 
 - Class: text
-  Output: In R variables are names -- that can be one letter, letters, or even contain numbers or punctuation marks -- that store values.  If you look in the Environment window you probably already see a section called Values with names on the left, and values on the right.
-
+  Output: You probably remember the idea of a variable from  algebra, where a letter
+          stands in for a number in an equation or formula. You may also remember the
+          idea from research methods that a variable is a characteristic that can vary,
+          a set of attributes or properties.
 
 - Class: text
-  Output: "To create a variable we use the assignment operator <- which you create by typing a less than sign followed by a hyphen, <-."
+  Output: In R variables are names -- that can be one letter, letters, or even contain
+          numbers or punctuation marks -- that store values.  If you look in the Environment
+          window you probably already see a section called Values with names on the left,
+          and values on the right.
 
+- Class: text
+  Output: "To create a variable we use the assignment operator ` <- ` which you create by typing
+            a less than sign followed by a hyphen, ` <- `."
 
 - Class: cmd_question
-  Output: Now lets create a new variable called c with a value of 7 by typing c <- 7
+  Output: Now let's create a new variable called c with a value of 7 by typing ` c <- 7 `.
   CorrectAnswer: c <- 7
   AnswerTests: omnitest(correctExpr='c <- 7')
   Hint: Type c <- 7
-
 
 - Class: text
   Output: Now you should see the value for c in the Environment window.
 
 - Class: cmd_question
-  Output: Now type c
+  Output: Now type ` c `.
   CorrectAnswer: c
   AnswerTests: omnitest(correctExpr='c')
   Hint: Just type c
 
 - Class: text
-  Output: Any time you type the c you get 7.
+  Output: Any time you type the ` c ` you get 7.
 
 - Class: cmd_question
-  Output: Create a new variable d with a value of 2.
+  Output: Create a new variable ` d ` with a value of 2.
   CorrectAnswer: d <- 2
   AnswerTests: omnitest(correctExpr='d <- 2')
   Hint: Make sure you use a lower case d and the assignment operator.
 
 - Class: cmd_question
-  Output: Multiply c and d
+  Output: Multiply ` c ` and ` d `.
   CorrectAnswer: 14
   AnswerTests: omnitest(correctVal='14')
   Hint: Make sure you use a lower case d and the assignment operator.
 
 - Class: cmd_question
-  Output: This time create a new variable e and assign c*d to it.
+  Output: This time create a new variable e and assign ` c*d ` to it.
   CorrectAnswer: e<-c*d
   AnswerTests: omnitest(correctExpr='e<-c*d')
   Hint: It's the same as the previous question, but use <- to assign the result to e.
@@ -67,160 +70,198 @@
   VideoLink: https://youtu.be/qywprLb0Wjg
 
 - Class: cmd_question
-  Output: Not all variables have to be numbers.  You can make a character variable. For example try state <- 'New York'.  Note that you always surround these with quotation marks.
+  Output: Not all variables have to be numbers.  You can make a character variable.
+          For example try state <- 'New York'.  Note that you always surround these
+          with quotation marks.
   CorrectAnswer: state <- "New York"
   AnswerTests: omnitest(correctExpr="state <- 'New York'")
   Hint: Don't forget the quotation marks and capitalization.
 
 - Class: cmd_question
-  Output: Now make a variable called borough with an assign value of Bronx
+  Output: Now make a variable called borough with an assign value of ` Bronx `.
   CorrectAnswer: borough <- "Bronx"
   AnswerTests: omnitest(correctExpr='borough <- "Bronx"')
   Hint: Don't forget the quotation marks and to capitalize Bronx.
 
 - Class: text
-  Output: Another term  that you may remember from algebra is function.  Just like in math, in R a function is a rule for assigning a new value based on a value that is input.  You have already seen some functions in R, specifically sqrt() and abs().   Sqrt() assigns a value of 4 to an input of 16. You can use variables instead of numbers, for example you can say abs(a)  and that will calculate the absolute value of whatever is stored in a.
+  Output: Another term  that you may remember from algebra is function.
+          Just like in math, in R a function is a rule for assigning a
+          new value based on a value that is input.  You have already seen
+          some functions in R, specifically ` sqrt() ` and ` abs() `.  The function ` sqrt() `
+          assigns a value of 4 to an input of 16. You can use variables instead
+          of numbers, for example you can say ` abs(a) `  and that will calculate
+          the absolute value of whatever is stored in ` a `.
 
 - Class: text
-  Output:  R has many useful functions. Some functions only apply to numbers, and some only apply to charater values. Two useful functions are c() for combine and paste() for joining character values or variables.
+  Output:  R has many useful functions. Some functions only apply to numbers,
+           and some only apply to charater values. Two useful functions are ` c() `
+           for combine and ` paste() ` for joining character values or variables.
 
 - Class: cmd_question
-  Output: Let's see what paste() does.  Type paste(borough, state, sep = ',')
+  Output: Let's see what ` paste() ` does.  Type ` paste(borough, state, sep = ',') `.
   CorrectAnswer: paste(borough, state, sep = ',')
   AnswerTests: omnitest(correctExpr='paste(borough, state, sep = ",")')
   Hint: Copy the code exactly.
 
 - Class: text
-  Output: paste() takes character values (as many as you wants) and combines them into one longer character variable with each part separate with whatever is seleted by sep = .
+  Output: The function ` paste() ` takes character values (as many as you wants) and combines them into one longer
+          character variable with each part separate with whatever is seleted by `  sep =  "" `. You
+          can use any character for ` sep `. Some of the most common are ",", "/",
+          "." and " " (a blank space).
 
 - Class: cmd_question
-  Output: "One of the most important functions in R is c() which stands for combine. Combine takes a set of values or variables and combines them into a vector. Being able to have a vector of numbers or a vector of character variables turns out to be incredibly powerful.  Try this example to start off: c(10, 15,21, d)"
+  Output: "One of the most important functions in R is ` c() ` which stands for combine
+          Being able to have a vector of numbers or a vector of character variables turns out to
+          be incredibly powerful.  Try this example to start off ` c(10, 15,21, d) `."
   CorrectAnswer: c(10, 15,21, d)
   AnswerTests: omnitest(correctExpr='c(10, 15,21, d)')
   Hint: Don't forget to put commas between the values.
 
-
 - Class: text
-  Output: Now let's go back to a previous example and do it with variables. remember this? calculate (2 + 3 + 4 + 5) + (2 * 3 * 4 * 5) + (2^2 + 3^2 + 4^2 + 5^2)
-
-
+  Output: Now let's go back to a previous example and do it with variables.
+          Remember this? Calculate ` (2 + 3 + 4 + 5) + (2 * 3 * 4 * 5) + (2^2 + 3^2 + 4^2 + 5^2) `
 
 - Class: cmd_question
-  Output: "Let's use the c() function to create a vector containing 2,3,4,5 and assign it to x : x <- c(2, 3, 4, 5)"
+  Output: "Let's use the ` c() ` function to create a vector containing 2,3,4,5 and assign it to x, ` x <- c(2, 3, 4, 5) `."
   CorrectAnswer: x<- c(2, 3, 4, 5)
   AnswerTests: omnitest(correctExpr='x<- c(2, 3, 4, 5)')
   Hint: Make sure you use the assignment operator <- and put the numbers in order and separated by commas.
 
-
 - Class: cmd_question
-  Output: "Now let's get the answer using our vector x and some functions:  sum(x) + prod(x) + sum(x^2)"
+  Output: "Now let's get the answer using our vector x and some functions: ` sum(x) + prod(x) + sum(x^2) `"
   CorrectAnswer: sum(x) + prod(x) + sum(x^2)
   AnswerTests: omnitest(correctExpr='sum(x) + prod(x) + sum(x^2)')
   Hint: Copy the code exactly.
 
 - Class: text
-  Output: Notice that by using a vector and functions we have to do less typing and are also less likely to make a mistake by typing the wrong number or operator.
+  Output: Notice that by using a vector and functions we have to do less typing and
+          are also less likely to make a mistake by typing the wrong number or operator.
 
 - Class: mult_question
-  Output: What happens when sum(x^2) is calculated?
+  Output: What happens when ` sum(x^2) ` is calculated?
   AnswerChoices: Each number in x is squared and then the results are added up; The  values of x are added up and then the total is squared; The square root of x is calculated and the results are added up.
   CorrectAnswer: Each number in x is squared and then the results are added up
   AnswerTests: omnitest(correctVal= 'Each number in x is squared and then the results are added up')
   Hint: Remember order of operations. Go from the inside to the outside.
 
 - Class: cmd_question
-  Output: Type ?prod to find out what the prod() function does. The answer will show up in the Help tab.
+  Output: Type ` ?prod ` to find out what the ` prod() ` function does. The answer will show up in the Help tab.
   CorrectAnswer: ?prod
   AnswerTests: omnitest(correctExpr='?prod')
   Hint: Type exactly what you see. Don't capitalize.
 
 - Class: mult_question
-  Output: What did prod(x) represent in our example?
+  Output: What did ` prod(x) ` represent in our example?
   AnswerChoices: Calculate 2 * 3 * 4 * 5; Calculate the product of the values in x; Both
   CorrectAnswer: Both
   AnswerTests: omnitest(correctVal= 'Both')
   Hint: There can be different ways of saying the same thing.
 
 - Class: text
-  Output: Notice in the help for the prod() function it says "prod(..., na.rm = FALSE)".
+  Output: Notice in the help for the ` prod() ` function it says "prod(..., na.rm = FALSE)".
 
 - Class: text
-  Output: Under Details it says "If na.rm is FALSE an NA value in any of the arguments will cause a value of NA to be returned, otherwise NA values are ignored."
+  Output: Under Details it says "If na.rm is FALSEan NA value in any of the arguments will cause a
+          value of NA to be returned, otherwise NA values are ignored."
 
 - Class: text
-  Output: Sometimes people don't answer a question on a survey or data is missing for some other reason.  R represents this with NA. Any function has to be told what to do with these missing values. As a statistician and researcher you have to decide what to do.
+  Output: Sometimes people don't answer a question on a survey or data is missing for some
+          other reason.  R represents this with NA. Any function has to be told what to do
+          with these missing values. As a statistician and researcher you have to
+          decide what to do.
 
 - Class: text
-  Output: Often if there are not too many NAs and if we are confident that they won't bias our results we choose to exclude NAs from our calculations.  R forces you to do this in a very conscious manner by saying that you want to remove the NAs from calculations by saying na.rm = TRUE.
+  Output: Often if there are not too many NAs and if we are confident that they
+          won't bias our results we choose to exclude NAs from our calculations.
+          R forces you to do this in a very conscious manner by saying that you
+          want to remove the NAs from calculations by saying ` na.rm = TRUE `.
 
 - Class: cmd_question
-  Output: Let's use the combine function to add a missing value to x by entering x <- c(x, NA)
+  Output: Let's use the combine function to add a missing value to x by entering ` x <- c(x, NA) `.
   CorrectAnswer: x <- c(x, NA)
   AnswerTests: omnitest(correctExpr='x <- c(x, NA)')
   Hint: Use the <- assignment operator and copy exactly.
 
 - Class: cmd_question
-  Output: Display the new x by typing x
+  Output: Display the new x by typing ` x `.
   CorrectAnswer: x
   AnswerTests: omnitest(correctExpr='x')
   Hint: Just x, nothing else.
 
 - Class: cmd_question
-  Output: Now get prod(x)
+  Output: Now get ` prod(x) `.
   CorrectAnswer: prod(x)
   AnswerTests: omnitest(correctExpr='prod(x)')
   Hint: Check your typing.
 
 - Class: text
-  Output: NA!  Remember the help told us this would happen; it said "If na.rm is FALSE an NA value in any of the arguments will cause a value of NA to be returned" and by default na.rm = FALSE.
+  Output: NA!  Remember the help told us this would happen; it said "If na.rm
+          is FALSE an NA value in any of the arguments will cause a value of NA
+          to be returned" and by default ` na.rm = FALSE `.
 
 - Class: cmd_question
-  Output: "Now try this: prod(x, na.rm = TRUE)"
+  Output: "Now try this: ` prod(x, na.rm = TRUE) `."
   CorrectAnswer: prod(x, na.rm = TRUE)
   AnswerTests: omnitest(correctExpr='prod(x, na.rm = TRUE)')
   Hint: TRUE has to be in capital letters.
 
 - Class: text
-  Output: Great! Now we get the same answer as we got without the NA. The need to add na.rm = TRUE is going to come up a lot in doing data analysis. Don't panic if you do a calculation and get NA as the results. You probably just need to go back and add na.rm = TRUE.
+  Output: Great! Now we get the same answer as we got without the NA.
+          The need to add ` na.rm = TRUE ` is going to come up a lot
+          in doing data analysis. Don't panic if you do a calculation
+          and get NA as the results. You probably just need to go back
+          and add ` na.rm = TRUE `.
 
 - Class: cmd_question
-  Output: Change this sum(x) + prod(x) + sum(x^2) so that it removes missing values.
+  Output: Change this ` sum(x) + prod(x) + sum(x^2) ` so that it removes missing values.
   CorrectAnswer: sum(x, na.rm = TRUE) + prod(x, na.rm = TRUE) + sum(x^2, na.rm = TRUE)
   AnswerTests: omnitest(correctExpr='sum(x, na.rm = TRUE) + prod(x, na.rm = TRUE) + sum(x^2, na.rm = TRUE)')
   Hint: Make sure to modify all of the parts.
 
 - Class: text
-  Output: Yay! One last thing to know is that you can create your own function. You might not want to do that very often, but if you are clever you might sometimes see ways to use functions to make doing your course work easier. People say good coders are lazy, but what they really mean by that is that they come clever shortcuts for things that also reduce errors.
+  Output: Yay! One last thing to know is that you can create
+          your own function. You might not want to do that very often,
+          but if you are clever you might sometimes see ways to use
+          functions to make doing your course work easier. People say
+          good coders are lazy, but what they really mean by that is that
+          they come clever shortcuts for things that also reduce errors.
 
 - Class: script
-  Output: 'Look at this new function called "myfunction" and notice that it contains the same calculation that we have been doing. Click the checkbox next to "Source on Save" and then on save. After you save, type submit().'
+  Output: 'Look at this new function called "myfunction" and notice that it
+  contains the same calculation that we have been doing. Click the checkbox
+  next to "Source on Save" and then on save. After you save, type submit().'
   AnswerTests: test_myfunction()
   Hint: Really, just save it.
   Script: myfunction.R
 
 - Class: cmd_question
-  Output: Now get myfunction() of x.
+  Output: Now get ` myfunction() ` of x.
   CorrectAnswer: myfunction(x)
   AnswerTests: omnitest(correctExpr='myfunction(x)')
   Hint: Put the x inside the ().
 
 - Class: text
-  Output: Notice that now in the Environment window you see a section called Functions that contains myfunction.
+  Output: Notice that now in the Environment window you see a section
+          called Functions that contains myfunction.
 
 - Class: cmd_question
-  Output: Make a new vector y, with values 4, 6, 7, NA, 1
+  Output: Make a new vector ` y `, with values 4, 6, 7, NA, 1
   CorrectAnswer: y<-c(4, 6, 7, NA, 1)
   AnswerTests: omnitest(correctExpr='y<-c(4, 6, 7, NA, 1)')
   Hint: Remember to use <- and c()
 
 - Class: cmd_question
-  Output: Now use myfunction() on y
+  Output: Now use ` myfunction() ` on y
   CorrectAnswer: myfunction(y)
   AnswerTests: omnitest(correctExpr='myfunction(y)')
   Hint: Put the y inside the parentheses.
 
 - Class: text
-  Output: The name of the variable you use myfunction() on does not matter.  Functions are useful because they save you time when doing the same thing over and over. They also reduce errors by doing things for you. In our case the function takes care of setting na.rm to TRUE.
+  Output: The name of the variable you use ` myfunction() ` on does not
+          matter. Functions are useful because they save you time when
+          doing the same thing over and over. They also reduce errors by
+          doing things for you. In our case the function takes care of
+          setting na.rm to TRUE.
 
 - Class: text
   Output: Now that you know more about how variables and functions work, in the next we will start looking at some data.
