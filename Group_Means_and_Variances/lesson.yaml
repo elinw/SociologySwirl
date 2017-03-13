@@ -67,9 +67,9 @@
 
 - Class: cmd_question
   Output: Let's also see how many chicks there were that received each of the different
-     types of feed using ` crosstab(chickwts, row.vars="feed") `.
-  CorrectAnswer: crosstab(chickwts, row.vars="feed")
-  AnswerTests: omnitest(correctExpr='crosstab(chickwts, row.vars="feed") ')
+     types of feed using ` frequency(chickwts$feed) `.
+  CorrectAnswer: frequency(chickwts$feed)
+  AnswerTests: omnitest(correctExpr='frequency(chickwts$feed)')
   Hint: Just copy the code given.
 
 - Class: mult_question

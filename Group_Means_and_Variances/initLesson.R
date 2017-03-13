@@ -6,6 +6,8 @@ chickwts$mean_weight <- mean(chickwts$weight)
 chickwts$weight_deviation <- chickwts$weight - chickwts$mean_weight
 chickwts$median_weight <- median(chickwts$weight)
 chickwts$weight_deviation_median <- chickwts$weight - chickwts$median_weight
+library(ggplot2)
+library(lehmansociology)
 # Create TSS function
 TSS <- function(x) {
   n <- length(x)

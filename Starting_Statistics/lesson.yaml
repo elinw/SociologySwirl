@@ -7,26 +7,34 @@
   Version: 2.4.1
 
 - Class: text
-  Output: R is a programming language that is used for statistical analysis. You have already seen some statistical functions, but now let's take a closer look at them.
-
-
-- Class: text
-  Output: "There are many ways to break down kinds of statistics. For example, there are univariate statistics that summarize data about a single variable, bivariate statistics that summarize the relationships between two variables, and more."
+  Output: R is a programming language that is used for statistical analysis.
+          You have already seen some statistical functions, but now let's take a closer look at them.
 
 - Class: text
-  Output: In this lesson we will focus on univariate statistics. Within these we commonly hear about two big groups, measures of central tendency and measures of variation.  You should try to memorize the simple commands for measure of central tendency and variation in r.
+  Output: "There are many ways to break down kinds of statistics. For example,
+           there are univariate statistics that summarize data about a single variable,
+           bivariate statistics that summarize the relationships between two variables, and more."
 
 - Class: text
-  Output: This lesson is about learning the names of R functions and how to use them. Fortunately in most cases the names are obvious. Unfortunately this is not always true.
+  Output: In this lesson we will focus on univariate statistics. Within these we commonly
+          hear about two big groups, measures of central tendency and measures of variation.
+          You should try to memorize the simple commands for measure of central tendency and
+          variation in r.
+
+- Class: text
+  Output: This lesson is about learning the names of R functions and how to use them.
+          Fortunately in most cases the names are obvious. Unfortunately this is not always true.
 
 - Class: cmd_question
-  Output: To start off we will use the iris data set, which is a well known example data set in R. Take a quick look at the data set by using the head() function.
+  Output: To start off we will use the iris data set, which is a well known example data set in
+          R. Take a quick look at the data set by using the ` head() ` function.
   CorrectAnswer: head(iris)
   AnswerTests: omnitest(correctExpr='head(iris)')
   Hint: Put the data set name, iris, inside the parentheses of head()
 
 - Class: cmd_question
-  Output: This data set is  about 150 irises and is a famous data set in the history of statistics. Type ?iris to read about the data.
+  Output: This data set is  about 150 irises and is a famous data set in the history
+           of statistics. Type ` ?iris ` to read about the data.
   CorrectAnswer: ?iris
   AnswerTests: omnitest(correctExpr='?iris')
   Hint: Type ?iris and look in the Help tab.
@@ -39,32 +47,44 @@
   Hint: Read the help page.
 
 - Class: video
-  Output: This data is so famous that it has a Wikipedia page. Would you like to see the Wikipedia page?
+  Output: This data is so famous that it has a Wikipedia page.
+          Would you like to see the Wikipedia page?
   VideoLink: https://en.wikipedia.org/wiki/Iris_flower_data_set
 
 - Class: cmd_question
-  Output: For real practical importance it is good to know this data set because when you search for R help on the web you will find out that so many examples use it and people assume you know what the variables are.  Let's get a list of variables by using str()
+  Output: For real practical importance it is good to know this data set because when you
+          search for R help on the web you will find out that so many examples use it and
+          people assume you know what the variables are.  Let's get a list of variables by using ` str() `
   CorrectAnswer: str(iris)
   AnswerTests: omnitest(correctExpr='str(iris)')
   Hint: Use str(iris)
 
 - Class: cmd_question
-  Output: The most commonly used measure of central tendency for interval or ratio data is the mean.  This is also commonly called the average. Really, what is called the mean should be called the arithmetic mean.  Let's get the mean of Sepal.Length by typing mean(iris$Sepal.Length, na.rm=TRUE).
+  Output: The most widely used measure of central tendency for interval or ratio data
+          is the mean.  This is also commonly called the average. Really, what is called
+          the mean should be called the arithmetic mean.  Let's get the mean of Sepal.Length
+          by typing ` mean(iris$Sepal.Length, na.rm=TRUE) `.
   CorrectAnswer: mean(iris$Sepal.Length, na.rm=TRUE)
   AnswerTests: omnitest(correctExpr='mean(iris$Sepal.Length, na.rm=TRUE)')
   Hint: Copy the code mean(iris$Sepal.Length, na.rm=TRUE)
 
 - Class: cmd_question
-  Output: Get the mean of Petal.Length
+  Output: Get the mean of Petal.Length.
   CorrectAnswer: mean(iris$Petal.Length, na.rm=TRUE)
   AnswerTests: omnitest(correctExpr='mean(iris$Petal.Length, na.rm=TRUE)')
   Hint: Copy the code mean(iris$Petal.Length, na.rm=TRUE)
 
 - Class: text
-  Output: We use the na.rm option to remove the missing values from the data frame before doing the calculation. If we did not do this and there were any missing values the result would have been a missing value. Fortunately the iris data set has no missing values.
+  Output: We use the ` na.rm ` option to remove the missing values from the data frame
+          before doing the calculation. If we did not do this and there were any missing
+          values the result would have been a missing value. Fortunately the iris data set
+          has no missing values.
 
 - Class: cmd_question
-  Output: The second main measure of central tendency for interval and ordinal variables is the median which is a special name for the 50th percentile. That is, it is the number that half of the values are above and half are below.  Use median() to get the median of Sepal.Length.  Don't forget to use na.rm.
+  Output: The second main measure of central tendency for interval and ordinal variables
+          is the median which is a special name for the 50th percentile. That is, it is
+          the number that half of the values are above and half are below.  Use ` median() `
+          to get the median of Sepal.Length.  Don't forget to use na.rm.
   CorrectAnswer: median(iris$Sepal.Length, na.rm=TRUE)
   AnswerTests: omnitest(correctExpr='median(iris$Sepal.Length, na.rm=TRUE)')
   Hint: Make sure to use upper and lower case exactly as written, Sepal.Length.
@@ -76,74 +96,81 @@
   Hint: Remember to use na.rm and to check your spelling.
 
 - Class: cmd_question
-  Output: Another way to get the median is to use the quantile() function to ask for the 50th percentile. For example, quantile(iris$Sepal.Length, .5, na.rm=TRUE).
+  Output: Another way to get the median is to use the ` quantile() ` function to ask for
+          the 50th percentile. For example, ` quantile(iris$Sepal.Length, .5, na.rm=TRUE) `.
   CorrectAnswer: quantile(iris$Sepal.Length, .5, na.rm=TRUE)
   AnswerTests: omnitest(correctExpr='quantile(iris$Sepal.Length, .5, na.rm=TRUE)')
   Hint: Make sure to check your spelling.
 
 - Class: cmd_question
-  Output: Use quantile() to get the 50th percentile of Sepal.Width.
+  Output: Use ` quantile() ` to get the 50th percentile of Sepal.Width.
   CorrectAnswer: quantile(iris$Sepal.Width, .5, na.rm=TRUE)
   AnswerTests: omnitest(correctExpr='quantile(iris$Sepal.Width, .5, na.rm=TRUE)')
   Hint: Check your spelling including capitalization, and don't foget the na.rm.
 
 - Class: mult_question
-  Output: Why does the .5 in the quantile() command represent?
+  Output: Why does the .5 in the ` quantile(.5, na.rm=TRUE) ` command represent?
   AnswerChoices: A proportion of .5; How the answer should be rounded; How long it takes to do the calculation.
   CorrectAnswer: A proportion of .5
   AnswerTests: omnitest(correctVal= 'A proportion of .5')
   Hint: A median is the point that half of the values are above and half are below. How does half relate to .5?
 
 - Class: mult_question
-  Output: One of the reasons we calculate measures of central tendency is to compare variables or compare groups to each other. Scroll back up and determine which has the higher median, Sepal.Length or Sepal.Width.
+  Output: One of the reasons we calculate measures of central tendency is to compare variables or
+          compare groups to each other. Scroll back up and determine which has the higher median,
+          Sepal.Length or Sepal.Width.
   AnswerChoices: Sepal.Length; Sepal.Width; The two medians are the same.
   CorrectAnswer: Sepal.Length
   AnswerTests: omnitest(correctVal= 'Sepal.Length')
   Hint: Scroll back up on the screen or you can do the calculations again.
 
 - Class: cmd_question
-  Output: The quantile() function is very flexible and instead of .5 you can put any number between 0 and 1. Let's try 0 for Sepal.Length.
+  Output: "The ` quantile() ` function is very flexible and instead of .5 you can put any number between 0 and 1.
+          Let's try 0 for Sepal.Length."
   CorrectAnswer: quantile(iris$Sepal.Length, 0, na.rm = TRUE)
   AnswerTests: omnitest(correctExpr='quantile(iris$Sepal.Length, 0, na.rm = TRUE)')
   Hint: hint
 
 - Class: cmd_question
-  Output: Now try min() for Sepal.Length. This gives you the minimum value. Don't include the 0!
+  Output: Now try ` min() ` for Sepal.Length. This gives you the minimum value. Don't include the 0!
   CorrectAnswer: min(iris$Sepal.Length, na.rm=TRUE)
   AnswerTests: omnitest(correctExpr='min(iris$Sepal.Length, na.rm= TRUE)')
   Hint: Type min() and put iris$Sepal.Length inside the parentheses.
 
 - Class: mult_question
-  Output: Why do min(iris$Sepal.Length) and quantile(0, iris$Sepal.Length, na.rm = TRUE) give the same answer?
+  Output: Why do ` min(iris$Sepal.Length) ` and ` quantile(0, iris$Sepal.Length, na.rm = TRUE) ` give the same answer?
   AnswerChoices: Because the 0 quantile is defined as the value with no observations below it.; Because the minimum value is the value with no values below it.; Because these both mean the same thing.; All of the statements are corrrect.
   CorrectAnswer: All of the statements are corrrect.
   AnswerTests: omnitest(correctVal= 'All of the statements are corrrect.')
   Hint: Read each statement carefully and look at your results.
 
 - Class: cmd_question
-  Output: Try getting the max() of Sepal.Length
+  Output: Try getting the ` max() ` of Sepal.Length
   CorrectAnswer: max(iris$Sepal.Length, na.rm = TRUE)
   AnswerTests: omnitest(correctExpr='max(iris$Sepal.Length, na.rm = TRUE)')
   Hint: Put the variable in the parentheses. Don't forget upper and lower case matter and to use iris$.
 
 - Class: cmd_question
-  Output: Now use quantile() for Sepal.Length with a Proportion of 1.
+  Output: Now use ` quantile() ` for Sepal.Length with a Proportion of 1.
   CorrectAnswer: quantile(iris$Sepal.Length, 1, na.rm = TRUE)
   AnswerTests: omnitest(correctExpr='quantile(iris$Sepal.Length, 1, na.rm = TRUE)')
   Hint: Put 1 instead of 0 or .5.  Don't forget na.rm=TRUE.
 
 - Class: text
-  Output: As you see, the maximum and the 100th percentile are the same.  This might be a surprise if you have always heard that the highest test score is the 99.99 Percentile. We won't go into a techincal explanation here but you can just think about it as a rounding issue.
+  Output: As you see, the maximum and the 100th percentile are the same.  This might be a
+          surprise if you have always heard that the highest test score is the 99.99 Percentile.
+          We won't go into a techincal explanation here but you can just think about it as a rounding issue.
 
 - Class: cmd_question
-  Output: One of our first measures of variation uses the maximum and minium or 0th and 100th percentiles. It is called the range and is the difference between these two values. Let's get the range for Sepal.Length by subtracting the 0th percentile from the 100th percentile.
+  Output: One of our first measures of variation uses the maximum and minium or 0th and 100th percentiles.
+          It is called the range and is the difference between these two values. Let's get the range for
+          Sepal.Length by subtracting the 0th percentile from the 100th percentile.
   CorrectAnswer: quantile(iris$Sepal.Length, 1, na.rm=TRUE) - quantile(iris$Sepal.Length, 0, na.rm=TRUE)
   AnswerTests: omnitest(correctExpr='quantile(iris$Sepal.Length, 1, na.rm=TRUE) - quantile(iris$Sepal.Length, 0, na.rm=TRUE)')
   Hint: Remember how to get a quantile. You will type the formula twice, once with 1 and once with 0.  Put a minus sign between the two calculations.
 
 - Class: text
   Output: This statistic is called the range. The range tells you what the difference is between the highest and lowest values.
-
 
 - Class: cmd_question
   Output: Calculate the range for Sepal.Width.
@@ -160,42 +187,56 @@
 
 
 - Class: cmd_question
-  Output: R has a range() function, but it doesn't do what we want. Try range() for Sepal.Length
+  Output: R has a ` range() ` function, but it doesn't do what we want. Try ` range() ` for Sepal.Length
   CorrectAnswer: range(iris$Sepal.Length, na.rm = TRUE)
   AnswerTests: omnitest(correctExpr='range(iris$Sepal.Length, na.rm = TRUE)')
   Hint: Don't forget na.rm.  Put iris$Sepal.Length inside range().
 
 - Class: text
-  Output: Weird, it gives us two numbers! If you look carefully you will see that they are the minimum and maximum. This isn't what we want (though it might be useful to get sometimes), so we have to do the subtraction of the two quantiles, of the max() and min() or of the two values returned by range.
+  Output: Weird, it gives us two numbers! If you look carefully you will see that they are the minimum and
+          maximum. This isn't what we want (though it might be useful to get sometimes), so we have to do the subtraction of the two quantiles,
+          of the ` max() ` and ` min() ` or of the two values returned by range.
 
 - Class: cmd_question
-  Output: We can use the quantile() function to get any quantile and we an also use it to get multiple quantiles. For example let's try quantile(iris$Sepal.Length, probs=c(.25, .5, .75, 1), na.rm = 0)
+  Output: We can use the ` quantile() ` function to get any quantile and we an also use it to get multiple quantiles.
+          For example let's try `quantile(iris$Sepal.Length, probs=c(.25, .5, .75, 1), na.rm = 0)`.
   CorrectAnswer: quantile(iris$Sepal.Length, probs=c(.25, .5, .75, 1), na.rm = TRUE)
   AnswerTests: omnitest(correctExpr='quantile(iris$Sepal.Length, probs=c(.25, .5, .75, 1), na.rm = TRUE)')
   Hint: Copy the code exactly -- check for typing errors.
 
-
+- Class: text
+  Output: These 4 quantiles are sometimes called the quartiles, because
+          they are the values that you can use to divide your sample into quarters, or 4 equal
+          sized groups. The groups are the bottom 25%, the observations above that group and
+          below the 50th, the group from the 50th quantile to the 75th quantile, and the observations
+          from the 75th quantile to the top.
 
 - Class: text
-  Output: These 4 quantiles are sometimes called the quartiles, because they are the values that you can use to divide your sample into quarters, or 4 equal sized groups. The groups are the bottom 25%, the observations above that group and below the 50th, the group from the 50th quantile to the 75th quantile, and the observatios from the 75th quantile to the top.
-
-- Class: text
-  Output: This highlights that we sometimes use special names for specific quantiles. With quartiles we refer to the first, second, third, and fourth quartiles.  We already have seen the .5 quantile can be called the median and the 50th percentile but it is also the second quartile. Quartiles are used a lot in the visualization of data (graphs) and in various statistical techniques. For example, box and whiskers plots display the quartiles.
+  Output: This highlights that we sometimes use special names for specific quantiles.
+          With quartiles we refer to the first, second, third, and fourth quartiles.
+          We already have seen the .5 quantile can be called the median and the 50th
+          percentile but it is also the second quartile. Quartiles are used a lot in
+          the visualization of data (graphs) and in various statistical techniques.
+          For example, box and whiskers plots display the quartiles.
 
 - Class: cmd_question
-  Output: Our second measure of spread is called the Interquartile Range.  This is a variation on the range that uses the second and third quartiles instead of the minimum and maxium.  Use the quintile function to find the difference between the third and first quartiles (also known as the 75th and 25th percentiles) for Sepal.Width.
+  Output: Our second measure of spread is called the Interquartile Range.  This is a variation on the
+          range that uses the second and third quartiles instead of the minimum and maxium.  Use the
+          ` quantile() ` function to find the difference between the third and first quartiles (also known
+          as the 75th and 25th percentiles) for Sepal.Width.
   CorrectAnswer: quantile(iris$Sepal.Width, .75, na.rm=TRUE) - quantile(iris$Sepal.Width, .25, na.rm=TRUE)
   AnswerTests: omnitest(correctExpr='quantile(iris$Sepal.Width, .75, na.rm=TRUE) - quantile(iris$Sepal.Width, .25, na.rm=TRUE)')
   Hint: You have to type carefully, make sure to put the .75 first and then subtract the .25 from it, otherwise you will get a negative number.
 
 - Class: cmd_question
-  Output: Fortunately R does have a command IQR() that gives you the interquartile range. Try it for Sepal.Width. Make sure that you use capital letters for IQR
+  Output: Fortunately R does have a command ` IQR() ` that gives you the interquartile range. Try it for Sepal.Width.
+          Make sure that you use capital letters for IQR.
   CorrectAnswer: IQR(iris$Sepal.Width, na.rm = TRUE)
   AnswerTests: omnitest(correctExpr='IQR(iris$Sepal.Width, na.rm=TRUE)')
   Hint: Make sure you type carefully and include na.rm.
 
 - Class: cmd_question
-  Output: Use IQR() to get the interquartile range for Sepal.Length.
+  Output: Use ` IQR() ` to get the interquartile range for Sepal.Length.
   CorrectAnswer: IQR(iris$Sepal.Length, na.rm = TRUE)
   AnswerTests: omnitest(correctExpr='IQR(iris$Sepal.Length, na.rm = TRUE)')
   Hint: Make sure you type carefully and include na.rm. Remember that IQR must be upper case.
@@ -208,21 +249,32 @@
   Hint: Scroll up to look at your answers.
 
 - Class: text
-  Output: The IQR is really useful because it tells us about the middle half of our data, excluding the top and bottom quarters.  Often we are really interested in understanding the middle group, and this is useful for other reasons.
+  Output: The IQR is really useful because it tells us about the middle half
+          of our data, excluding the top and bottom quarters.  Often we are
+          really interested in understanding the middle group, and this is useful
+          for other reasons.
 
 - Class: text
-  Output: The last statistic we will cover in this lesson is called the mode. The mode is defined as the value that is found most frequently for a specific variable. The mode on the surface seems like a very simple function, but it actually is very complex if you think about the steps involved in obtaining it. In fact it is even possible for a variable to have two or more modes or no mode.  One good feature of the mode is that it can be used for any kind of variable.
+  Output: The last statistic we will cover in this lesson is called the mode.
+          The mode is defined as the value that is found most frequently for a
+          specific variable. The mode on the surface seems like a very simple
+          function, but it actually is very complex if you think about the steps
+          involved in obtaining it. In fact it is even possible for a variable to
+          have two or more modes or no mode.  One good feature of the mode is that
+          it can be used for any kind of variable.
 
 - Class: cmd_question
-  Output: Let's take a closer look at the distribution of Sepal.Length by using the table() command. In table() there is not a na.rm option so leave that out (we'll learn more about this in another lesson).
+  Output: "Let's take a closer look at the distribution of Sepal.Length by using the ` table() ` command. In ` table() ` there is
+           not a na.rm option so leave that out (we'll learn more about this in another lesson)."
   CorrectAnswer: table(iris$Sepal.Length)
   AnswerTests: omnitest(correctExpr='table(iris$Sepal.Length)')
   Hint: Type table() and put iris$Sepal.Length
 
-
-
 - Class: mult_question
-  Output: Wow that's a lot of numbers.  The top row of numbers represents the values of Sepal.Length and underneath that you see the number of irises with that value also known as the frequency. This may wrap around on your screen and look like 4 rows if your monitor is small.  What is the largest frequency?
+  Output: Wow that's a lot of numbers.  The top row of numbers represents the values of Sepal.Length
+          and underneath that you see the number of irises with that value also known as the frequency.
+          This may wrap around on your screen and look like 4 rows if your monitor is small.
+          What is the largest frequency?
   AnswerChoices: 10;15;6
   CorrectAnswer: 10
   AnswerTests: omnitest(correctVal= '10')
@@ -236,20 +288,25 @@
   Hint: Find the value for which the frequency is 10.
 
 - Class: cmd_question
-  Output: Unfortunately the mode() function in R does something completely different than find the mode.  Try mode() for Sepal.Length.
+  Output: Unfortunately the ` mode() ` function in R does something completely different
+           than find the mode.  Try ` mode() ` for Sepal.Length.
   CorrectAnswer: mode(iris$Sepal.Length)
   AnswerTests: omnitest(correctExpr='mode(iris$Sepal.Length)')
   Hint: Check spelling and upper and lower case letters.
 
 - Class: text
-  Output: Not helpful for what we want! Sure it is nice to be able to find out what type of variable something is, but we want the statistic mode.  You must memorize that using mode() is incorrect for this purpose.
+  Output: Not helpful for what we want! Sure it is nice to be able to find out what
+          type of variable something is, but we want the statistic mode.  You must
+          memorize that using ` mode() ` is incorrect for this purpose.
 
 - Class: cmd_question
-  Output: Fortunately in our lehmansociology package we have a function called MODE() that will help.  Remember you will have to always type all upper case.  Try getting MODE() of Sepal.Length.
+  Output: Fortunately in our lehmansociology package we have a function called ` MODE() `
+          that will help.  Remember you will have to always type all upper case.
+          Try getting ` MODE() ` of Sepal.Length.
   CorrectAnswer: MODE(iris$Sepal.Length)
   AnswerTests: omnitest(correctExpr='MODE(iris$Sepal.Length)')
   Hint: Make sure you use all capitals in MODE().
 
-
 - Class: text
-  Output: Great going! We haven't covered all measures of variation or central tendency but we have a good start!
+  Output: Great going! We haven't covered all measures of variation or central tendency but we
+          have a good start!

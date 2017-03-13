@@ -9,9 +9,10 @@
 - Class: text
   Output: In this lesson we are going to us R to deepen understanding of the mean.  For this lesson we will use the chickwts data set to explore the mean.
 
-
 - Class: cmd_question
-  Output: The data set we are using is about chickens and how much they weigh and how that relates to the kind of feed they got. Learn more about the data set by typing ?chickwts
+  Output: The data set we are using is about chickens and how much they weigh
+          and how that relates to the kind of feed they got. Learn more about the data
+          set by typing ` ?chickwts `.
   CorrectAnswer: ?chickwts
   AnswerTests: omnitest(correctExpr='?chickwts')
   Hint: Type ?chickwts
@@ -32,24 +33,24 @@
 
 - Class: text
   Output: "Although in sociology we don't usually study chickens, you can
-  think of this as like an obesity study where feed is something about the
-  kind of food available in a neighborhood."
+           think of this as like an obesity study where feed is something about the
+          kind of food available in a neighborhood."
 
 - Class: text
   Output: As you work on this make sure not to confuse this data set with the
-   other chicken data set called chickWeight.
+          other chicken data set called chickWeight.
 
 - Class: cmd_question
   Output: The mean is a statistic you are already familiar with and R has a
-   simple to use function mean() that will calculate it for you. Use R to get
-   the mean() of chickwts$weight. We know that all the data are present so we do not need to include na.rm.
-  CorrectAnswer: mean(chickwts$weight)
-  AnswerTests: omnitest(correctExpr='mean(chickwts$weight)')
+          simple to use function ` mean() ` that will calculate it for you. Use R to get
+          the ` mean() ` of chickwts$weight. Don't forget ` na.rm `.
+  CorrectAnswer: mean(chickwts$weight, na.rm=TRUE)
+  AnswerTests: omnitest(correctExpr='mean(chickwts$weight, na.rm=TRUE)')
   Hint: Check your spelling
 
 
 - Class: cmd_question
-  Output: Now use mean() on the feed variable
+  Output: Now use ` mean() ` on the feed variable
   CorrectAnswer: mean(chickwts$feed)
   AnswerTests: omnitest(correctExpr='mean(chickwts$feed)')
   Hint: Make sure to use the dataset$variable format.
@@ -61,30 +62,29 @@
   AnswerTests: omnitest(correctVal= 'Because feed is a nominal variable')
   Hint: Check the help screen for chikwts for information on feed.
 
-
 - Class: text
   Output: Now we want to look more deeply into what the mean really is and why
-   it is so important to statistians.
+          it is so important to statistians.
 
 - Class: cmd_question
-  Output: The mean is calculated by adding up all of the values of a variable
-   and dividing by the sample size. In this case sum() for the weight variable
-   can be used to add the values up and nrow(chickwts) can count the number of
-   observations. Do this calculation.
+  Output: The mean is usually calculated by adding up all of the values of a variable
+          and dividing by the sample size. In this case ` sum() ` for the weight
+          variable used to add the values up and nrow(chickwts) can count the number of
+          observations. Do this calculation.
   CorrectAnswer: sum(chickwts$weight)/nrow(chickwts)
   AnswerTests: omnitest(correctExpr='sum(chickwts$weight)/nrow(chickwts)')
   Hint: Make sure you use sum(chickwts$weight) and nrow(chickwts)
 
 - Class: cmd_question
   Output: "Lets create a new variable in the chickwts data called mean_weight
-   and set it equal to the mean of chickwts using the assignment operator (<-).
-   Use the mean() function."
+           and set it equal to the mean of chickwts using the assignment operator (<-).
+           Use the ` mean() ` function."
   CorrectAnswer: chickwts$mean_weight <- mean(chickwts$weight)
   AnswerTests: omnitest(correctExpr='chickwts$mean_weight <- mean(chickwts$weight)')
   Hint: THe new variable is created as chickwts$mean_weight. Use the mean() function to calculate it.
 
 - Class: cmd_question
-  Output: Get the summary() of the chickwts data set.
+  Output: Get the ` summary() ` of the chickwts data set.
   CorrectAnswer: summary(chickwts)
   AnswerTests: omnitest(correctExpr='summary(chickwts)',)
   Hint: Put the name of the data set inside the parentheses of summary().
@@ -103,14 +103,13 @@
   AnswerTests: omnitest(correctVal= 'They are all the same.')
   Hint: Look carefully at the summary() results.
 
-
 - Class: text
   Output: The values of mean_weight are all the same because when we created
    the variable we set it equal to the mean of weight, which is 261.3 (rounded),
    meaning all of the values are the same.
 
 - Class: cmd_question
-  Output: "What is the sum of mean_weight? Use the sum() function."
+  Output: "What is the sum of mean_weight? Use the ` sum() ` function."
   CorrectAnswer: sum(chickwts$mean_weight)
   AnswerTests: omnitest(correctExpr='sum(chickwts$mean_weight)')
   Hint: Put the chickwts$mean_weight inside the parentheses.
@@ -129,7 +128,7 @@
   Hint: Compare the values for the two previous answers.
 
 - Class: mult_question
-  Output: Remember that the mean is the sum of the values divided by the number of observations or mean = sum/n.  Based on that, why are the mean of weight and the mean of mean_weight equal?
+  Output: Remember that the mean is calculated by taking the sum of the values divided by the number of observations or mean = sum/n.  Based on that, why are the mean of weight and the mean of mean_weight equal?
   AnswerChoices: Because the sums are equal and the number of observations are equal; Because the sums are equal and the number of observations are different;Just a coincidence.
   CorrectAnswer: Because the sums are equal and the number of observations are equal
   AnswerTests: omnitest(correctVal= 'Because the sums are equal and the number of observations are equal')
@@ -143,13 +142,34 @@
   Hint: Multiply both sides of the equation by n.
 
 - Class: text
-  Output: The previous answer is a good shortcut to remember. To get the sum, you can always multiply the mean by the number of observations.
+  Output: The previous answer is a good shortcut to remember. To get the sum,
+          you can always multiply the mean by the number of observations.
 
 - Class: text
-  Output: "This is something we use all the time. For example if we say the mean number of apple slices a child will eat is 3.2 and we have 20 children, we can estimate that we need 3.2*20 apple slices, that is 64 slices total."
+  Output: "This is something we use all the time. For example if we say the mean number
+           of apple slices a child will eat is 3.2 and we have 20 children, we can estimate
+           that we need 3.2*20 apple slices, that is 64 slices total."
 
 - Class: text
-  Output: When we set all of the values of a new variable equal to the mean of another variable we are taking the same total amount (the sum) and spreading it evenly across all the observations.
+  Output: When we set all of the values of a new variable equal to the mean of another
+          variable we are taking the same total amount (the sum) and spreading it evenly across
+          all the observations.
+
+- Class: cmd_question
+  Output: Suppose we have 30 people we studied for a week. Overall the have a mean of 42 for number of hours worked per week.
+          Calculate the total number of hours per week that the sample worked.
+  CorrectAnswer: 1260
+  AnswerTests: omnitest(correctVal=1260)
+  Hint: Use the same approach as for the apple slices.
+
+- Class: cmd_question
+  Output: We can also use this same idea for grouped data. Suppose we have
+          15 people who worked 24 hours and 15 people who worked 60 hours?
+          Instead of adding 24, 15 times and then 60 15 times we can use multiplication.
+          ` (15*24 + 15*60)/30 `.  Try that.
+  CorrectAnswer: 42
+  AnswerTests: omnitest(correctVal=42)
+  Hint: Copy the code (15*24 + 15*60)/30.
 
 - Class: mult_question
   Output: Why is the mean sometimes called the fair share value?
@@ -159,7 +179,8 @@
   Hint: Look back over the previous questions and answers to understand this.
 
 - Class: text
-  Output: If you are not sure you understood the fair share value, scroll back through what has been done so far in this lesson.
+  Output: If you are not sure you understood the fair share value, scroll back through what has been done
+          so far in this lesson.
 
 - Class: text
   Output: Now we are going to look at a second reason the mean is an important and useful statistic.
@@ -205,7 +226,7 @@
   Hint: Look at the values in the weight column and compare to the mean.
 
 - Class: cmd_question
-  Output: "Are the IQRs for weight and weigh_deviation the same or different? Type IQR(chickwts$weight) == IQR(chickwts$weight_deviation) to find out."
+  Output: "Are the IQRs for weight and weigh_deviation the same or different? Type ` IQR(chickwts$weight) == IQR(chickwts$weight_deviation) ` to find out."
   CorrectAnswer: IQR(chickwts$weight) == IQR(chickwts$weight_deviation)
   AnswerTests: omnitest(correctExpr='IQR(chickwts$weight) == IQR(chickwts$weight_deviation)')
   Hint: Type IQR(chickwts$weight) == IQR(chickwts$weight_deviation)
@@ -218,14 +239,15 @@
   Hint: Read each statement carefully and think about what we did.
 
 - Class: mult_question
-  Output: Earlier we learned that sum = n*mean.  Based on that, without doing any calculations, what will the sum of weight_deviation be?
+  Output: Earlier we learned that sum = n*mean.  Based on that,
+          without doing any calculations, what will the sum of weight_deviation be?
   AnswerChoices: 0;261.3;18533
   CorrectAnswer: 0
   AnswerTests: omnitest(correctVal= '0')
   Hint: Think about what you know about the mean.
 
 - Class: cmd_question
-  Output: Now use sum() to get the sum of weight_deviation.
+  Output: Now use ` sum() ` to get the sum of weight_deviation.
   CorrectAnswer: sum(chickwts$weight_deviation)
   AnswerTests: omnitest(correctExpr='sum(chickwts$weight_deviation)')
   Hint: Don't forget chickwts$  and to check your spelling.
@@ -237,25 +259,27 @@
    calculation.
 
 - Class: cmd_question
-  Output: Now use round(sum(), 11) to get the sum of weight_deviation rounded
+  Output: Now use ` round(sum(), 11) ` to get the sum of weight_deviation rounded
    to 11 digits.
   CorrectAnswer: sum(chickwts$weight_deviation)
   AnswerTests: omnitest(correctExpr='sum(chickwts$weight_deviation)')
   Hint: Don't forget chickwts$  and to check your spelling.
 
-
 - Class: text
-  Output: One way the mean is special is that the sum of the deviations from it will always be 0.
+  Output: One way the mean is special is that the sum of the deviations
+          from it will always be 0.
 
 
 - Class: cmd_question
-  Output: Now get the sum of all of the weight_deviations above 0 by using chickwts$weight_deviation[chickwts$weight_deviation > 0] as the variable.
+  Output: Now get the sum of all of the weight_deviations above 0 by
+          using ` chickwts$weight_deviation[chickwts$weight_deviation > 0] ` as the variable.
   CorrectAnswer: sum(chickwts$weight_deviation[chickwts$weight_deviation > 0])
   AnswerTests: omnitest(correctExpr='sum(chickwts$weight_deviation[chickwts$weight_deviation > 0])')
   Hint: Put the code inside the sum function.
 
 - Class: cmd_question
-  Output: Now get the sum of all of the weight_deviations below 0 by using chickwts$weight_deviation[chickwts$weight_deviation < 0] as the variable.
+  Output: Now get the sum of all of the weight_deviations below 0 by
+          using ` chickwts$weight_deviation[chickwts$weight_deviation < 0] ` as the variable.
   CorrectAnswer: sum(chickwts$weight_deviation[chickwts$weight_deviation < 0])
   AnswerTests: omnitest(correctExpr='sum(chickwts$weight_deviation[chickwts$weight_deviation < 0])')
   Hint: Put the code inside the sum function.
@@ -267,9 +291,13 @@
   AnswerTests: omnitest(correctVal= 'They are the same except for the signs')
   Hint: Look at the previous two answers and compare them.
 
-
 - Class: text
-  Output: One of the most important things about the mean is that it exactly balances the deviation data for the variable, with half of the total deviations above it and half below it.  This is different than the median where half of the observations are above the median and half below it.
+  Output: One of the most important things about the mean is that it exactly balances the
+          deviation data for the variable, with half of the total deviations above it and
+          half below it.  This is different than the median where half of the observations
+          are above the median and half below it.
 
 - Class: text
   Output: This turns out to be a very important property for the rest of statistics as we will see.
+
+

@@ -3,26 +3,32 @@
   Lesson: Starting with Data
   Author: Elin Waring
   Type: Standard
-  Organization: Department of Sociology, Lehman College
+  Organization: SociologySwirl
   Version: 2.4.1
 
 - Class: text
-  Output:  We've seen that R uses vectors to store lists of values.  Let's look a little more deeply at vecors and the kinds of data vectors can contain. We'll start with character vectors.
+  Output:  We've seen that R uses vectors to store lists of values.  Let's look a little more deeply at
+           vectors and the kinds of data vectors can contain. We'll start with character vectors.
 
 - Class: cmd_question
-  Output: Let's make a character vector that represents the five boroughs, borough<-c("Bronx", "Manhattan", "Queens", "Brooklyn", "Staten Island").
+  Output: Let's make a character vector that represents the five
+          boroughs, ` borough<-c("Bronx", "Manhattan", "Queens", "Brooklyn", "Staten Island") `.
   CorrectAnswer: borough<-c("Bronx", "Manhattan", "Queens", "Brooklyn", "Staten Island")
   AnswerTests: omnitest(correctExpr='borough<-c("Bronx", "Manhattan", "Queens", "Brooklyn", "Staten Island")')
   Hint: Make sure to put them in the order given and to use quotation marks.
 
 - Class: cmd_question
-  Output: Now let's make a vector also with one element for each borough, carefully making sure to enter the data in the same borough order. This time let's indicate whether a borough has a major league baseball team by entering    has.baseball.team<-c('Yes', 'No', 'Yes', 'No', 'No') because only The Bronx and Queens have major league teams.
+  Output: Now let's make a vector also with one element for each borough, carefully making
+          sure to enter the data in the same borough order. This time let's indicate whether a
+          borough has a major league baseball team by entering ` has.baseball.team<-c('Yes', 'No', 'Yes', 'No', 'No') `
+          because only The Bronx and Queens have major league teams.
   CorrectAnswer:  has.baseball.team<-c('Yes', 'No', 'Yes', 'No', 'No')
   AnswerTests: omnitest(correctExpr="has.baseball.team<-c('Yes', 'No', 'Yes', 'No', 'No')")
   Hint: Make sure you copy exactly and use quotations marks.
 
 - Class: mult_question
-  Output: Both vectors -- borough and has.baseball.team -- are character vectors, but there is something that makes them different from each other.  What is that?
+  Output: Both vectors -- borough and has.baseball.team -- are character vectors, but there is something that makes
+          them different from each other.  What is that?
   AnswerChoices: The values of borough are all unique but the values of has.baseball.team are not; There are 5 elements in borough and 2 elements in has.baseball.team.; The borough vector contains characters while the has.baseball.team does not.
   CorrectAnswer: The values of borough are all unique but the values of has.baseball.team are not
   AnswerTests: omnitest(correctVal= 'The values of borough are all unique but the values of has.baseball.team are not')
@@ -30,29 +36,45 @@
 
 
 - Class: text
-  Output: In sociology we usually think of a variable like whether or not a borough has a baseball team as a categorical or nominal variable. All boroughs will have a value (or NA) and the values will repeat. On the other hand, even though name of borough is stored as a variable, it will be unique and is more of an identifier. In this data set we will never want to count how many values of "The Bronx" there are, there is just one.  On the other hand we, we might want to count how many boroughs have major league baseball teams (or to understand why some do and some do not ).
+  Output: In sociology we usually think of a variable like whether or not a borough
+          has a baseball team as a categorical or nominal variable. All boroughs will have a value (or NA)
+          and the values will repeat. On the other hand, even though name of borough is stored as a
+          variable, it will be unique and is more of an identifier. In this data set we will never want to
+          count how many values of "The Bronx" there are, there is just one.  On the other hand we, we might want to count how many boroughs have major league baseball teams (or to understand why some do and some do not ).
 
 - Class: text
-  Output: When doing data analysis in R we want to identify which kind of character variable we have, one that is a categorical variable or one that is not. Usually the  these ones that are not are names or identifiers of some kind and the other common situation is that it is text of some kind, like a newspaper article or tweet. In R categorical variables are called factors. By default, R assumes that character variables are factors.
+  Output: When doing data analysis in R we want to identify which kind of character variable we have,
+          one that is a categorical variable or one that is not. Usually the  these ones that are not
+          are names or identifiers of some kind and the other common situation is that it is text of
+          some kind, like a newspaper article or tweet. In R categorical variables are called factors.
+          By default, R assumes that character variables are factors.
 
 - Class: cmd_question
-  Output: Let's tell R that the vector borough is not categorical variable by using the I(x) function. Instead of x, use the vector name borough. We want to modify the existing vectore so we save the results right back in the same name by using borough<-I(borough) .
+  Output: Let's tell R that the vector borough is not categorical variable by using the ` I(x) ` function.
+          Instead of x, use the vector name borough. We want to modify the existing vectore so we save the
+          results right back in the same name by using ` borough<-I(borough) `.
   CorrectAnswer: borough<-I(borough)
   AnswerTests: omnitest(correctExpr='borough<-I(borough)')
   Hint: Make sure the I is upper case and that you copy exactly.
 
 - Class: text
-  Output: Now if you look at environment borough should say Class 'AsIs' which means that later when we are analyzing data, R will know not to treat it as a factor.
+  Output: Now if you look at environment borough should say Class 'AsIs' which means
+          that later when we are analyzing data, R will know not to treat it as a factor.
 
 - Class: cmd_question
-  Output: Now let's tell R that the vector has.baseball.team is a categorical variable by using the as.factor() function on it, like this -- has.baseball.team<-as.factor(has.baseball.team)
+  Output: Now let's tell R that the vector has.baseball.team is a categorical variable by
+           using the ` as.factor() ` function on it,
+           like this ` has.baseball.team<-as.factor(has.baseball.team) `.
   CorrectAnswer: has.baseball.team<-as.factor(has.baseball.team)
   AnswerTests: omnitest(correctExpr='has.baseball.team<-as.factor(has.baseball.team)')
   Hint: Make sure the I is upper case and that you copy exactly.
 
 
 - Class: cmd_question
-  Output: Now let's make another variable called is.mainland.  As you may know, The Bronx is the only one of the five boroughs that is part of the US Mainland (all the others are on islands).  Make a new vector called is.mainland that represents this information with "Yes" when a borough is on the mainland and "No" when it is not.
+  Output: Now let's make another variable called is.mainland.  As you may know, The Bronx
+          is the only one of the five boroughs that is part of the US Mainland (all the others
+          are on islands).  Make a new vector called is.mainland that represents this information
+          with "Yes" when a borough is on the mainland and "No" when it is not.
   CorrectAnswer: is.mainland<-c("Yes", "No", "No", "No", "No")
   AnswerTests: omnitest(correctExpr='is.mainland<-c("Yes", "No", "No", "No", "No")')
   Hint: Remember to keep the boroughs in the same order and to use quotation marks.
@@ -65,14 +87,15 @@
   Hint: In a categorical variable, we expect that multiple observations could have the same value.
 
 - Class: cmd_question
-  Output: Use as.factor() to tell R that this vector is a factor.
+  Output: Use ` as.factor() ` to tell R that this vector is a factor.
   CorrectAnswer: is.mainland <- as.factor(is.mainland)
   AnswerTests: omnitest(correctExpr='is.mainland <- as.factor(is.mainland)')
   Hint: Apply the function to is.mainland. Don't forget to assign the result to the original name.
 
 
 - Class: cmd_question
-  Output: Now let's make another variable called baseball.team. The Bronx has the Yankees and Queens has The Mets.  The other boroughs do not have major league baseball so they get values of NA.
+  Output: Now let's make another variable called baseball.team. The Bronx has the Yankees and Queens has The Mets.
+          The other boroughs do not have major league baseball so they get values of NA.
   CorrectAnswer: baseball.team<-c('Yankees', NA, 'Mets', NA, NA)
   AnswerTests: omnitest(correctExpr="baseball.team<-c('Yankees', NA, 'Mets', NA, NA)")
   Hint: Remember to keep the boroughs in the same order and do not put quotation marks around NA.
@@ -86,22 +109,33 @@
 
 
 - Class: cmd_question
-  Output: Use the I() function to tell R that baseball.team is not a categorical variable.
+  Output: Use the ` I() ` function to tell R that baseball.team is not a categorical variable.
   CorrectAnswer: baseball.team <- I(baseball.team)
   AnswerTests: omnitest(correctExpr='baseball.team <- I(baseball.team)')
   Hint: Don't forget to assign the result back to baseball.team.
 
 - Class: text
-  Output: As you work with R you are going to find that making sure that you treat character variables as factors when you need to and not as factors when it does not make sense is really important. We will see more about this in the future.
+  Output: As you work with R you are going to find that making sure that you treat
+          character variables as factors when you need to and not as factors when
+          it does not make sense is really important. We will see more about this
+          in the future.
 
 - Class: text
-  Output: Now let's look at some numeric data. Two vectors have already been created for you. if you look in the Environment window you should see populaton (from Wikipedia) and area in square miles (from Google).  Notice that these both have the type num, meaning numeric and that they have numeric values.  Square miles has decimal places and is a continuous variable.  Population can only be in whole numbers and is a discrete variable.
+  Output: Now let's look at some numeric data. Two vectors have already been
+          created for you. if you look in the Environment window you should
+          see populaton (from Wikipedia) and area in square miles (from Google).
+          Notice that these both have the type num, meaning numeric and that they
+          have numeric values.  Square miles has decimal places and is a continuous
+          variable.  Population can only be in whole numbers and is a discrete variable.
 
 - Class: text
-  Output: Looking at the   values of square.miles we can see that Manhattan is much smaller than the others and Queens is much larger.  Let's make a new vector called size with values of "Small", "Medium" and "Large".
+  Output: Looking at the values of square.miles we can see that Manhattan is much
+          smaller than the others and Queens is much larger.  Let's make a new vector
+          called size with values of "Small", "Medium" and "Large".
 
 - Class: cmd_question
-  Output: Create a character variable called size with Manhattan as "Small", Queens as "Large" and the others as "Medium"
+  Output: Create a character variable called size with Manhattan as "Small", Queens as "Large"
+          and the others as "Medium"
   CorrectAnswer: size <-c("Medium", "Small", "Large", "Medium", "Medium")
   AnswerTests: omnitest(correctExpr='size <-c("Medium", "Small", "Large", "Medium", "Medium")')
   Hint: Make sure you list the values correctly and assign the vector to size.
@@ -113,34 +147,48 @@
   Hint: Make sure to assign the variable to the same name and to use as.factor().
 
 - Class: text
-  Output: This is good, but size is really more than a regular factor.  It has a logical ordering that goes from Small to Medium to Large.  This is the kind of variable we call an ordinal variable. This is an extremely common type of variable in sociology. While the ordering of these words is obvious to us, R does not speak English. So we have to tell it that the variable is ordered and what the order is.
-
+  Output: This is good, but size is really more than a regular factor.  It has a logical
+          ordering that goes from Small to Medium to Large.  This is the kind of variable
+          we call an ordinal variable. This is an extremely common type of variable in sociology.
+          While the ordering of these words is obvious to us, R does not speak English.
+          So we have to tell it that the variable is ordered and what the order is.
 
 - Class: cmd_question
-  Output: Step one is to set up a vector with the levels in the order we want, sizeOrder<- c("Small", "Medium", "Large").  Create that vector.
+  Output: Step one is to set up a vector with the levels in the order we
+          want, ` sizeOrder<- c("Small", "Medium", "Large") `.  Create that vector.
   CorrectAnswer: sizeOrder<- c("Small", "Medium", "Large")
   AnswerTests: omnitest(correctExpr='sizeOrder<- c("Small", "Medium", "Large")')
   Hint: Make sure to copy sizeOrder<- c("Small", "Medium", "Large") exactly.
 
 
 - Class: cmd_question
-  Output: Now we are going to use the levels and the ordered() function to modify the size vector -- size<-ordered(size, levels = sizeOrder)
+  Output: Now we are going to use the levels and the ` ordered() ` function to modify the
+          size vector ` size<-ordered(size, levels = sizeOrder) `.
   CorrectAnswer: size<-ordered(size, levels = sizeOrder)
   AnswerTests: omnitest(correctExpr='size<-ordered(size, levels = sizeOrder)')
   Hint: Make sure to copy exactly, including the upper and lower case letters.
 
 - Class: text
-  Output: Now if you look in Environment you should sw that the information for size has changed and now indicates that it is Ord. factor w/ 3 levels "Small" < "Medium" < ...   Now R knows the proper ordering of Small, Medium and Large. This will be useful in lots of ways as we learn more.
-
+  Output: Now if you look in Environment you should sw that the information for size has
+          changed and now indicates that it is Ord. factor w/ 3 levels "Small" < "Medium" < ...
+          Now R knows the proper ordering of Small, Medium and Large. This will be useful in
+          lots of ways as we learn more.
 
 - Class: text
-  Output: This is great if we are interested in just one variable, but most of the time we collect data on multiple variables describing the same observation, whether that is a person, a geographic area, an organization or some other kind of entity. So far we have a loot of separate variables all describing the boroughs.
+  Output: This is great if we are interested in just one variable, but most of the time we
+          collect data on multiple variables describing the same observation, whether that is a person,
+          a geographic area, an organization or some other kind of entity. So far we have a lot
+          of separate variables all describing the boroughs.
 
 - Class: text
-  Output: Most of the time we are interested in the relationships between variables, whether that is in the form of change over time, comparison of several social groups, or examining the differences between treatment and control groups in an experiment. What we want to do is to combine the variables together into one data set which in R is called a data frame.
+  Output: Most of the time we are interested in the relationships between variables, whether
+          that is in the form of change over time, comparison of several social groups, or examining
+          the differences between treatment and control groups in an experiment. What we want to do is
+          to combine the variables together into one data set which in R is called a data frame.
 
 - Class: cmd_question
-  Output: To create our data frame we are going to use the data.frame() function.  Let's call our data frame nycdata.  So we type nycdata <- data.frame(borough, has.baseball.team, is.mainland, baseball.team, population, square.miles, size)
+  Output: To create our data frame we are going to use the ` data.frame() ` function.  Let's call our
+          data frame nycdata.  So we type ` nycdata <- data.frame(borough, has.baseball.team, is.mainland, baseball.team, population, square.miles, size) `.
   CorrectAnswer: nycdata <- data.frame(borough, has.baseball.team, is.mainland, baseball.team, population, square.miles, size)
   AnswerTests: omnitest(correctExpr='nycdata <- data.frame(borough, has.baseball.team, is.mainland, baseball.team, population, square.miles, size)')
   Hint: Type the code exactly, don't change the order or spelling.
@@ -153,7 +201,10 @@
 
 
 - Class: cmd_question
-  Output: Now we are going to do one more thing, which is to add row names. These are going to be the same as the borough names, but that won't always be true in your data. Sometimes row names will be totally different or sometimes you may skip them and just refer to the rows using number. Here's the function row.names(nycdata) <- borough
+  Output: Now we are going to do one more thing, which is to add row names. These are going to be
+          the same as the borough names, but that won't always be true in your data. Sometimes row
+          names will be totally different or sometimes you may skip them and just refer to the rows
+          using number. Here's the function ` row.names(nycdata) <- borough `.
   CorrectAnswer: row.names(nycdata) <- borough
   AnswerTests: omnitest(correctExpr='row.names(nycdata) <- borough')
   Hint: Copy the code exactly -- it is a bit different than other functions!
@@ -167,10 +218,14 @@
 
 
 - Class: text
-  Output: Now our data is nicely arronged in rows and columns. If you have worked with spreadsheets before this is probably familiar.  This is the normal way we store data in sociology, one row per observation, and one column per variable.   We have column names and row names but we could also refer to Manhattan as  Row 2 and population as column 4. Let's try some neat tricks.
+  Output: Now our data is nicely arronged in rows and columns. If you have worked with
+          spreadsheets before this is probably familiar.  This is the normal way we store
+          data in sociology, one row per observation, and one column per variable.   We
+          have column names and row names but we could also refer to Manhattan as
+          Row 2 and population as column 4. Let's try some neat tricks.
 
 - Class: cmd_question
-  Output: Find the population of Queens by typing nycdata['Queens', 'population']
+  Output: Find the population of Queens by typing ` nycdata['Queens', 'population'] `.
   CorrectAnswer: nycdata['Queens', 'population']
   AnswerTests: omnitest(correctExpr="nycdata['Queens', 'population']")
   Hint: Don't forget quotation marks and capitalization.
@@ -182,39 +237,38 @@
   Hint: Don't forget quotation marks and capitalization.
 
 - Class: cmd_question
-  Output: What happens if you enter nycdata[4,6]?
+  Output: What happens if you enter ` nycdata[4,6] `?
   CorrectAnswer: nycdata[4,6]
   AnswerTests: omnitest(correctExpr='nycdata[4,6]')
   Hint: Copy exactly .. .no quotation marks this time!
 
 - Class: mult_question
-  Output: Why do you get the same answer for nycdata[4,6] as for nycdata['Brooklyn','square.miles']?
+  Output: Why do you get the same answer for ` nycdata[4,6] ` as
+          for ` nycdata['Brooklyn','square.miles'] `?
   AnswerChoices: Because Brooklyn is row 4 and square.miles is column 6; because Brooklyn is row 6 and square.miles is column 4; because 6 * 4 == 24.
   CorrectAnswer: Because Brooklyn is row 4 and square.miles is column 6
   AnswerTests: omnitest(correctVal= 'Because Brooklyn is row 4 and square.miles is column 6')
   Hint: Look at the display of the datafrome.  Type nycdata if you need to see it again.
 
-
-
 - Class: text
-  Output: Remember that it is always dataframename[row, column].
-
-
+  Output: Remember that it is always ` dataframename[row, column] `.
 
 - Class: cmd_question
-  Output: We can get a whole row of data using the bracket notation with either row names or numbers, such as nycdata['Brooklyn',].  Write the code to get the Staten Island data.
+  Output: We can get a whole row of data using the bracket notation with either row names
+          or numbers, such as ` nycdata['Brooklyn',] `.  Write the code to get the
+          Staten Island data.
   CorrectAnswer: nycdata['Staten Island',]
   AnswerTests: omnitest(correctExpr="nycdata['Staten Island',]")
   Hint: Make sure you have the comma after the name and the name in quotation marks
 
-
 - Class: cmd_question
-  Output: We can get a whole column of data by referencing just the column, dataframe[,'columnname']. Notice that the comma must come first, because rows go before the comma and columns after.  Get the colum of data for baseball.team
+  Output: We can get a whole column of data by referencing just the column, ` dataframe[,'columnname'] `.
+          Notice that the comma must come first, because rows go before the comma and columns after.
+          Get the colum of data for baseball.team
   CorrectAnswer: nycdata[ , 'baseball.team']
   AnswerTests: omnitest(correctExpr="nycdata[ , 'baseball.team']")
   Hint: Make sure that comma is first and that you have quotation marks in the right location.
 
-
-
 - Class: text
-  Output: Now that we have a basic idea, we are ready to learn more about how to work with data frames!
+  Output: Now that we have a basic idea, we are ready to learn more about
+          how to work with data frames!

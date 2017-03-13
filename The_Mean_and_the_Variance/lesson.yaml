@@ -9,7 +9,8 @@
 - Class: text
   Output: In this lesson we will continue to learn about the mean using the chickwts data set.
      We will also learn about a key measure of variation called the variance.
-     Some additional variables have been added, median_weight (the median value of weight) and weight_deviation_median
+     Some additional variables have been added, median_weight (the median value of weight)
+     and weight_deviation_median
      which is the value of weight minus the median of weight.
 
 - Class: text
@@ -21,7 +22,7 @@
     the values and the median? Use the weight_deviation_median variable to get this.
   CorrectAnswer: sum(chickwts$weight_deviation_median)
   AnswerTests: omnitest(correctExpr='sum(chickwts$weight_deviation_median)')
-  Hint: Use the sum function and the dataset$variable notation.
+  Hint: Use the sum() function and the dataset$variable notation.
 
 - Class: cmd_question
   Output: What if we calculate the mean of the differences from the median?
@@ -53,7 +54,7 @@
 
 - Class: cmd_question
   Output: Calculate the mean of the absolute value of weight_deviation by
-    using mean(abs(chickwts$weight_deviation)). Recall that abs() is the absolute
+    using ` mean(abs(chickwts$weight_deviation)) `. Recall that ` abs() ` is the absolute
     value function.
   CorrectAnswer: mean(abs(chickwts$weight_deviation))
   AnswerTests: omnitest(correctExpr='mean(abs(chickwts$weight_deviation))')
@@ -73,7 +74,7 @@
   Hint: Compare the values for the two previous answers.
 
 - Class: text
-  Output: The mean absolute deviation will be smaller around the median than
+  Output: The mean absolute deviation will be smaller around the value of the median than
      any other value. The values for mean and median will only be tied if the
      mean and median are equal.
 
@@ -85,7 +86,7 @@
 
 - Class: video
   Output: Would you like to read a web discussion about why many people prefer
-     squaring but use the absolute value?
+     squaring but some use the absolute value?
   VideoLink: http://stats.stackexchange.com/questions/118/why-square-the-difference-instead-of-taking-the-absolute-value-in-standard-devia
 
 - Class: text
@@ -94,7 +95,7 @@
 
 - Class: cmd_question
   Output:    Calculate the mean of the square of weight_deviation by
-     using mean(chickwts$weight_deviation^2). Recall that ^2 means to
+     using ` mean(chickwts$weight_deviation^2) `. Recall that ^2 means to
      raise to the second power (square) the value.
   CorrectAnswer: mean(chickwts$weight_deviation^2)
   AnswerTests: omnitest(correctExpr='mean(chickwts$weight_deviation^2)')
@@ -114,34 +115,34 @@
   Hint: Compare the values for the two previous answers.
 
 - Class: text
-  Output: The mean squared deviation will always be smaller around the mean than
-     any other value. The values for mean and median will only be tied if the
-    mean and median are equal.
+  Output: The mean of the squared deviation will always be smaller around the
+     value of the mean than any other value. The values for mean and median will only be
+     tied if the mean and median are equal.
 
 - Class: text
-  Output: The mean squared deviation has a special name, which is the variance.
-     Sometimes you will see this formula referred to as the population variance.
+  Output: The mean of the squared of deviation around the mean has a special name,
+          which is the variance.
+          Sometimes you will see this formula referred to as the population variance.
 
 - Class: text
   Output: If we had just added up the squared deviations without dividing by
      the sample size, that number is often called the sum of squares
      or total sum of squares.
 
-
 - Class: cmd_question
   Output: The square root of the variance is called the standard deviation or
      sometimes called the population standard deviation. Calculate the standard
-     deviation by putting the variance formula for weight_deviation inside the sqrt() function.
+     deviation by putting the variance formula for weight_deviation inside the ` sqrt() ` function.
   CorrectAnswer: sqrt(mean(chickwts$weight_deviation^2))
   AnswerTests: omnitest(correctExpr='sqrt(mean(chickwts$weight_deviation^2))')
-  Hint: The formula should look like sqrt(mean(variable^2))
+  Hint: The formula should look like sqrt(mean(variable^2)).
 
 - Class: text
   Output: The standard deviation is very useful because by taking the square root
      of the variance you return to the original units, in this case grams.
 
 - Class: text
-  Output:  R has functions sd() and var() to calculate the standard deviation and
+  Output:  R has functions ` sd() ` and ` var() ` to calculate the standard deviation and
     variance.  What happens when we use them?
 
 - Class: cmd_question
@@ -155,18 +156,19 @@
   AnswerChoices: The var() version is higher; The mean() version is higher; The two versions are the same.
   CorrectAnswer: The var() version is higher
   AnswerTests: omnitest(correctVal= 'The var() version is higher')
-  Hint: hint
+  Hint: Look at the two values by scrolling up.
 
 - Class: cmd_question
-  Output: The var() command will always give a higher variance estimate than calculating the mean
-      of the squared deviations. Type ?var to load the help page for var().
+  Output: The ` var() ` command will always give a higher variance estimate than calculating the mean
+      of the squared deviations. Type ` ?var ` to load the help page for ` var() `.
   CorrectAnswer: ?var
   AnswerTests: omnitest(correctExpr='?var')
   Hint: Type ?var
 
 - Class: mult_question
-  Output:  In the Details section at about paragraph 7, it starts The denominator.
-     What value is used for the denominator?
+  Output:  In the Details section find paragraph 7, which starts  "The denominator." Read
+           that paragraph.
+             What value is used for the denominator?
   AnswerChoices: n-1;n;n+1
   CorrectAnswer: n-1
   AnswerTests: omnitest(correctVal= 'n-1')
@@ -182,11 +184,26 @@
   Hint: hint
 
 - Class: cmd_question
-  Output: Multiply the var() results for weight_deviation by (n-1)/n which can
-    be expressed as (nrow(chickwts)-1)/nrow(chickwts)
+  Output: Multiply the ` var() ` results for weight_deviation by ` (n-1)/n `which can
+    be expressed as ` (nrow(chickwts)-1)/nrow(chickwts) `.
   CorrectAnswer: var(chickwts$weight_deviation)*(nrow(chickwts)-1)/nrow(chickwts)
   AnswerTests: omnitest(correctExpr='var(chickwts$weight_deviation)*(nrow(chickwts)-1)/nrow(chickwts)')
   Hint: Start with var(chickwts$weight_deviation)
+
+- Class: mult_question
+  Output: How does `  var(chickwts$weight_deviation)*(nrow(chickwts)-1)/nrow(chickwts) ` compare to
+           ` var(chickwts$weight_deviation) `?
+  AnswerChoices: They are the same;Variance of weight_deviance*(n-1)/n is higher;Variance of weight_deviation is higher
+  CorrectAnswer: Variance of weight_deviance is higher
+  AnswerTests: omnitest(correctVal= 'Variance of weight_deviance is higher')
+  Hint: Compare the value in the previous question to the one for weight_deviation.
+
+- Class: text
+  Output: The sample variance formula (which uses n-1 instead of n) will always
+          give a larger number than using a formula that divides by n.  This is the preferred fomula
+          because using a formula with n on sample data tends to underestimate the variance of the population.
+          This is something that will be examined in more detail when studying sampling distributions.
+
 
 - Class: cmd_question
   Output: Calculate the variance for weight.
@@ -195,7 +212,7 @@
   Hint: Put chickwts$weight inside var().
 
 - Class: mult_question
-  Output: How does the variance of weight compare to the variance of weight_deviation?
+  Output: How does the variance of weight compare to the (variance of weight_deviation)?
   AnswerChoices: They are the same;Variance of weight is higher;Variance of weight_deviation is higher
   CorrectAnswer: They are the same
   AnswerTests: omnitest(correctVal= 'They are the same')
@@ -208,5 +225,11 @@
       is 0, subtracting it from the weight_deviation values has no impact. So you end
       up with the same numbers being used in the calculation.
 
-      The variance and the sum of squares are very widely used in statistics.
+- Class: text
+  Output: Make sure you understand the previous paragraph. You might need to try an example on paper.
+
+- Class: text
+  Output: The variance and the sum of squares are very widely used in statistics. They provide the
+      basis for regression analysis and other approaches that let us look at the relationships between
+      varibles.
 
