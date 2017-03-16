@@ -195,7 +195,7 @@
            ` var(chickwts$weight_deviation) `?
   AnswerChoices: They are the same;Variance of weight_deviance*(n-1)/n is higher;Variance of weight_deviation is higher
   CorrectAnswer: Variance of weight_deviation is higher
-  AnswerTests: omnitest(correctVal= 'Variance of weight_deviantion is higher')
+  AnswerTests: omnitest(correctVal= 'Variance of weight_deviation is higher')
   Hint: Compare the value in the previous question to the one for weight_deviation.
 
 - Class: text
