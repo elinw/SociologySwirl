@@ -195,7 +195,7 @@
            ` var(chickwts$weight_deviation) `?
   AnswerChoices: Variance of weight_deviation is higher;They are the same;Variance of weight_deviation*(n-1)/n is higher
   CorrectAnswer: Variance of weight_deviation is higher
-  AnswerTests: omnitest(correctVal= 'Variance of weight_deviation is higher')
+  AnswerTests: omnitest(correctVal='Variance of weight_deviation is higher')
   Hint: Compare the value in the previous question to the one for weight_deviation.
 
 - Class: text
@@ -215,7 +215,7 @@
   Output: How does the variance of weight compare to the (variance of weight_deviation)?
   AnswerChoices: They are the same;Variance of weight is higher;Variance of weight_deviation is higher
   CorrectAnswer: They are the same
-  AnswerTests: omnitest(correctVal= 'They are the same')
+  AnswerTests: omnitest(correctVal='They are the same')
   Hint: Compare the value in the previous question to the one for weight_deviation.
 
 - Class: text
