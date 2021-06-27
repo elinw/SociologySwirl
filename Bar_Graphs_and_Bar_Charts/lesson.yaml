@@ -128,14 +128,14 @@
 - Class: cmd_question
   Output: "This looks good but the labels on the y axis values are not that great. This time use a `+` to add `scale_y_continuous(labels=scales::percent)`.
            Don't forget that you can use the up arrow to get the previous commands."
-  CorrectAnswer: bar + geom_bar(color="blue", fill="purple", aes(y = (..count..)/sum(..count..))) + scale_y_continuous(labels=scales::percent)
-  AnswerTests: omnitest(correctExpr='bar + geom_bar(color="blue", fill="purple", aes(y = (..count..)/sum(..count..))) + scale_y_continuous(labels=scales::percent)')
+  CorrectAnswer: bar + geom_bar(aes(y = (..count..)/sum(..count..))) + scale_y_continuous(labels=scales::percent)
+  AnswerTests: omnitest(correctExpr='bar + geom_bar(aes(y = (..count..)/sum(..count..))) + scale_y_continuous(labels=scales::percent)')
   Hint: "Don't worry if it takes a few tries, it is complex. You should have the bar, the geom_bar() and the scale."
 
 - Class: cmd_question
   Output: Finally we want to make the label for the y axis. Add `ylab("Percent")` to the code. Remember you can use the up arrow to get the code for the previous command.
-  CorrectAnswer: bar + geom_bar(color="blue", fill="purple", aes(y = (..count..)/sum(..count..)),  stat="count") + scale_y_continuous(labels=scales::percent) + ylab("Percent")
-  AnswerTests: omnitest(correctExpr='bar + geom_bar(color="blue", fill="purple", aes(y = (..count..)/sum(..count..)),  stat="count") + scale_y_continuous(labels=scales::percent) + ylab("Percent")')
+  CorrectAnswer: bar + geom_bar(aes(y = (..count..)/sum(..count..))) + scale_y_continuous(labels=scales::percent) + ylab("Percent")
+  AnswerTests: omnitest(correctExpr='bar + geom_bar(aes(y = (..count..)/sum(..count..))) + scale_y_continuous(labels=scales::percent) + ylab("Percent")')
   Hint: Add  + ylab("Percent")  to the previous code.
 
 - Class: mult_question
