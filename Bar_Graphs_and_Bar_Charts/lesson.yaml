@@ -170,15 +170,22 @@
   Output: Sociologists working with data sets often make these kinds of bar charts from their data. However, if you have ever used a spreadsheet or had to create a lot of graphs of different types (not just counts) you will know that often you make bar graphs from data that has already been summarized in some way.  In that case ggplot is not doing the calculations for you, it is just doing the display.
 
 - Class: cmd_question
+  Output: For the next part, let's start by loading the dplyr package in case it is not already loaded.
+  CorrectAnswer: library(dplyr)
+  AnswerTests: omnitest(correctExpr='library(dplyr)')
+  Hint: Use the library() function to load dplyr.
+
+
+- Class: cmd_question
   Output: Let's summarize our data using the dplyr package. The first step is to group the data by color, using the dplyr::group_by(diamonds, color) which we will assign to the by_color data frame using the assignment operator.
-  CorrectAnswer: by_color<-dplyr::group_by(diamonds, color)
-  AnswerTests: omnitest(correctExpr='by_color<-dplyr::group_by(diamonds, color)')
+  CorrectAnswer: by_color<-group_by(diamonds, color)
+  AnswerTests: omnitest(correctExpr='by_color<-group_by(diamonds, color)')
   Hint: Don't forget to assign to by_color.
 
 - Class: cmd_question
-  Output: Next let's get the number of observations and mean and median price for each of the groups by using dplyr::summarize(by_color, count=n(), mean_price = mean(price), median_price = median(price)) and assign it to color_summary.
-  CorrectAnswer: color_summary <- dplyr::summarize(by_color, count=dplyr::n(), mean_price = mean(price), median_price = median(price))
-  AnswerTests: omnitest(correctExpr='color_summary <- dplyr::summarize(by_color, count=dplyr::n(), mean_price = mean(price), median_price = median(price))')
+  Output: Next let's get the number of observations and mean and median price for each of the groups by using the summarize function from dplyr.  summarize(by_color, count=n(), mean_price = mean(price), median_price = median(price)) and assign it to color_summary.
+  CorrectAnswer: color_summary <- summarize(by_color, count=n(), mean_price = mean(price), median_price = median(price))
+  AnswerTests: omnitest(correctExpr='color_summary <- summarize(by_color, count=n(), mean_price = mean(price), median_price = median(price))')
   Hint: Use the assignment operator color_summary <-
 
 - Class: cmd_question
