@@ -195,13 +195,13 @@
   Hint: Just type color_summary
 
 - Class: cmd_question
-  Output: Here is the code to create a bar chart using the summary data. ggplot(color_summary, aes(x=color, y = count)) + geom_bar(stat = "identity",  color="blue", fill="purple") + ggtitle("Diamond Colors").
-  CorrectAnswer: ggplot(color_summary, aes(x=color, y = count)) + geom_bar(stat = "identity",  color="blue", fill="purple") + ggtitle("Diamond Colors")
-  AnswerTests: omnitest(correctExpr='ggplot(color_summary, aes(x=color, y = count)) + geom_bar(stat = "identity",  color="blue", fill="purple") + ggtitle("Diamond Colors")')
+  Output: When you have the values of the bar alread calculated, ggplot uses geom_col(). Here is the code to create a bar chart using the summary data. ggplot(color_summary, aes(x=color, y = count)) + geom_col() + ggtitle("Diamond Colors").
+  CorrectAnswer: ggplot(color_summary, aes(x=color, y = count)) + geom_col() + ggtitle("Counts by Diamond Color")
+  AnswerTests: omnitest(correctExpr='ggplot(color_summary, aes(x=color, y = count)) + geom_col() + ggtitle("Counts by Diamond Color")')
   Hint: Make sure you copy exactly, with no extra characters.
 
 - Class: text
-  Output: The addition of stat="identity" says to use the value directly from the data set.  We add the y to the ggplot to specify which statistic should be plotted.
+  Output: The use of geom_col() says to use the value directly from the data set.  We add the y to the ggplot to specify which statistic should be plotted.
 
 - Class: mult_question
   Output: How does this bar graph compare to the bar graph with counts you made earlier?
@@ -212,8 +212,8 @@
 
 - Class: cmd_question
   Output: Make a bar graph of the mean price.
-  CorrectAnswer: ggplot(color_summary, aes(x=color, y = mean_price)) + geom_bar(stat = "identity",  color="blue", fill="purple") + ggtitle("Diamond Colors")
-  AnswerTests: omnitest(correctExpr='ggplot(color_summary, aes(x=color, y = mean_price)) + geom_bar(stat = "identity",  color="blue", fill="purple") + ggtitle("Diamond Colors")')
+  CorrectAnswer: ggplot(color_summary, aes(x=color, y = mean_price)) + geom_col() + ggtitle("Mean Price by Diamond Color")
+  AnswerTests: omnitest(correctExpr='ggplot(color_summary, aes(x=color, y = mean_price)) + geom_col() + ggtitle("Mean Price by Diamond Color")')
   Hint: plot mean_price as the y variable.
 
 - Class: mult_question
@@ -227,14 +227,14 @@
 
 - Class: cmd_question
   Output: Make a bar graph of the median price and add coord_flip() to the end using a + sign.
-  CorrectAnswer: ggplot(color_summary, aes(x=color, y = median_price)) + geom_bar(stat = "identity",  color="blue", fill="purple") + ggtitle("Diamond Colors") + coord_flip()
-  AnswerTests: omnitest(correctExpr='ggplot(color_summary, aes(x=color, y = median_price)) + geom_bar(stat = "identity",  color="blue", fill="purple") + ggtitle("Diamond Colors") + coord_flip()')
+  CorrectAnswer: ggplot(color_summary, aes(x=color, y = median_price)) + geom_col() + ggtitle("Median Price by Diamond Color") + coord_flip()
+  AnswerTests: omnitest(correctExpr='ggplot(color_summary, aes(x=color, y = median_price)) + geom_col() + ggtitle("Median Price by Diamond Color") + coord_flip()')
   Hint: plot median_price as the y variable. Dont forget to add the flip.
 
 
 - Class: mult_question
   Output: What does flipping the coordinates do?
-  AnswerChoices: Switches the x and y axes.; Turns the graph updside down.; Pust the axis labels on the right and top instead of left and bottom.; Makes the scales go from high to low instead of low to high.
+  AnswerChoices: Switches the x and y axes.; Turns the graph upside down.; Puts the axis labels on the right and top instead of left and bottom.; Makes the scales go from high to low instead of low to high.
   CorrectAnswer: Switches the x and y axes.
   AnswerTests: omnitest(correctVal= 'Switches the x and y axes.')
   Hint: hint
@@ -244,15 +244,15 @@
   Output: The width of the bars in a bar plot do not mean anything. This is very different than a histogram where changing the width sometimes changes the whole shape of the plot. However it is important that
           you always use the same width for all of the bars since doing otherwise can be misleading to the viewer.  Because the width is not meaningful we can change geom_bar to geom_point and still present the
           same information. Try that now, using the median_price graph but don't use coord_flip().
-  CorrectAnswer: ggplot(color_summary, aes(x=color, y = median_price)) + geom_point(stat = "identity",  color="blue", fill="purple") + ggtitle("Diamond Colors")
-  AnswerTests: omnitest(correctExpr= 'ggplot(color_summary, aes(x=color, y = median_price)) + geom_point(stat = "identity",  color="blue", fill="purple") + ggtitle("Diamond Colors")')
+  CorrectAnswer: ggplot(color_summary, aes(x=color, y = median_price)) + geom_point() + ggtitle("Median Price by Diamond Color")
+  AnswerTests: omnitest(correctExpr= 'ggplot(color_summary, aes(x=color, y = median_price)) + geom_point() + ggtitle("Median Price by Diamond Color")')
   Hint: Make sure not to include coord_flip().
 
 - Class: cmd_question
   Output: That's a little hard to see, so add size=5 to tbe geom_point().
-  CorrectAnswer: ggplot(color_summary, aes(x=color, y = median_price)) + geom_point(stat = "identity",  color="blue", fill="purple", size=5) + ggtitle("Diamond Colors")
-  AnswerTests: omnitest(correctExpr='ggplot(color_summary, aes(x=color, y = median_price)) + geom_point(stat = "identity",  color="blue", fill="purple", size=5) + ggtitle("Diamond Colors")')
-  Hint: Your geom should be geom_point(stat = "identity",  color="blue", fill="purple", size=5)
+  CorrectAnswer: ggplot(color_summary, aes(x=color, y = median_price)) + geom_point(size=5) + ggtitle("Median Price by Diamond Color")
+  AnswerTests: omnitest(correctExpr='ggplot(color_summary, aes(x=color, y = median_price)) + geom_point(size=5) + ggtitle("Median Price by Diamond Color")')
+  Hint: Your geom should be geom_col(size=5)
 
 - Class: text
   Output: This kind of plot is called a Cleveland Dot Plot, named after the author Cleveland mentioned earlier.
