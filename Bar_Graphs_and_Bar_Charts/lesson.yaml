@@ -177,7 +177,7 @@
 
 
 - Class: cmd_question
-  Output: Let's summarize our data using the dplyr package. The first step is to group the data by color, using the dplyr::group_by(diamonds, color) which we will assign to the by_color data frame using the assignment operator.
+  Output: Let's summarize our data using the dplyr package. The first step is to group the data by color, using the group_by(diamonds, color) which we will assign to the by_color data frame using the assignment operator.
   CorrectAnswer: by_color<-group_by(diamonds, color)
   AnswerTests: omnitest(correctExpr='by_color<-group_by(diamonds, color)')
   Hint: Don't forget to assign to by_color.
@@ -195,7 +195,7 @@
   Hint: Just type color_summary
 
 - Class: cmd_question
-  Output: When you have the values of the bar alread calculated, ggplot uses geom_col(). Here is the code to create a bar chart using the summary data. ggplot(color_summary, aes(x=color, y = count)) + geom_col() + ggtitle("Diamond Colors").
+  Output: When you have the values of the bar alread calculated, ggplot uses geom_col(). Here is the code to create a bar chart using the summary data. ggplot(color_summary, aes(x=color, y = count)) + geom_col() + ggtitle("Counts by Diamond Color").
   CorrectAnswer: ggplot(color_summary, aes(x=color, y = count)) + geom_col() + ggtitle("Counts by Diamond Color")
   AnswerTests: omnitest(correctExpr='ggplot(color_summary, aes(x=color, y = count)) + geom_col() + ggtitle("Counts by Diamond Color")')
   Hint: Make sure you copy exactly, with no extra characters.
@@ -211,7 +211,7 @@
   Hint: Use the back arrow in the plot viewer to see your old plots.
 
 - Class: cmd_question
-  Output: Make a bar graph of the mean price.
+  Output: Make a bar graph of the mean price. Use the title "Mean Price by Diamond Color".
   CorrectAnswer: ggplot(color_summary, aes(x=color, y = mean_price)) + geom_col() + ggtitle("Mean Price by Diamond Color")
   AnswerTests: omnitest(correctExpr='ggplot(color_summary, aes(x=color, y = mean_price)) + geom_col() + ggtitle("Mean Price by Diamond Color")')
   Hint: plot mean_price as the y variable.
@@ -226,7 +226,7 @@
 
 
 - Class: cmd_question
-  Output: Make a bar graph of the median price and add coord_flip() to the end using a + sign.
+  Output: Make a bar graph of the median price and add coord_flip() to the end using a + sign. Use the title "Median Price by Diamond Color".
   CorrectAnswer: ggplot(color_summary, aes(x=color, y = median_price)) + geom_col() + ggtitle("Median Price by Diamond Color") + coord_flip()
   AnswerTests: omnitest(correctExpr='ggplot(color_summary, aes(x=color, y = median_price)) + geom_col() + ggtitle("Median Price by Diamond Color") + coord_flip()')
   Hint: plot median_price as the y variable. Dont forget to add the flip.
